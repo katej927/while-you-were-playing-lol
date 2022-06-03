@@ -1,0 +1,26 @@
+import { millisecondsToHours, millisecondsToMinutes } from 'date-fns';
+
+const addCommas = (num: number) =>
+  Math.round(num)
+    .toString()
+    .replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+
+export const convertTime = (time: number) => {
+  const toHoursNum = millisecondsToHours(time);
+  const wageThisYear = 9160;
+
+  const toMinutes = addCommas(millisecondsToMinutes(time));
+  const toHours = addCommas(toHoursNum);
+  const toDays = addCommas(toHoursNum / 24);
+
+  const toWage = addCommas(toHoursNum * wageThisYear);
+  const toSleep = addCommas(toHoursNum / 8);
+  const paidPCroom = addCommas(toHoursNum * 1300);
+
+  const result = [
+    { 분: toMinutes, 시간: toHours, 일: toDays },
+    { '2022년 최저시급으로': toWage, 수면: toSleep, '피시방에서 했다면': paidPCroom },
+  ];
+
+  return result;
+};
