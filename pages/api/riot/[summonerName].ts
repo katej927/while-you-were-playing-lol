@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import axios from 'axios';
+import axios, { AxiosError } from 'axios';
 
 // 재확인 필요
 export default async (req: NextApiRequest, res: NextApiResponse) => {
@@ -13,7 +13,9 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     }
     try {
       const { data } = await axios.get(
-        `${process.env.NEXT_PUBLIC_RIOT_ROUTING_KR}/lol/summoner/v4/summoners/by-name/${summonerName}?api_key=${process.env.RIOT_API_KEY}`
+        encodeURI(
+          `${process.env.NEXT_PUBLIC_RIOT_ROUTING_KR}/lol/summoner/v4/summoners/by-name/${summonerName}?api_key=${process.env.RIOT_API_KEY}`
+        )
       );
       const { puuid } = data;
 
@@ -31,7 +33,9 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       return res.send(data);
     } catch (e) {
       res.statusCode = 404;
-      console.log(e);
+      if (axios.isAxiosError(e) && e.response) {
+        console.log('에러', e.response);
+      }
       return res.end();
     }
   }

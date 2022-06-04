@@ -1,13 +1,15 @@
-import { cx } from '@emotion/css';
+import { useMemo } from 'react';
+
 import { useSelector } from '../../store';
 import { convertTime } from './utils';
-import { Wrapper } from '../common';
+import { Container } from '../common';
 
+import { cx } from '@emotion/css';
 import * as S from './member.styles';
 
 const Member = () => {
   const { revisionDate: time, name } = useSelector((state) => state.riot.riot);
-  const { timeBlock, opportunityCost } = convertTime(time ?? 1);
+  const { timeBlock, opportunityCost } = useMemo(() => convertTime(time ?? 1), [time]);
 
   return (
     <main>
@@ -15,7 +17,7 @@ const Member = () => {
         <h2 className={S.summonerName}>{name}</h2>
       </header>
       <article className={S.contentsWrapper}>
-        <Wrapper title='내가 롤을 이렇게 했다니 이럴 리 없다..'>
+        <Container title='내가 롤을 이렇게 했다니 이럴 리 없다..'>
           <div className={S.timeBlockWrapper}>
             {Object.keys(timeBlock).map((key, idx) => {
               return (
@@ -26,8 +28,8 @@ const Member = () => {
               );
             })}
           </div>
-        </Wrapper>
-        <Wrapper title='롤을 안 했더라면..'>
+        </Container>
+        <Container title='롤을 안 했더라면..'>
           <div className={S.opportunityCostWrapper}>
             {Object.keys(opportunityCost).map((kind, idx) => {
               return (
@@ -38,7 +40,7 @@ const Member = () => {
               );
             })}
           </div>
-        </Wrapper>
+        </Container>
       </article>
     </main>
   );

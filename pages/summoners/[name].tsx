@@ -1,12 +1,21 @@
 import { NextPage, GetServerSideProps } from 'next';
+import dynamic from 'next/dynamic';
+import { Loading } from '../../components/common';
 import Member from '../../components/member';
 
 import { wrapper } from '../../store';
 import { getSummonerDataAPI } from '../../lib/api';
 import { riotActions } from '../../store/riot';
+import { Suspense } from 'react';
+
+const DynamicMemberPage = dynamic(() => import('../../components/member'), { suspense: true });
 
 const todo: NextPage = () => {
-  return <Member />;
+  return (
+    <Suspense fallback={<Loading />}>
+      <DynamicMemberPage />
+    </Suspense>
+  );
 };
 export default todo;
 
@@ -20,7 +29,9 @@ export const getServerSideProps: GetServerSideProps = wrapper.getServerSideProps
         return { props: {} };
       } catch (e) {
         console.log(e);
-        return { props: {} };
+        return {
+          notFound: true,
+        };
       }
     }
 );

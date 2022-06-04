@@ -1,3 +1,4 @@
-import Wrapper from './container';
+import Container from './container';
+import Loading from './loading';
 
-export { Wrapper };
+export { Container, Loading };

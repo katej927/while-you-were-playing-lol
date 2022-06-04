@@ -5,7 +5,7 @@ import { SearchIcon, MainIcon } from '../../public/static/svg';
 import * as S from './home.styles';
 
 const Home = () => {
-  const [name, setName] = useState('');
+  const [name, setName] = useState<string>('');
   const router = useRouter();
 
   const handleChange = ({ currentTarget }: FormEvent<HTMLInputElement>) => {
@@ -22,6 +22,8 @@ const Home = () => {
       console.log(e);
     }
   };
+
+  console.log('name', name);
 
   return (
     <main className={S.homeWrapper}>

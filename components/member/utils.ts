@@ -20,10 +20,12 @@ export const convertTime = (time: number) => {
   const seoulToNewYorkShuttle = addCommas(toHoursNum / 30);
   const love = 0;
 
-  console.log('toHoursNum', toHoursNum / 30);
+  interface IProps {
+    [key: string]: string;
+  }
 
-  const timeBlock = { 일: toDays, 시간: toHours, 분: toMinutes };
-  const opportunityCost = {
+  const timeBlock: IProps = { 일: toDays, 시간: toHours, 분: toMinutes };
+  const opportunityCost: IProps = {
     '2022년 최저시급으로': `${toWage}원`,
     '수면 시간': `${toSleep}시간`,
     '피시방에서 했다면': `${paidPCroom}원`,
