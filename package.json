@@ -20,7 +20,8 @@
     "next-redux-wrapper": "^7.0.5",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
-    "react-redux": "^8.0.2"
+    "react-redux": "^8.0.2",
+    "remove": "^0.1.5"
   },
   "devDependencies": {
     "@emotion/babel-plugin": "^11.9.2",

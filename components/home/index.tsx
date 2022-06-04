@@ -1,5 +1,7 @@
 import { useState, FormEvent } from 'react';
 import { useRouter } from 'next/router';
+
+import { SearchIcon, MainIcon } from '../../public/static/svg';
 import * as S from './home.styles';
 
 const Home = () => {
@@ -22,11 +24,20 @@ const Home = () => {
   };
 
   return (
-    <main>
-      <h1>당신이 롤을 하는 동안에</h1>
+    <main className={S.homeWrapper}>
+      <header className={S.header}>
+        <h1>당신이 롤을</h1>
+        <MainIcon className={S.mainIcon} />
+        <h1>하는 동안에</h1>
+      </header>
       <form className={S.homeForm} onSubmit={handleSubmit}>
-        <input placeholder='소환사명 검색' value={name} onChange={handleChange} />
-        <button type='submit'>검색</button>
+        <div className={S.region}>KR</div>
+        <div className={S.searchWrapper}>
+          <input className={S.searchInput} placeholder='소환사명 검색' value={name} onChange={handleChange} />
+          <button type='submit'>
+            <SearchIcon />
+          </button>
+        </div>
       </form>
     </main>
   );

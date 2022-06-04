@@ -2,9 +2,11 @@ import { css } from '@emotion/css';
 import { sizes, colors, font } from '../../../styles/constants';
 
 export const wrapper = css`
+  margin: auto;
   margin-top: ${sizes.margin};
   background-color: ${colors.gray101};
   border-radius: ${sizes.borderRadius};
+  max-width: ${sizes.maxWidth};
 `;
 
 export const title = css`
@@ -15,5 +17,5 @@ export const title = css`
 `;
 
 export const children = css`
-  padding: ${sizes.padding};
+  padding: 8px 16px 16px 8px; ;
 `;

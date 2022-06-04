@@ -40,5 +40,5 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   return res.end();
 };
 
-// `https://kr.api.riotgames.com/lol/summoner/v4/summoners/by-name/롸이옷?api_key=RGAPI-5b4c7d4c-a2b8-4c92-a559-55fa72286718`
+// `https://kr.api.riotgames.com/lol/summoner/v4/summoners/by-name/롸이옷?api_key=RGAPI-b61784b6-aaa5-43a2-85b1-44620f9c0033`
 // https://kr.api.riotgames.com/lol/match/v5/matches/by-puuid/qdp1mJPEsdIq7tJAeaQ-0yI3XtxRG__i72MUe6BFAFznz_A_FpylbraUhcn59Dt_mdc1KMNQlNr9cQ/ids?start=00&count=100
