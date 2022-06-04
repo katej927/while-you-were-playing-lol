@@ -10,12 +10,8 @@ export const wrapper = css`
   align-items: center;
   flex: 0 1 1080px;
   padding: 16px;
-  height: 64px;
+  height: initial;
   background-color: ${colors.gray100};
-
-  @media (max-width: 600px) {
-    height: initial;
-  }
 `;
 
 export const mainIcon = css`
