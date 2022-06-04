@@ -1,14 +1,13 @@
 import { useRouter } from 'next/router';
 import { SyntheticEvent } from 'react';
+import { cx } from '@emotion/css';
 
 import { MainIcon } from '../../public/static/svg';
 import * as S from './header.styles';
 
 const Header = () => {
   const router = useRouter();
-  const { pathname, asPath, query, locale, locales, defaultLocale } = router;
-
-  const now_locale = locale || defaultLocale;
+  const { pathname, asPath, query, locales, locale: curlocale } = router;
 
   const handleClickIcon = () => {
     router.push('/');
@@ -25,19 +24,18 @@ const Header = () => {
 
   return (
     <nav className={S.wrapper}>
+      <MainIcon onClick={handleClickIcon} className={S.mainIcon} />
       <div>
-        <MainIcon onClick={handleClickIcon} className={S.mainIcon} />
         {locales?.map((locale) => (
-          <button key={locale} onClick={handleLanguageClick} data-type={locale}>
+          <button
+            key={locale}
+            className={cx(S.localeBtn, { [S.selected]: locale === curlocale })}
+            onClick={handleLanguageClick}
+            data-type={locale}
+          >
             {locale.toUpperCase()}
           </button>
         ))}
-        {/* <button onClick={handleLanguageClick} data-type='en'>
-          EN
-        </button>
-        <button onClick={handleLanguageClick} data-type='ko'>
-          KR
-        </button> */}
       </div>
     </nav>
   );

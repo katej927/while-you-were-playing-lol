@@ -8,6 +8,7 @@ export const colors = {
   lightgray100: 'rgb(195, 195, 211)',
   white001: 'rgb(255, 255, 255)',
   theme: 'rgb(124, 71, 233)',
+  lightPurple: 'rgb(192, 165, 255)',
   blue: 'rgb(30, 161, 247)',
   turquoise: 'rgb(0, 187, 163)',
   lightGreen: 'rgb(127, 208, 71)',
