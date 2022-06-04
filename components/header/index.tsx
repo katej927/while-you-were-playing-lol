@@ -12,13 +12,12 @@ const Header = () => {
   const handleClickIcon = () => {
     router.push('/');
   };
-  console.log('locales', locales);
+
   const handleLanguageClick = (e: SyntheticEvent<EventTarget>) => {
     if (!(e.currentTarget instanceof HTMLButtonElement)) {
       return;
     }
     const { type } = e.currentTarget.dataset;
-    console.log('handleLanguageClick', `{ ${pathname}, ${query} }, ${asPath}, { locale: ${type} }`);
     router.push({ pathname, query }, asPath, { locale: type });
   };
 

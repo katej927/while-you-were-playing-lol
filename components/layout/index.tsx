@@ -12,11 +12,7 @@ const Layout = ({ children }: IProps) => {
   const { t } = useTranslation('');
   const {
     query: { name },
-    locales,
-    defaultLocale,
   } = router;
-
-  console.log('lan', locales, defaultLocale);
 
   const titleSet = name ? `${t('common:titleOfApp')} | ${name}` : `${t('common:titleOfApp')}`;
   return (

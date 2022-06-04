@@ -20,7 +20,6 @@ const Member = () => {
   } = router;
   const { profileIconId } = allMatchData[0];
   let { t } = useTranslation('common');
-  console.log('router', router);
 
   const { gameMillisecTime: time, playinDate } = convertAllMatch(allMatchData);
 

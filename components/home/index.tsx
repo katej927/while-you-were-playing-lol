@@ -25,8 +25,6 @@ const Home = () => {
     }
   };
 
-  console.log('router', router);
-
   return (
     <main className={S.homeWrapper}>
       <header className={S.header}>

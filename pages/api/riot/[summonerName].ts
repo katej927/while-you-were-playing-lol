@@ -3,10 +3,9 @@ import axios from 'axios';
 
 // 재확인 필요
 export default async (req: NextApiRequest, res: NextApiResponse) => {
-  console.log('req.query', req.query);
   if (req.method === 'GET') {
     const { summonerName } = req.query;
-    console.log('summonerName', summonerName);
+
     if (!summonerName) {
       res.statusCode = 400;
       return res.send('소환사명이 없습니다.');
