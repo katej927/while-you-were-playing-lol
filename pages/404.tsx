@@ -1,5 +1,14 @@
-const NotFound = () => {
-  return <p>등록되지 않은 소환사입니다. 오타를 확인 후 다시 검색해주세요.</p>;
+import dynamic from 'next/dynamic';
+import { Suspense } from 'react';
+
+const DynamicNotFound = dynamic(() => import('../components/errors/notFound'), { suspense: true });
+
+const NotFoundPage = () => {
+  return (
+    <Suspense>
+      <DynamicNotFound />
+    </Suspense>
+  );
 };
 
-export default NotFound;
+export default NotFoundPage;

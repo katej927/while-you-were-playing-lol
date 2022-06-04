@@ -8,7 +8,7 @@ export const homeWrapper = css`
 
 export const header = css`
   ${flex('column')}
-  margin: 20px auto 30px;
+  margin: 20px auto 50px;
   h1 {
     font-size: 40px;
     font-weight: 900;

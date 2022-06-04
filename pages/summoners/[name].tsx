@@ -1,7 +1,6 @@
 import { NextPage, GetServerSideProps } from 'next';
 import dynamic from 'next/dynamic';
 import { Loading } from '../../components/common';
-import Member from '../../components/member';
 
 import { wrapper } from '../../store';
 import { getSummonerDataAPI } from '../../lib/api';

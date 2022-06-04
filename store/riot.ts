@@ -1,27 +1,19 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { GetSummonerDataAPI } from '../types';
+import { IEachMatch } from '../types';
 
 interface RiotReduxState {
-  riot: GetSummonerDataAPI;
+  riot: IEachMatch[];
 }
 
 const initialState: RiotReduxState = {
-  riot: {
-    id: '',
-    accountId: '',
-    puuid: '',
-    name: '',
-    profileIconId: null,
-    revisionDate: null,
-    summonerLevel: null,
-  },
+  riot: [{ gameCreation: 0, gameDuration: 0 }],
 };
 
 const riot = createSlice({
   name: 'riot',
   initialState,
   reducers: {
-    setRiot(state, action: PayloadAction<GetSummonerDataAPI>) {
+    setRiot(state, action: PayloadAction<IEachMatch[]>) {
       state.riot = action.payload;
     },
   },

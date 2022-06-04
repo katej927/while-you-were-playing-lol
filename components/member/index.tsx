@@ -4,12 +4,22 @@ import { useSelector } from '../../store';
 import { convertTime } from './utils';
 import { Container } from '../common';
 
+import { useRouter } from 'next/router';
+
 import { cx } from '@emotion/css';
 import * as S from './member.styles';
+import { convertAllMatch } from './utils';
 
 const Member = () => {
-  const { revisionDate: time, name } = useSelector((state) => state.riot.riot);
+  const allMatchData = useSelector((state) => state.riot.riot);
+  const { gameMillisecTime: time, playinDate } = convertAllMatch(allMatchData);
+
   const { timeBlock, opportunityCost } = useMemo(() => convertTime(time ?? 1), [time]);
+
+  const router = useRouter();
+  const {
+    query: { name },
+  } = router;
 
   return (
     <main>

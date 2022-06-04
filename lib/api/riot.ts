@@ -1,5 +1,5 @@
 import axios from '.';
-import { GetSummonerDataAPI } from '../../types';
+import { IEachMatch } from '../../types';
 
 export const getSummonerDataAPI = (summonerName: string) =>
-  axios.get<GetSummonerDataAPI>(`/api/riot/${encodeURI(summonerName)}`);
+  axios.get<IEachMatch[]>(`/api/riot/${encodeURI(summonerName)}`);

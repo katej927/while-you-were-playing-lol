@@ -1,1 +1,1 @@
-export type { GetSummonerDataAPI } from './riot';
+export type { IEachMatch } from './riot';

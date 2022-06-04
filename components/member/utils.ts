@@ -1,4 +1,28 @@
-import { millisecondsToHours, millisecondsToMinutes } from 'date-fns';
+import { secondsToMilliseconds, isSameDay, millisecondsToHours, millisecondsToMinutes } from 'date-fns';
+import { IEachMatch } from '../../types';
+
+export const convertAllMatch = (allMatchData: IEachMatch[]) => {
+  const gameMillisecTime = secondsToMilliseconds(
+    allMatchData.reduce((acc, match) => {
+      acc = acc + match.gameDuration;
+      return acc;
+    }, 0)
+  );
+
+  let playinDate: IEachMatch[] = [];
+  let compareDate = allMatchData[0];
+  allMatchData?.forEach((match, idx) => {
+    const { gameCreation: curDate, gameDuration: curDur } = match;
+    const { gameCreation: compDate, gameDuration: compDur } = compareDate;
+    const isSameDate = isSameDay(curDate, compDate);
+    if (isSameDate) compareDate = { gameCreation: compDate, gameDuration: curDur + compDur };
+    if (!isSameDate) {
+      playinDate.push(compareDate);
+      compareDate = match;
+    }
+  });
+  return { gameMillisecTime, playinDate };
+};
 
 const addCommas = (num: number) =>
   Math.round(num)
