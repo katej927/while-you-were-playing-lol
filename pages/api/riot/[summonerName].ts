@@ -13,7 +13,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     }
     try {
       const {
-        data: { puuid },
+        data: { puuid, profileIconId },
       } = await axios.get(
         encodeURI(
           `${process.env.NEXT_PUBLIC_RIOT_ROUTING_KR}/lol/summoner/v4/summoners/by-name/${summonerName}?api_key=${process.env.RIOT_API_KEY}`
@@ -30,7 +30,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
             `${process.env.NEXT_PUBLIC_RIOT_ROUTING_ASIA}/lol/match/v5/matches/${matchId}?api_key=${process.env.RIOT_API_KEY}`
           );
           const { gameCreation, gameDuration } = eachMatchResult.data.info;
-          return { gameCreation, gameDuration };
+          return { gameCreation, gameDuration, profileIconId };
         })
       );
 

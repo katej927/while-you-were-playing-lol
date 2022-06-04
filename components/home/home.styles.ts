@@ -37,6 +37,7 @@ export const homeForm = css`
 export const region = css`
   ${flex('center')}
   padding: 7px 16px;
+  width: 70px;
   background-color: ${colors.gray104};
   color: ${colors.white001};
 `;
@@ -48,6 +49,13 @@ export const searchWrapper = css`
 `;
 
 export const searchInput = css`
+  width: inherit;
   line-height: 1.6;
   color: ${colors.white001};
+`;
+
+export const searchIcon = css`
+  path {
+    fill: ${colors.white001};
+  }
 `;

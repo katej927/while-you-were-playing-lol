@@ -5,47 +5,58 @@ import { convertTime } from './utils';
 import { Container } from '../common';
 
 import { useRouter } from 'next/router';
+import useTranslation from 'next-translate/useTranslation';
 
 import { cx } from '@emotion/css';
 import * as S from './member.styles';
 import { convertAllMatch } from './utils';
+import { CONVERT_ICON_URL } from './constants';
 
 const Member = () => {
   const allMatchData = useSelector((state) => state.riot.riot);
-  const { gameMillisecTime: time, playinDate } = convertAllMatch(allMatchData);
-
-  const { timeBlock, opportunityCost } = useMemo(() => convertTime(time ?? 1), [time]);
-
   const router = useRouter();
   const {
     query: { name },
   } = router;
+  const { profileIconId } = allMatchData[0];
+  let { t } = useTranslation('common');
+  console.log('router', router);
+
+  const { gameMillisecTime: time, playinDate } = convertAllMatch(allMatchData);
+
+  const { timeBlock, opportunityCost } = useMemo(() => convertTime(time ?? 1), [time]);
 
   return (
     <main>
       <header className={S.header}>
-        <h2 className={S.summonerName}>{name}</h2>
+        <div className={S.headerContentWrapper}>
+          {profileIconId && <img src={CONVERT_ICON_URL(profileIconId)} className={S.profileIcon} />}
+          <h2 className={S.summonerName}>{name}</h2>
+        </div>
       </header>
       <article className={S.contentsWrapper}>
-        <Container title='내가 롤을 이렇게 했다니 이럴 리 없다..'>
+        <Container title={t('boxheader1')}>
           <div className={S.timeBlockWrapper}>
             {Object.keys(timeBlock).map((key, idx) => {
               return (
-                <div key={key} className={cx(S.timeBlock, { [S.day]: key === '일' })}>
+                <div key={key} className={cx(S.timeBlock, { [S.day]: idx === 0 })}>
                   <span className={S.time}>{timeBlock[key]}</span>
-                  <span className={S.timeUnit}>{key}</span>
+                  <span className={S.timeUnit}>{t(key)}</span>
                 </div>
               );
             })}
           </div>
         </Container>
-        <Container title='롤을 안 했더라면..'>
+        <Container title={t('boxheader2')}>
           <div className={S.opportunityCostWrapper}>
             {Object.keys(opportunityCost).map((kind, idx) => {
               return (
                 <div key={kind} className={S.opportunityCostBox}>
-                  <span className={S.opportunityKind}>{kind}</span>
-                  <span className={cx(S.opportunity, `order${idx}`)}>{opportunityCost[kind]}</span>
+                  <span className={S.opportunityKind}>{t(kind)}</span>
+                  <span className={cx(S.opportunity, `order${idx}`)}>
+                    {opportunityCost[kind][0]}&nbsp;
+                    {t(opportunityCost[kind][1])}
+                  </span>
                 </div>
               );
             })}

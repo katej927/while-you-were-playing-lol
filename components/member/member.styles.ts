@@ -3,7 +3,18 @@ import { colors, sizes, font } from '../../styles/constants';
 
 export const header = css`
   background-color: ${colors.gray101};
-  padding: 24px 24px 50px;
+  padding: 24px;
+`;
+
+export const headerContentWrapper = css`
+  display: flex;
+  align-items: center;
+`;
+
+export const profileIcon = css`
+  width: 100px;
+  margin-right: 20px;
+  border-radius: 15%;
 `;
 
 export const summonerName = css`

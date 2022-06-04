@@ -16,6 +16,10 @@ export const wrapper = css`
   @media (max-width: 600px) {
     height: initial;
   }
+
+  button {
+    background-color: red;
+  }
 `;
 
 export const mainIcon = css`

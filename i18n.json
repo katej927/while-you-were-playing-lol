@@ -1,0 +1,9 @@
+{
+  "locales": ["ko", "en"],
+  "defaultLocale": "ko",
+  "pages": {
+    "*": ["common"],
+    "/": ["home"],
+    "/summoners/*": ["summoners"]
+  }
+}

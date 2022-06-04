@@ -1,4 +1,4 @@
-import { NextPage, GetServerSideProps } from 'next';
+import { NextPage, GetServerSideProps, GetStaticPropsContext } from 'next';
 import dynamic from 'next/dynamic';
 import { Loading } from '../../components/common';
 

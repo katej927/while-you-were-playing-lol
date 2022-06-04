@@ -1,1 +1,1 @@
-export type { IEachMatch } from './riot';
+export type { IEachMatch, IEachMatchTime } from './riot';
