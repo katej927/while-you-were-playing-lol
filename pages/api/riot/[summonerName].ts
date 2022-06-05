@@ -33,7 +33,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
           return { gameCreation, gameDuration, profileIconId };
         })
       );
-      // console.log('allMatchData 통신 데이터', allMatchData);
+      // console.log('allMatchData 통신 데이터', allMatchData); //
 
       res.statusCode = 200;
       return res.send(allMatchData);
