@@ -4,7 +4,7 @@ import * as S from './loading.styles';
 const Loading = () => {
   return (
     <div css={S.wrapper}>
-      <MainIcon className={S.mainIcon} />
+      <MainIcon css={S.mainIcon} />
     </div>
   );
 };
