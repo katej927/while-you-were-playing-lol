@@ -22,13 +22,15 @@ const Header = () => {
 
   return (
     <nav css={S.wrapper}>
-      <MainIcon onClick={handleClickIcon} css={S.mainIcon} />
-      <div>
-        {locales?.map((locale) => (
-          <S.LocalBtn key={locale} isSelected={locale === curlocale} onClick={handleLanguageClick} data-type={locale}>
-            {locale.toUpperCase()}
-          </S.LocalBtn>
-        ))}
+      <div css={S.contentWrapper}>
+        <MainIcon onClick={handleClickIcon} css={S.mainIcon} />
+        <div>
+          {locales?.map((locale) => (
+            <S.LocalBtn key={locale} isSelected={locale === curlocale} onClick={handleLanguageClick} data-type={locale}>
+              {locale.toUpperCase()}
+            </S.LocalBtn>
+          ))}
+        </div>
       </div>
     </nav>
   );

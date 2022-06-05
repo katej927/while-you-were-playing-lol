@@ -1,8 +1,14 @@
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
-import { colors } from '../../styles/constants';
+import { colors, sizes } from '../../styles/constants';
 
 export const wrapper = css`
+  padding: 16px;
+  height: initial;
+  background-color: ${colors.gray100};
+`;
+
+export const contentWrapper = css`
   display: flex;
   flex-wrap: wrap;
   -webkit-box-pack: justify;
@@ -10,9 +16,10 @@ export const wrapper = css`
   -webkit-box-align: center;
   align-items: center;
   flex: 0 1 1080px;
-  padding: 16px;
+  max-width: ${sizes.maxWidth};
+  margin: auto;
   height: initial;
-  background-color: ${colors.gray100};
+  background-color: transparent;
 `;
 
 export const mainIcon = css`

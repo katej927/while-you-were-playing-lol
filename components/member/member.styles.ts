@@ -10,6 +10,8 @@ export const header = css`
 export const headerContentWrapper = css`
   display: flex;
   align-items: center;
+  max-width: ${sizes.maxWidth};
+  margin: auto;
 `;
 
 export const profileIcon = css`

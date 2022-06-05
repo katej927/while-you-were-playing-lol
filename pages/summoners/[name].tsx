@@ -1,11 +1,12 @@
-import { NextPage, GetServerSideProps, GetStaticPropsContext } from 'next';
+import { NextPage, GetServerSideProps } from 'next';
 import dynamic from 'next/dynamic';
-import { Loading } from '../../components/common';
+import { Suspense } from 'react';
 
 import { wrapper } from '../../store';
 import { getSummonerDataAPI } from '../../lib/api';
 import { riotActions } from '../../store/riot';
-import { Suspense } from 'react';
+
+import { Loading } from '../../components/common';
 
 const DynamicMemberPage = dynamic(() => import('../../components/member'), { suspense: true });
 
