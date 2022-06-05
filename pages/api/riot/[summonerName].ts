@@ -10,6 +10,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       res.statusCode = 400;
       return res.send('소환사명이 없습니다.');
     }
+
     try {
       const {
         data: { puuid, profileIconId },

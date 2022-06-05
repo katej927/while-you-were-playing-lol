@@ -23,7 +23,7 @@ const Member = () => {
   const { profileIconId } = allMatchData[0] ?? 0;
   let { t } = useTranslation('common');
 
-  const { gameMillisecTime: time, playinDate } = convertAllMatch(allMatchData);
+  const { gameMillisecTime: time, playinDate } = useMemo(() => convertAllMatch(allMatchData), [allMatchData]);
 
   const { timeBlock, opportunityCost } = useMemo(() => convertTime(time), [time]);
 

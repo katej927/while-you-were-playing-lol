@@ -8,13 +8,14 @@ interface IProps {
 }
 
 const Layout = ({ children }: IProps) => {
-  const router = useRouter();
   const { t } = useTranslation('');
+  const router = useRouter();
   const {
     query: { name },
   } = router;
 
   const titleSet = name ? `${t('common:titleOfApp')} | ${name}` : `${t('common:titleOfApp')}`;
+
   return (
     <>
       <NextSeo title={titleSet} />
