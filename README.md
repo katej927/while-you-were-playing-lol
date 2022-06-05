@@ -1,17 +1,26 @@
-# 📌 Link
+# Table of Contents
+1. [Link](#main1)
+2. [About](#main2)
+3. [Techs](#main3)
+4. [Functions](#main4)
+6. [Remembrance](#main5)
+
+<br/>
+
+# 📌 Link<a name="main1"></a>
 👉 화면 확인 : [배포 링크](https://while-you-were-playing-lol.netlify.app)
 
 👉 코드 확인 : [깃헙 링크](https://github.com/katej927/while-you-were-playing-lol)
 
 
-# 📌 About
+# 📌 About<a name="main2"></a>
 > League of Legends의 user를 검색하여 최근 게임 이용 시간의 기회 비용을 알아보는 앱
 > 
 
 - 개발자: 정선미
 - 기간: ‘22.6.3 ~ 6.5 (기획 및 개발)
 
-# 📌 Techs
+# 📌 Techs<a name="main3"></a>
 - Next.js + Redux Toolkit + emotion (react, styled)
 - TypeScript
 - RIOT API
@@ -21,7 +30,7 @@
 - Jest
 - axios
 
-# 📌 Functions
+# 📌 Functions<a name="main4"></a>
 - 주제
 
     실제 Riot API를 이용해서 user의 최근 20회의 League of Legends 게임 이용 시간을 확인하고 얼만큼의 다른 기회 비용이 있었는지를 알려준다
@@ -41,7 +50,7 @@
     
 - SSR 지원을 위해 `Next.js`, `emotion` 사용
 
-# 📌 Remembrance
+# 📌 Remembrance<a name="main5"></a>
 - API 호출 최적화
 
     시간이 많지 않아 한 user의 게임 총 이용시간을 더 적은 횟수로 확인 할 수 있는 RIOT API를 발견한다던지, 혹은 개발자가 더 최적화 할 수 있는 방식을 찾지 못했다.
