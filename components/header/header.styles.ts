@@ -30,6 +30,6 @@ export const LocalBtn = styled.button`
   border: 1px solid ${(props: Props) => (props.isSelected ? colors.theme : colors.gray101)};
   border-right: none;
   padding: 5px 10px;
-  color: ${(props: Props) => (props.isSelected ? colors.lightPurple : colors.white001)};
-  background-color: ${(props: Props) => (props.isSelected ? colors.gray104 : colors.theme)};
+  color: ${(props: Props) => (props.isSelected ? colors.white001 : colors.lightPurple)};
+  background-color: ${(props: Props) => (props.isSelected ? colors.theme : colors.gray104)};
 `;

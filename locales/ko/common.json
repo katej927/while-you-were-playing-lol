@@ -14,5 +14,6 @@
   "walk": "걸어서 소모했을 칼로리",
   "walkUnit": "cal",
   "trip": "서울에서 뉴욕까지",
-  "tripUnit": "번 왕복"
+  "tripUnit": "번 왕복",
+  "loading": "로딩 중..."
 }

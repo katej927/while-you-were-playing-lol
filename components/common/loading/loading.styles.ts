@@ -1,9 +1,13 @@
 import { css } from '@emotion/react';
-import { colors } from '../../../styles/constants';
-import { bounce, flex } from '../../../styles/mixin';
+import { flex, bounce } from '../../../styles/mixin';
+import { font, colors } from '../../../styles/constants';
 
 export const wrapper = css`
-  ${flex('center')}
+  ${flex('column')}
+  height: 100vh;
+  font-size: ${font.large};
+  color: ${colors.white001};
+  line-height: 1.5;
 `;
 
 export const mainIcon = css`

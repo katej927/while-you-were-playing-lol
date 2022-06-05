@@ -13,5 +13,6 @@
   "movieUnit": "times",
   "walk": "Calories burned by walking",
   "trip": "Seoul to New York",
-  "tripUnit": "round trips"
+  "tripUnit": "round trips",
+  "loading": "Loading ..."
 }
