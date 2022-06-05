@@ -22,7 +22,6 @@ export const getServerSideProps: GetServerSideProps = wrapper.getServerSideProps
   (store) =>
     async ({ query: { name } }) => {
       try {
-        // console.log('name', name);
         const { data } = await getSummonerDataAPI(`${name}`);
         store.dispatch(riotActions.setRiot(data));
         return { props: {} };

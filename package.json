@@ -24,9 +24,7 @@
     "next-translate": "^1.4.0",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
-    "react-redux": "^8.0.2",
-    "react-use": "^17.4.0",
-    "remove": "^0.1.5"
+    "react-redux": "^8.0.2"
   },
   "devDependencies": {
     "@emotion/babel-plugin": "^11.9.2",
