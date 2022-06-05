@@ -17,7 +17,6 @@ const Header = () => {
       return;
     }
     const { type } = e.currentTarget.dataset;
-    console.log('handleLanguageClick', `{ ${pathname}, ${query} }, ${asPath}, { locale: ${type} }`);
     router.push({ pathname, query }, asPath, { locale: type });
   };
 
