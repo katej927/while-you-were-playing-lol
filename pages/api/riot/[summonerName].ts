@@ -18,6 +18,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
           `${process.env.NEXT_PUBLIC_RIOT_ROUTING_KR}/lol/summoner/v4/summoners/by-name/${summonerName}?api_key=${process.env.RIOT_API_KEY}`
         )
       );
+      // console.log('puuid 통신 데이터', puuid);
 
       const { data: matchIdLists } = await axios.get(
         `${process.env.NEXT_PUBLIC_RIOT_ROUTING_ASIA}/lol/match/v5/matches/by-puuid/${puuid}/ids?start=00&count=19&api_key=${process.env.RIOT_API_KEY}`
@@ -32,6 +33,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
           return { gameCreation, gameDuration, profileIconId };
         })
       );
+      // console.log('allMatchData 통신 데이터', allMatchData);
 
       res.statusCode = 200;
       return res.send(allMatchData);

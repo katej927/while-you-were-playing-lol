@@ -1,16 +1,16 @@
 import { useMemo } from 'react';
-
-import { useSelector } from '../../store';
-import { convertTime } from './utils';
-import { Container } from '../common';
-
 import { useRouter } from 'next/router';
 import useTranslation from 'next-translate/useTranslation';
 
+import { useSelector } from '../../store';
+import { convertAllMatch, convertTime } from './utils';
+import { CONVERT_ICON_URL } from './constants';
+
+import { NoRecord } from '../errors';
+import { Container } from '../common';
+
 import { cx } from '@emotion/css';
 import * as S from './member.styles';
-import { convertAllMatch } from './utils';
-import { CONVERT_ICON_URL } from './constants';
 
 const Member = () => {
   const allMatchData = useSelector((state) => state.riot.riot);
@@ -18,12 +18,15 @@ const Member = () => {
   const {
     query: { name },
   } = router;
-  const { profileIconId } = allMatchData[0];
+
+  if (!allMatchData.length) return <NoRecord />;
+
+  const { profileIconId } = allMatchData[0] ?? 0;
   let { t } = useTranslation('common');
 
   const { gameMillisecTime: time, playinDate } = convertAllMatch(allMatchData);
 
-  const { timeBlock, opportunityCost } = useMemo(() => convertTime(time ?? 1), [time]);
+  const { timeBlock, opportunityCost } = useMemo(() => convertTime(time), [time]);
 
   return (
     <main>
