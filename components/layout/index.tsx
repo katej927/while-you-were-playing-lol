@@ -18,7 +18,7 @@ const Layout = ({ children }: IProps) => {
   return (
     <>
       <NextSeo title={titleSet} />
-      <div className={S.wrapper}>{children}</div>
+      <div css={S.wrapper}>{children}</div>
     </>
   );
 };

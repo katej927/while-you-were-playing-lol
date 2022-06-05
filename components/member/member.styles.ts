@@ -1,4 +1,5 @@
-import { css } from '@emotion/css';
+import { css } from '@emotion/react';
+import styled from '@emotion/styled';
 import { colors, sizes, font } from '../../styles/constants';
 
 export const header = css`
@@ -33,22 +34,22 @@ export const timeBlockWrapper = css`
   flex-wrap: wrap;
 `;
 
-export const timeBlock = css`
+type TBackgroundProps = {
+  is1st: boolean;
+};
+
+export const TimeBlock = styled.div`
   display: flex;
   flex-direction: column;
   padding: 12px 16px;
   border-radius: ${sizes.borderRadius};
-  background-color: ${colors.gray102};
+  background-color: ${(props: TBackgroundProps) => (props.is1st ? colors.theme : colors.gray102)};
   width: calc(100% / 3);
   min-width: fit-content;
   margin-left: 8px;
   margin-top: 8px;
   color: ${colors.white001};
   flex: 1 0 222px;
-`;
-
-export const day = css`
-  background-color: ${colors.theme};
 `;
 
 export const time = css`
@@ -81,26 +82,14 @@ export const opportunityKind = css`
   color: ${colors.lightgray100};
 `;
 
-export const opportunity = css`
+type Props = {
+  idx: number;
+};
+
+export const Opportunity = styled.span`
   font-size: ${font.large};
   line-height: 36px;
 
-  &.order0 {
-    color: ${colors.theme};
-  }
-  &.order1 {
-    color: ${colors.blue};
-  }
-  &.order2 {
-    color: ${colors.turquoise};
-  }
-  &.order3 {
-    color: ${colors.lightGreen};
-  }
-  &.order4 {
-    color: ${colors.yellow};
-  }
-  &.order5 {
-    color: ${colors.red};
-  }
+  color: ${(props: Props) =>
+    [colors.theme, colors.blue, colors.turquoise, colors.lightGreen, colors.yellow, colors.red][props.idx]};
 `;

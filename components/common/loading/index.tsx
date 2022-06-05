@@ -3,7 +3,7 @@ import * as S from './loading.styles';
 
 const Loading = () => {
   return (
-    <div className={S.wrapper}>
+    <div css={S.wrapper}>
       <MainIcon className={S.mainIcon} />
     </div>
   );

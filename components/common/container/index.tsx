@@ -7,9 +7,9 @@ interface IProps {
 
 const Containter = ({ children, title }: IProps) => {
   return (
-    <section className={S.wrapper}>
-      <div className={S.title}>{title}</div>
-      <div className={S.children}>{children}</div>
+    <section css={S.wrapper}>
+      <div css={S.title}>{title}</div>
+      <div css={S.children}>{children}</div>
     </section>
   );
 };

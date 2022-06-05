@@ -9,7 +9,6 @@ import { CONVERT_ICON_URL } from './constants';
 import { NoRecord } from '../errors';
 import { Container } from '../common';
 
-import { cx } from '@emotion/css';
 import * as S from './member.styles';
 
 const Member = () => {
@@ -30,35 +29,35 @@ const Member = () => {
 
   return (
     <main>
-      <header className={S.header}>
-        <div className={S.headerContentWrapper}>
-          {profileIconId && <img src={CONVERT_ICON_URL(profileIconId)} className={S.profileIcon} />}
-          <h2 className={S.summonerName}>{name}</h2>
+      <header css={S.header}>
+        <div css={S.headerContentWrapper}>
+          {profileIconId && <img src={CONVERT_ICON_URL(profileIconId)} css={S.profileIcon} />}
+          <h2 css={S.summonerName}>{name}</h2>
         </div>
       </header>
-      <article className={S.contentsWrapper}>
+      <article css={S.contentsWrapper}>
         <Container title={t('boxheader1')}>
-          <div className={S.timeBlockWrapper}>
+          <div css={S.timeBlockWrapper}>
             {Object.keys(timeBlock).map((key, idx) => {
               return (
-                <div key={key} className={cx(S.timeBlock, { [S.day]: idx === 0 })}>
-                  <span className={S.time}>{timeBlock[key]}</span>
-                  <span className={S.timeUnit}>{t(key)}</span>
-                </div>
+                <S.TimeBlock key={key} is1st={idx === 0}>
+                  <span css={S.time}>{timeBlock[key]}</span>
+                  <span css={S.timeUnit}>{t(key)}</span>
+                </S.TimeBlock>
               );
             })}
           </div>
         </Container>
         <Container title={t('boxheader2')}>
-          <div className={S.opportunityCostWrapper}>
+          <div css={S.opportunityCostWrapper}>
             {Object.keys(opportunityCost).map((kind, idx) => {
               return (
-                <div key={kind} className={S.opportunityCostBox}>
-                  <span className={S.opportunityKind}>{t(kind)}</span>
-                  <span className={cx(S.opportunity, `order${idx}`)}>
+                <div key={kind} css={S.opportunityCostBox}>
+                  <span css={S.opportunityKind}>{t(kind)}</span>
+                  <S.Opportunity idx={idx}>
                     {opportunityCost[kind][0]}&nbsp;
                     {t(opportunityCost[kind][1])}
-                  </span>
+                  </S.Opportunity>
                 </div>
               );
             })}

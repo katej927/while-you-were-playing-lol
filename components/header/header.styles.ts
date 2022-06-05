@@ -1,4 +1,5 @@
-import { css } from '@emotion/css';
+import { css } from '@emotion/react';
+import styled from '@emotion/styled';
 import { colors } from '../../styles/constants';
 
 export const wrapper = css`
@@ -21,16 +22,14 @@ export const mainIcon = css`
   cursor: pointer;
 `;
 
-export const localeBtn = css`
-  border: 1px solid ${colors.gray101};
+type Props = {
+  isSelected: boolean;
+};
+
+export const LocalBtn = styled.button`
+  border: 1px solid ${(props: Props) => (props.isSelected ? colors.gray101 : colors.theme)};
   border-right: none;
   padding: 5px 10px;
-  color: ${colors.lightPurple};
-  background-color: ${colors.gray104};
-`;
-
-export const selected = css`
-  border: 1px solid ${colors.theme};
-  color: ${colors.white001};
-  background: ${colors.theme};
+  color: ${(props: Props) => (props.isSelected ? colors.lightPurple : colors.white001)};
+  background-color: ${(props: Props) => (props.isSelected ? colors.gray104 : colors.theme)};
 `;

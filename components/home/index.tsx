@@ -26,18 +26,18 @@ const Home = () => {
   };
 
   return (
-    <main className={S.homeWrapper}>
-      <header className={S.header}>
+    <main css={S.homeWrapper}>
+      <header css={S.header}>
         <h1>{t('title1')}</h1>
-        <MainIcon className={S.mainIcon} />
+        <MainIcon css={S.mainIcon} />
         <h1>{t('title2')}</h1>
       </header>
-      <form className={S.homeForm} onSubmit={handleSubmit}>
-        <div className={S.region}>{t('region')}</div>
-        <div className={S.searchWrapper}>
-          <input className={S.searchInput} placeholder={t('placeholder')} value={name} onChange={handleChange} />
+      <form css={S.homeForm} onSubmit={handleSubmit}>
+        <div css={S.region}>{t('region')}</div>
+        <div css={S.searchWrapper}>
+          <input css={S.searchInput} placeholder={t('placeholder')} value={name} onChange={handleChange} />
           <button type='submit'>
-            <SearchIcon className={S.searchIcon} />
+            <SearchIcon css={S.searchIcon} />
           </button>
         </div>
       </form>
