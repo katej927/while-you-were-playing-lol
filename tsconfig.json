@@ -20,6 +20,3 @@
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".jest/fn.test.ts"],
   "exclude": ["node_modules"]
 }
-// 파일 '/Users/seonmijung/Github Repo/next-app/fn.ts'을(를) 찾을 수 없습니다.
-//   파일은 다음과 같은 이유로 프로그램에 있습니다.
-//     '/Users/seonmijung/Github Repo/next-app/tsconfig.json'의 포함 패턴 '**/*.ts'(으)로 일치되었습니다.
