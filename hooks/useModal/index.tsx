@@ -6,9 +6,7 @@ import * as S from './useModal.styles';
 const useModal = () => {
   const [modalOpened, setModalOpened] = useState(false);
 
-  const openModal = () => {
-    setModalOpened(true);
-  };
+  const openModal = () => setModalOpened(true);
 
   const closeModal = () => {
     setModalOpened(false);

@@ -16,3 +16,7 @@ export const time = css`
   font-size: ${font.medium};
   color: ${colors.lightgray100};
 `;
+
+export const detailBtn = css`
+  color: ${colors.lightgray100};
+`;

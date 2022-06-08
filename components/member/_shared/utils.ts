@@ -1,5 +1,7 @@
 import { secondsToMilliseconds, isSameDay, millisecondsToHours, millisecondsToMinutes } from 'date-fns';
 import BigNumber from 'bignumber.js';
+
+import { addCommas } from 'lib/utils';
 import { IEachMatchInfo, IEachMatchTime } from '../../../types';
 
 export const convertAllMatch = (allMatchData: IEachMatchInfo[]) => {
@@ -36,11 +38,6 @@ export const convertAllMatch = (allMatchData: IEachMatchInfo[]) => {
 
   return { gameMillisecTime, playinDate };
 };
-
-const addCommas = (num: number) =>
-  Math.round(num)
-    .toString()
-    .replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 
 export const convertTime = (time: number) => {
   const toHoursNum = millisecondsToHours(time);
