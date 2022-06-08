@@ -5,7 +5,7 @@ const Document = () => {
     <Html>
       <Head>
         <link rel='shortcut icon' href='/favicon.ico' />
-        <meta http-equiv='Content-Security-Policy' content='upgrade-insecure-requests'></meta>
+        <meta httpEquiv='Content-Security-Policy' content='upgrade-insecure-requests'></meta>
       </Head>
       <body>
         <Main />

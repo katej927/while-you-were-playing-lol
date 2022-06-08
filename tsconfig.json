@@ -15,7 +15,7 @@
     "moduleResolution": "node",
     "jsx": "preserve",
     "jsxImportSource": "@emotion/react",
-    "baseUrl": "src"
+    "baseUrl": "."
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".jest/fn.test.ts"],
   "exclude": ["node_modules"]

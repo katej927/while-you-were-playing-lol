@@ -1,7 +1,7 @@
 import { css, keyframes } from '@emotion/react';
 
 export const flex = (direction = 'row', align = 'center', justify = 'center') => css`
-  display: flex;
+  display: flex !important;
   flex-direction: ${direction};
   align-items: ${align};
   justify-content: ${justify};

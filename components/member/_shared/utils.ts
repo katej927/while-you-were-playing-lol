@@ -1,26 +1,39 @@
 import { secondsToMilliseconds, isSameDay, millisecondsToHours, millisecondsToMinutes } from 'date-fns';
-import { IEachMatchTime } from '../../types';
+import BigNumber from 'bignumber.js';
+import { IEachMatchInfo, IEachMatchTime } from '../../../types';
 
-export const convertAllMatch = (allMatchData: IEachMatchTime[]) => {
+export const convertAllMatch = (allMatchData: IEachMatchInfo[]) => {
   const gameMillisecTime = secondsToMilliseconds(
     allMatchData.reduce((acc, match) => {
-      acc = acc + match.gameDuration;
+      acc = BigNumber.sum(acc, match.time.gameDuration).toNumber();
       return acc;
     }, 0)
   );
 
+  const { gameCreation: firstGameCreation, gameDuration: firstGameDuration } = allMatchData[0].time;
   let playinDate: IEachMatchTime[] = [];
-  let compareDate = { gameCreation: allMatchData[0].gameCreation, gameDuration: allMatchData[0].gameDuration };
+  let compareDate = { gameCreation: firstGameCreation, gameDuration: firstGameDuration };
+
   allMatchData?.forEach((match, idx) => {
-    const { gameCreation: curDate, gameDuration: curDur } = match;
+    const { gameCreation: curDate, gameDuration: curDur } = match.time;
     const { gameCreation: compDate, gameDuration: compDur } = compareDate;
+    if (idx === 0) return;
+
     const isSameDate = isSameDay(curDate, compDate);
     if (isSameDate) compareDate = { gameCreation: compDate, gameDuration: curDur + compDur };
     if (!isSameDate) {
-      playinDate.push(compareDate);
-      compareDate = match;
+      if (allMatchData.length - 1 === idx) {
+        playinDate.push(compareDate, {
+          gameCreation: allMatchData[idx].time.gameCreation,
+          gameDuration: allMatchData[idx].time.gameDuration,
+        });
+      } else {
+        playinDate.push(compareDate);
+        compareDate = match.time;
+      }
     }
   });
+
   return { gameMillisecTime, playinDate };
 };
 

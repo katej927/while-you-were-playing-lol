@@ -3,8 +3,7 @@ import { useRouter } from 'next/router';
 import useTranslation from 'next-translate/useTranslation';
 
 import { useSelector } from '../../store';
-import { convertAllMatch, convertTime } from './utils';
-import { CONVERT_ICON_URL } from './constants';
+import { convertAllMatch, convertTime, CONVERT_ICON_URL, Carousel } from './_shared';
 
 import { NoRecord } from '../errors';
 import { Container } from '../common';
@@ -12,7 +11,7 @@ import { Container } from '../common';
 import * as S from './member.styles';
 
 const Member = () => {
-  const allMatchData = useSelector((state) => state.riot.riot);
+  const { allMatchData, profileIconId } = useSelector((state) => state.riot.riot);
   const router = useRouter();
   const {
     query: { name },
@@ -20,7 +19,6 @@ const Member = () => {
 
   if (!allMatchData.length) return <NoRecord />;
 
-  const { profileIconId } = allMatchData[0] ?? 0;
   let { t } = useTranslation('common');
 
   const { gameMillisecTime: time, playinDate } = useMemo(() => convertAllMatch(allMatchData), [allMatchData]);
@@ -47,6 +45,9 @@ const Member = () => {
               );
             })}
           </div>
+        </Container>
+        <Container title={t('slide')}>
+          <Carousel />
         </Container>
         <Container title={t('boxheader2')}>
           <div css={S.opportunityCostWrapper}>

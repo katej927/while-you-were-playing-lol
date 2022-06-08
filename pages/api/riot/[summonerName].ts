@@ -1,6 +1,8 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import axios from 'axios';
 
+import { IParticipant } from './../../../types/riotApi.d';
+
 // 재확인 필요
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method === 'GET') {
@@ -29,13 +31,56 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
           const eachMatchResult = await axios.get(
             `${process.env.NEXT_PUBLIC_RIOT_ROUTING_ASIA}/lol/match/v5/matches/${matchId}?api_key=${process.env.RIOT_API_KEY}`
           );
-          const { gameCreation, gameDuration } = eachMatchResult.data.info;
-          return { gameCreation, gameDuration, profileIconId };
+          const { gameCreation, gameDuration, participants } = eachMatchResult.data.info;
+
+          const {
+            win,
+            championName,
+            totalDamageDealtToChampions,
+            totalMinionsKilled,
+            deaths,
+            kills,
+            assists,
+            item0,
+            item1,
+            item2,
+            item3,
+            item4,
+            item5,
+            item6,
+            item7,
+          } = participants.filter((participant: IParticipant) => participant.summonerName === summonerName)[0];
+
+          return {
+            time: { gameCreation, gameDuration },
+            matchData: {
+              win,
+              championName,
+              totalDamageDealtToChampions,
+              totalMinionsKilled,
+              deaths,
+              kills,
+              assists,
+              item0,
+              item1,
+              item2,
+              item3,
+              item4,
+              item5,
+              item6,
+              item7,
+            },
+          };
         })
       );
 
+      const result = {
+        profileIconId,
+        allMatchData,
+      };
+
       res.statusCode = 200;
-      return res.send(allMatchData);
+      return res.send(result);
     } catch (e) {
       res.statusCode = 404;
       if (axios.isAxiosError(e) && e.response) {

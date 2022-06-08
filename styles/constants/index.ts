@@ -1,5 +1,6 @@
 export const colors = {
   black001: 'rgb(28, 28, 31)',
+  black002: 'black',
   gray100: 'rgb(36, 36, 42)',
   gray101: 'rgb(49, 49, 60)',
   gray102: 'rgb(40, 40, 48)',
