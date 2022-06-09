@@ -1,5 +1,5 @@
 import { css } from '@emotion/react';
-import { colors, sizes } from 'styles/constants';
+import { colors, sizes, font_weight } from 'styles/constants';
 import { flex } from 'styles/mixin';
 
 export const wrapper = css`
@@ -22,7 +22,7 @@ export const descWrapper = css`
 
 export const subject = css`
   font-size: 30px;
-  font-weight: 600;
+  font-weight: ${font_weight.bold};
 `;
 export const content = css`
   margin: 10px 0px 15px;

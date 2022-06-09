@@ -10,12 +10,12 @@ const Home = () => {
   const router = useRouter();
   let { t } = useTranslation('home');
 
-  const handleChange = ({ currentTarget }: FormEvent<HTMLInputElement>) => {
+  const onChange = ({ currentTarget }: FormEvent<HTMLInputElement>) => {
     const { value } = currentTarget;
     setName(value);
   };
 
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+  const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
       if (!name) return;
@@ -32,10 +32,10 @@ const Home = () => {
         <MainIcon css={S.mainIcon} />
         <h1>{t('title2')}</h1>
       </header>
-      <form css={S.homeForm} onSubmit={handleSubmit}>
+      <form css={S.homeForm} onSubmit={onSubmit}>
         <div css={S.region}>{t('region')}</div>
         <div css={S.searchWrapper}>
-          <input css={S.searchInput} placeholder={t('placeholder')} value={name} onChange={handleChange} />
+          <input css={S.searchInput} placeholder={t('placeholder')} value={name} onChange={onChange} />
           <button type='submit'>
             <SearchIcon css={S.searchIcon} />
           </button>

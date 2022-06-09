@@ -21,7 +21,7 @@ const Carousel = () => {
   const { openModal, closeModal, ModalPortal } = useModal();
   const { t } = useTranslation('common');
 
-  const handleDetailBtnClick = (match: IEachMatchInfo) => {
+  const onDetailBtnClick = (match: IEachMatchInfo) => {
     openModal();
     setModalData(match);
   };
@@ -40,7 +40,7 @@ const Carousel = () => {
             <time css={S.time} dateTime={format(new Date(match.time.gameCreation), 'yyyy-MM-dd')}>
               {format(new Date(match.time.gameCreation), 'yy / MM / dd')}
             </time>
-            <button css={S.detailBtn} onClick={() => handleDetailBtnClick(match)}>
+            <button css={S.detailBtn} onClick={() => onDetailBtnClick(match)}>
               {t('seeMore')}
             </button>
           </div>

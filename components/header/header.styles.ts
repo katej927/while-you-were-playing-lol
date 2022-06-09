@@ -40,3 +40,7 @@ export const LocalBtn = styled.button`
   color: ${(props: Props) => (props.isSelected ? colors.white001 : colors.lightPurple)};
   background-color: ${(props: Props) => (props.isSelected ? colors.theme : colors.gray104)};
 `;
+
+export const authBtns = css`
+  background-color: red;
+`;

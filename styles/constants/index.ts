@@ -6,6 +6,7 @@ export const colors = {
   gray102: 'rgb(40, 40, 48)',
   gray103: 'rgb(103, 102, 118)',
   gray104: 'rgb(81, 81, 99)',
+  charcoal001: '#484848',
   lightgray100: 'rgb(195, 195, 211)',
   white001: 'rgb(255, 255, 255)',
   theme: 'rgb(124, 71, 233)',
@@ -27,6 +28,10 @@ export const sizes = {
 export const font = {
   small: '12px',
   medium: '14px',
-  regular: '15px',
+  regular: '16px',
   large: '24px',
+};
+
+export const font_weight = {
+  bold: 600,
 };

@@ -1,5 +1,5 @@
 import { css } from '@emotion/react';
-import { sizes, colors } from './../../styles/constants';
+import { sizes, colors, font } from './../../styles/constants';
 import { flex, bounce } from './../../styles/mixin';
 
 export const homeWrapper = css`
@@ -31,7 +31,7 @@ export const homeForm = css`
   background-color: ${colors.gray101};
   border: 1px solid ${colors.gray103};
   border-radius: ${sizes.borderRadius};
-  font-size: 16px;
+  font-size: ${font.regular};
 `;
 
 export const region = css`
