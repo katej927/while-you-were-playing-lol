@@ -1,12 +1,13 @@
+type TVariable = string | number | readonly string[] | undefined;
+
 interface IConvertInputList {
-  email: (string | JSX.Element)[];
-  lastname: (string | JSX.Element)[];
-  firstname: (string | JSX.Element)[];
-  password: (string | JSX.Element)[];
-  hidePassword: (boolean | (() => void))[];
+  email: [TVariable, JSX.Element];
+  lastname: [TVariable, JSX.Element];
+  firstname: [TVariable, JSX.Element];
+  password: [TVariable, JSX.Element];
 }
 
-export const convertInputList = ({ email, lastname, firstname, password, hidePassword }: IConvertInputList) => {
+export const convertInputList = ({ email, lastname, firstname, password }: IConvertInputList) => {
   return [
     {
       placeholder: '이메일 주소',

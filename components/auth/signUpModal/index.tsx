@@ -46,7 +46,6 @@ const SignUpModal: FC = () => {
         <OpenedEyeIcon onClick={toggleHidePassword} css={S.eyeIcons} />
       ),
     ],
-    hidePassword: [hidePassword, toggleHidePassword],
   });
 
   // const inputList = [
