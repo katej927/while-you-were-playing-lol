@@ -2,9 +2,20 @@ import { format, secondsToMinutes } from 'date-fns';
 import { addCommas } from 'lib/utils';
 import { IEachMatchInfo } from 'types';
 
-interface IConvertedData {
-  [key: string]: string | number | boolean | number[];
+interface IResult {
+  championName: string;
+  playDate: string;
+  playDuration: string;
+  isWin: string;
+  kda: string;
+  damageAmount: string;
+  cs: string;
+  itemList: number[];
 }
+
+// interface IConvertedData {
+//   [key: string]: string | number | boolean | number[];
+// }
 
 export const convertData = (data: IEachMatchInfo) => {
   const {
@@ -27,16 +38,16 @@ export const convertData = (data: IEachMatchInfo) => {
     },
   } = data;
 
-  const playDate = format(new Date(gameCreation), 'yyyy년 MM월 dd일');
-  const playDuration = secondsToMinutes(gameDuration);
+  const playDate = format(new Date(gameCreation), 'yyyy/MM/dd');
+  const playDuration = `${secondsToMinutes(gameDuration)}분`;
   const kda = `${kills} / ${deaths} / ${assists}`;
   const itemList = [item0, item1, item2, item3, item4, item5, item6];
 
-  const result: IConvertedData = {
+  const result: IResult = {
     championName,
     playDate,
     playDuration,
-    isWin,
+    isWin: isWin ? 'victory' : 'defeat',
     kda,
     damageAmount: addCommas(damageAmount),
     cs: addCommas(cs),

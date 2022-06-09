@@ -3,7 +3,6 @@
   "defaultLocale": "ko",
   "pages": {
     "*": ["common"],
-    "/": ["home"],
-    "/summoners/*": ["summoners"]
+    "/": ["home"]
   }
 }

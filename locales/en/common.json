@@ -20,5 +20,16 @@
   "500errorMsg2": "Please refresh by pressing the home button at the top.",
   "noRecord": "No game records.",
   "notFound1": "Unregistered Summoner.",
-  "notFound2": "Please check the typo and search again."
+  "notFound2": "Please check the typo and search again.",
+  "seeMore": "see more",
+  "championName": "Champion",
+  "playDate": "Played Date",
+  "playDuration": "Duration Time",
+  "isWin": "Outcome",
+  "kda": "KDA",
+  "damageAmount": "Total Damage",
+  "cs": "CS",
+  "itemList": "Item",
+  "victory": "Victory",
+  "defeat": "Defeat"
 }

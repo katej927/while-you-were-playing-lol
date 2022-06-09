@@ -21,5 +21,16 @@
   "500errorMsg2": "상단의 홈 버튼을 눌러 새로 고침을 해주세요.",
   "noRecord": "게임 기록이 없습니다.",
   "notFound1": "등록되지 않은 소환사입니다.",
-  "notFound2": "오타를 확인 후 다시 검색해주세요."
+  "notFound2": "오타를 확인 후 다시 검색해주세요.",
+  "seeMore": "더 보기",
+  "championName": "챔피언 이름",
+  "playDate": "게임한 날짜",
+  "playDuration": "게임 지속 시간",
+  "isWin": "결과",
+  "kda": "KDA",
+  "damageAmount": "총 피해량",
+  "cs": "CS",
+  "itemList": "아이템",
+  "victory": "승리",
+  "defeat": "패배"
 }

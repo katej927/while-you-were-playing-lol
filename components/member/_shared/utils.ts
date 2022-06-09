@@ -69,7 +69,7 @@ export const convertTime = (time: number) => {
     sleep: [toSleep, `hours`],
     PCroom: [paidPCroom, `moneyUnit`],
     love: [`${love}`, `movieUnit`],
-    walk: [toWalkCalories, `cal`],
+    walk: [toWalkCalories, `walkUnit`],
     trip: [seoulToNewYorkShuttle, `tripUnit`],
   };
 
