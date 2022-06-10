@@ -1,5 +1,4 @@
 import { css } from '@emotion/react';
-import styled from '@emotion/styled';
 import { colors, font, font_weight } from 'styles/constants';
 
 export const wrapper = css`

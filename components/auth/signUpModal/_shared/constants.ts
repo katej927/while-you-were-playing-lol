@@ -8,3 +8,9 @@ let currentYear = Number(format(new Date(), 'yyyy'));
 let lengthOfYears = currentYear - 1900 + 1;
 
 export const YEARS = Array.from(Array(lengthOfYears), (_, i) => String(currentYear - i));
+
+export const PASSWORD_MIN_LENGTH = 8;
+
+export const SPECIAL_CHARACTER_REGEX = /[{}[\]/?.,;:|)*~`!^\-_+<>@#$%&\\=('"]/g;
+
+export const NUMBER_REGEX = /[0-9]/g;

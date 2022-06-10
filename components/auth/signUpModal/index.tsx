@@ -1,16 +1,24 @@
-import { FC, useState, SyntheticEvent, FormEvent } from 'react';
+import { FC, useState, SyntheticEvent, FormEvent, useMemo } from 'react';
 import { useDispatch } from 'react-redux';
 import { userActions } from 'store/user';
-import { commonActions } from 'store/common';
 
 import { signupAPI } from 'lib/api/auth';
-import { DAYS, MONTHS, YEARS, convertBDaySelectors, convertInputList } from './_shared';
+import {
+  DAYS,
+  MONTHS,
+  YEARS,
+  convertBDaySelectors,
+  checkPasswordValidation,
+  convertPasswordWarningTxt,
+  convertInputList,
+} from './_shared';
 import { useValidateMode } from 'hooks';
 
 import { Input, Selector, Button } from 'components/common';
 import { CloseIcon, EmailIcon, PersonIcon, OpenedEyeIcon, ClosedEyeIcon } from 'public/static/svg';
 
 import * as S from './signUpModal.styles';
+import PasswordWarning from '../passwordWarning';
 
 interface IProps {
   closeModal: () => void;
@@ -22,6 +30,7 @@ const SignUpModal: FC<IProps> = ({ closeModal }) => {
   const [firstname, setFirstname] = useState('');
   const [password, setPassword] = useState('');
   const [hidePassword, setHidePassword] = useState(true);
+  const [isFocusPassword, setIsFocusPassword] = useState(false);
 
   const [birthYear, setBirthYear] = useState<string | undefined>();
   const [birthDay, setBirthDay] = useState<string | undefined>();
@@ -29,6 +38,13 @@ const SignUpModal: FC<IProps> = ({ closeModal }) => {
 
   const dispatch = useDispatch();
   const { setValidateMode } = useValidateMode();
+
+  const { isPasswordValid, validationDetails } = useMemo(
+    () => checkPasswordValidation(password, lastname, email),
+    [password, lastname, email]
+  );
+
+  const passwordWarnings = convertPasswordWarningTxt(validationDetails);
 
   const toggleHidePassword = () => setHidePassword(!hidePassword);
 
@@ -66,62 +82,17 @@ const SignUpModal: FC<IProps> = ({ closeModal }) => {
     }
   };
 
-  // const inputList = convertInputList({
-  //   email: [email, <EmailIcon css={S.inputIcon} />],
-  //   lastname: [lastname, <PersonIcon css={S.inputIcon} />],
-  //   firstname: [firstname, <PersonIcon css={S.inputIcon} />],
-  //   password: [
-  //     password,
-  //     hidePassword ? (
-  //       <ClosedEyeIcon onClick={toggleHidePassword} css={S.eyeIcons} />
-  //     ) : (
-  //       <OpenedEyeIcon onClick={toggleHidePassword} css={S.eyeIcons} />
-  //     ),
-  //   ],
-  // });
+  const onFocusPassword = () => setIsFocusPassword(true);
 
-  const inputList = [
-    {
-      placeholder: '이메일 주소',
-      type: 'email',
-      icon: <EmailIcon css={S.inputIcon} />,
-      name: 'email',
-      value: email,
-      dataset: 'email',
-      errorMsg: '이메일이 필요합니다.',
-    },
-    {
-      placeholder: '이름(예: 길동)',
-      type: undefined,
-      icon: <PersonIcon css={S.inputIcon} />,
-      name: undefined,
-      value: lastname,
-      dataset: 'lastname',
-      errorMsg: '이름을 입력하세요.',
-    },
-    {
-      placeholder: '성(예: 홍)',
-      type: undefined,
-      icon: <PersonIcon css={S.inputIcon} />,
-      name: undefined,
-      value: firstname,
-      dataset: 'firstname',
-      errorMsg: '성을 입력하세요.',
-    },
-    {
-      placeholder: '비밀번호 설정하기',
-      type: hidePassword ? 'password' : 'text',
-      icon: hidePassword ? (
-        <ClosedEyeIcon onClick={toggleHidePassword} css={S.eyeIcons} />
-      ) : (
-        <OpenedEyeIcon onClick={toggleHidePassword} css={S.eyeIcons} />
-      ),
-      name: undefined,
-      value: password,
-      dataset: 'password',
-      errorMsg: '비밀번호를 입력하세요.',
-    },
-  ];
+  const inputList = convertInputList(email, lastname, firstname, hidePassword, password, {
+    emailIcon: <EmailIcon css={S.inputIcon} />,
+    personIcon: <PersonIcon css={S.inputIcon} />,
+    passwordIcon: hidePassword ? (
+      <ClosedEyeIcon onClick={toggleHidePassword} css={S.eyeIcons} />
+    ) : (
+      <OpenedEyeIcon onClick={toggleHidePassword} css={S.eyeIcons} />
+    ),
+  });
 
   const bDaySelectors = convertBDaySelectors({
     options: [MONTHS, DAYS, YEARS],
@@ -144,12 +115,15 @@ const SignUpModal: FC<IProps> = ({ closeModal }) => {
               dataset={dataset}
               onChange={onChangeInputs}
               useValidation
-              isvalid={!!value}
+              isvalid={dataset === 'password' ? isPasswordValid : !!value}
               errorMsg={errorMsg}
+              onFocus={dataset === 'password' ? onFocusPassword : undefined}
             />
           </div>
         );
       })}
+      {isFocusPassword &&
+        passwordWarnings.map((warning) => <PasswordWarning isValid={warning.isValid} text={warning.text} />)}
       <p css={S.title}>생일</p>
       <p css={S.titleInfo}>생일은 다른 이용자에게 공개되지 않습니다.</p>
       <div css={S.bDaySelectorWrapper}>
