@@ -1,12 +1,18 @@
-import { FC, useState, SyntheticEvent } from 'react';
+import { FC, useState, SyntheticEvent, FormEvent } from 'react';
 
-import { Input, Selector } from 'components/common';
-import { CloseIcon, EmailIcon, PersonIcon, OpenedEyeIcon, ClosedEyeIcon } from 'public/static/svg';
+import { signupAPI } from 'lib/api/auth';
 import { DAYS, MONTHS, YEARS, convertBDaySelectors, convertInputList } from './_shared';
+
+import { Input, Selector, Button } from 'components/common';
+import { CloseIcon, EmailIcon, PersonIcon, OpenedEyeIcon, ClosedEyeIcon } from 'public/static/svg';
 
 import * as S from './signUpModal.styles';
 
-const SignUpModal: FC = () => {
+interface IProps {
+  closeModal: () => void;
+}
+
+const SignUpModal: FC<IProps> = ({ closeModal }) => {
   const [email, setEmail] = useState('');
   const [lastname, setLastname] = useState('');
   const [firstname, setFirstname] = useState('');
@@ -28,64 +34,80 @@ const SignUpModal: FC = () => {
     if (id === 'lastname') return setLastname(value);
     if (id === 'firstname') return setFirstname(value);
     if (id === 'password') return setPassword(value);
-
     if (id === 'bDay-month') return setBirthMonth(value);
     if (id === 'bDay-day') return setBirthDay(value);
     if (id === 'bDay-year') return setBirthYear(value);
   };
 
-  const inputList = convertInputList({
-    email: [email, <EmailIcon css={S.inputIcon} />],
-    lastname: [lastname, <PersonIcon css={S.inputIcon} />],
-    firstname: [firstname, <PersonIcon css={S.inputIcon} />],
-    password: [
-      password,
-      hidePassword ? (
-        <ClosedEyeIcon onClick={toggleHidePassword} css={S.eyeIcons} />
-      ) : (
-        <OpenedEyeIcon onClick={toggleHidePassword} css={S.eyeIcons} />
-      ),
-    ],
-  });
+  const onSubmitSignup = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
 
-  // const inputList = [
-  //   {
-  //     placeholder: '이메일 주소',
-  //     type: 'email',
-  //     icon: <EmailIcon css={S.inputIcon} />,
-  //     name: 'email',
-  //     value: email,
-  //     dataset: 'email',
-  //   },
-  //   {
-  //     placeholder: '이름(예: 길동)',
-  //     type: undefined,
-  //     icon: <PersonIcon css={S.inputIcon} />,
-  //     name: undefined,
-  //     value: lastname,
-  //     dataset: 'lastname',
-  //   },
-  //   {
-  //     placeholder: '성(예: 홍)',
-  //     type: undefined,
-  //     icon: <PersonIcon css={S.inputIcon} />,
-  //     name: undefined,
-  //     value: firstname,
-  //     dataset: 'firstname',
-  //   },
-  //   {
-  //     placeholder: '비밀번호 설정하기',
-  //     type: hidePassword ? 'password' : 'text',
-  //     icon: hidePassword ? (
+    try {
+      const sigupBody = {
+        email,
+        lastname,
+        firstname,
+        password,
+        birthday: new Date(`${birthYear}-${birthMonth!.replace('월', '')}-${birthDay}`).toISOString(),
+      };
+      await signupAPI(sigupBody);
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  // const inputList = convertInputList({
+  //   email: [email, <EmailIcon css={S.inputIcon} />],
+  //   lastname: [lastname, <PersonIcon css={S.inputIcon} />],
+  //   firstname: [firstname, <PersonIcon css={S.inputIcon} />],
+  //   password: [
+  //     password,
+  //     hidePassword ? (
   //       <ClosedEyeIcon onClick={toggleHidePassword} css={S.eyeIcons} />
   //     ) : (
   //       <OpenedEyeIcon onClick={toggleHidePassword} css={S.eyeIcons} />
   //     ),
-  //     name: undefined,
-  //     value: password,
-  //     dataset: 'password',
-  //   },
-  // ];
+  //   ],
+  // });
+
+  const inputList = [
+    {
+      placeholder: '이메일 주소',
+      type: 'email',
+      icon: <EmailIcon css={S.inputIcon} />,
+      name: 'email',
+      value: email,
+      dataset: 'email',
+    },
+    {
+      placeholder: '이름(예: 길동)',
+      type: undefined,
+      icon: <PersonIcon css={S.inputIcon} />,
+      name: undefined,
+      value: lastname,
+      dataset: 'lastname',
+    },
+    {
+      placeholder: '성(예: 홍)',
+      type: undefined,
+      icon: <PersonIcon css={S.inputIcon} />,
+      name: undefined,
+      value: firstname,
+      dataset: 'firstname',
+    },
+    {
+      placeholder: '비밀번호 설정하기',
+      type: hidePassword ? 'password' : 'text',
+      icon: hidePassword ? (
+        <ClosedEyeIcon onClick={toggleHidePassword} css={S.eyeIcons} />
+      ) : (
+        <OpenedEyeIcon onClick={toggleHidePassword} css={S.eyeIcons} />
+      ),
+      name: undefined,
+      value: password,
+      dataset: 'password',
+    },
+  ];
 
   const bDaySelectors = convertBDaySelectors({
     options: [MONTHS, DAYS, YEARS],
@@ -93,12 +115,12 @@ const SignUpModal: FC = () => {
   });
 
   return (
-    <div css={S.wrapper}>
-      <CloseIcon css={S.closeIcon} />
+    <form css={S.wrapper} onSubmit={onSubmitSignup}>
+      <CloseIcon css={S.closeIcon} onClick={closeModal} />
       {inputList.map((input) => {
         const { placeholder, type, icon, name, value, dataset } = input;
         return (
-          <div css={S.inputWrapper}>
+          <div css={S.inputWrapper} key={dataset}>
             <Input
               placeholder={placeholder}
               type={type}
@@ -117,7 +139,7 @@ const SignUpModal: FC = () => {
         {bDaySelectors.map((selector) => {
           const { options, defaultValue, dataset, value } = selector;
           return (
-            <div css={S.bDaySelector}>
+            <div css={S.bDaySelector} key={dataset}>
               <Selector
                 options={options}
                 disabledOptions={[defaultValue]}
@@ -130,7 +152,8 @@ const SignUpModal: FC = () => {
           );
         })}
       </div>
-    </div>
+      <Button type='submit'>가입하기</Button>
+    </form>
   );
 };
 

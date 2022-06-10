@@ -48,7 +48,7 @@ export const convertTime = (time: number) => {
   const toDays = addCommas(toHoursNum / 24);
 
   const toWage = addCommas(toHoursNum * wageThisYear);
-  const toSleep = addCommas(toHoursNum / 8);
+  const toSleep = addCommas(toHoursNum);
   const paidPCroom = addCommas(toHoursNum * 1300);
   const toWalkCalories = addCommas(toHoursNum * 350);
   const seoulToNewYorkShuttle = addCommas(toHoursNum / 30);

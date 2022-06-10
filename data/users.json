@@ -1,0 +1,65 @@
+[
+  {
+    "id": 1,
+    "email": "f@gmail.com",
+    "firstname": "홍",
+    "lastname": "길순육",
+    "password": "$2a$08$Fsz3UJ9COgapx6YJPo/zxO2AVmKk4/OKQPLRwe5vJjNbb79fNOF6u",
+    "birthday": "2021-12-31T15:00:00.000Z",
+    "profileImage": "/public/static/image/default_user_profile_image.jpg"
+  },
+  {
+    "id": 2,
+    "email": "adfasf@gmail.com",
+    "firstname": "홍",
+    "lastname": "길동2",
+    "password": "$2a$08$ZpADQMRAExNRFk6AenYMVeNODYk/wtUZO4PbKQlqA1g9VLNzLy51O",
+    "birthday": "2021-02-02T15:00:00.000Z",
+    "profileImage": "/public/static/image/default_user_profile_image.jpg"
+  },
+  {
+    "id": 3,
+    "email": "adfa@gmail.com",
+    "firstname": "홍",
+    "lastname": "길동삼",
+    "password": "$2a$08$H2/aR3xjUrO9OqtozZi7GOGVOWdsecbSG5P2BEnnOb.T8hqCydN76",
+    "birthday": "2021-03-02T15:00:00.000Z",
+    "profileImage": "/public/static/image/default_user_profile_image.jpg"
+  },
+  {
+    "id": 4,
+    "email": "g@gmail.com",
+    "firstname": "최",
+    "lastname": "고기",
+    "password": "$2a$08$NFri/l/ZSvn2BEvezDA35uMfS6m38it0vV0wr.RkF0Tz2m2boOfQu",
+    "birthday": "2019-02-02T15:00:00.000Z",
+    "profileImage": "/public/static/image/default_user_profile_image.jpg"
+  },
+  {
+    "id": 5,
+    "email": "h@gmail.com",
+    "firstname": "홍",
+    "lastname": "길동사",
+    "password": "$2a$08$6iZO8pX1rLVEg3GiOpqeO.vRiHPar1U.1kg4oLQSw7Y1oanOK1Csq",
+    "birthday": "2019-02-02T15:00:00.000Z",
+    "profileImage": "/public/static/image/default_user_profile_image.jpg"
+  },
+  {
+    "id": 6,
+    "email": "h2@gmail.com",
+    "firstname": "홍",
+    "lastname": "길동사삼",
+    "password": "$2a$08$Ipyprq9CStYLH9JCWDjvE.jhvjkSfE.qoA6FQ0NldaPHE36zR2m7.",
+    "birthday": "2019-04-02T15:00:00.000Z",
+    "profileImage": "/public/static/image/default_user_profile_image.jpg"
+  },
+  {
+    "id": 7,
+    "email": "i@gmail.com",
+    "firstname": "홍",
+    "lastname": "길동오",
+    "password": "$2a$08$vhIrVgQqUCMAaakf8xZkaujhKhH3VrwL5uHvjTwmXSKGYdokZXZCa",
+    "birthday": "2019-02-03T15:00:00.000Z",
+    "profileImage": "/public/static/image/default_user_profile_image.jpg"
+  }
+]

@@ -8,7 +8,7 @@ import { MainIcon } from '../../public/static/svg';
 import * as S from './header.styles';
 
 const Header = () => {
-  const { openModal, ModalPortal } = useModal();
+  const { openModal, closeModal, ModalPortal } = useModal();
   const router = useRouter();
   const { pathname, asPath, query, locales, locale: curlocale } = router;
 
@@ -46,7 +46,7 @@ const Header = () => {
         </div>
       </div>
       <ModalPortal>
-        <SignUpModal />
+        <SignUpModal closeModal={closeModal} />
       </ModalPortal>
     </nav>
   );
