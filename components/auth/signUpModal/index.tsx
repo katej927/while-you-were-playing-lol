@@ -138,6 +138,7 @@ const SignUpModal: FC<IProps> = ({ closeModal }) => {
                 onChange={onChangeInputs}
                 dataset={dataset}
                 value={value}
+                isValid={!!value}
               />
             </div>
           );

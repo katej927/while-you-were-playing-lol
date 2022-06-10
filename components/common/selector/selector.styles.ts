@@ -1,7 +1,8 @@
 import { css } from '@emotion/react';
+import styled from '@emotion/styled';
 import { colors, sizes, font } from 'styles/constants';
 
-export const container = css`
+export const Container = styled.div<{ isValid: boolean; validateMode: boolean }>`
   position: relative;
   width: 100%;
   height: 46px;
@@ -10,7 +11,9 @@ export const container = css`
     width: 100%;
     height: 100%;
     background-color: ${colors.white001};
-    border: 1px solid ${colors.lightgray100};
+    border: 1px solid
+      ${({ isValid, validateMode }) =>
+        !validateMode ? colors.lightgray100 : isValid ? colors.lightgray100 : colors.error};
     padding: 0 11px;
     border-radius: ${sizes.borderRadius};
     outline: none;
@@ -19,6 +22,7 @@ export const container = css`
     background-position: right 11px center;
     background-repeat: no-repeat;
     font-size: ${font.regular};
+    cursor: pointer;
 
     &:focus {
       border-color: ${colors.black001};

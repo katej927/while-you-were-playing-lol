@@ -1,4 +1,5 @@
 import { SelectHTMLAttributes, FC } from 'react';
+import { useSelector } from 'store';
 
 import { ArrowDownIcon } from 'public/static/svg';
 
@@ -9,11 +10,15 @@ interface IProps extends SelectHTMLAttributes<HTMLSelectElement> {
   value?: string;
   disabledOptions?: string[];
   dataset: string;
+  isValid: boolean;
 }
 
-const Selector: FC<IProps> = ({ dataset, options = [], disabledOptions = [], ...props }) => {
+const Selector: FC<IProps> = ({ isValid, dataset, options = [], disabledOptions = [], ...props }) => {
+  const validateMode = useSelector((state) => state.common.validateMode);
+  console.log('validateMode', validateMode);
+
   return (
-    <div css={S.container}>
+    <S.Container isValid={isValid} validateMode={validateMode}>
       <select {...props} data-id={dataset}>
         {disabledOptions.map((option) => (
           <option key={option} value={option} disabled>
@@ -27,7 +32,7 @@ const Selector: FC<IProps> = ({ dataset, options = [], disabledOptions = [], ...
         ))}
       </select>
       <ArrowDownIcon css={S.icon} />
-    </div>
+    </S.Container>
   );
 };
 
