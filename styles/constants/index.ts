@@ -16,6 +16,7 @@ export const colors = {
   lightGreen: 'rgb(127, 208, 71)',
   yellow: ' rgb(255, 193, 31)',
   red: 'rgb(240, 101, 149)',
+  error: '#E84057',
 };
 
 export const sizes = {

@@ -1,4 +1,6 @@
 import { FC, useState, SyntheticEvent, FormEvent } from 'react';
+import { useDispatch } from 'react-redux';
+import { userActions } from 'store/user';
 
 import { signupAPI } from 'lib/api/auth';
 import { DAYS, MONTHS, YEARS, convertBDaySelectors, convertInputList } from './_shared';
@@ -18,9 +20,14 @@ const SignUpModal: FC<IProps> = ({ closeModal }) => {
   const [firstname, setFirstname] = useState('');
   const [password, setPassword] = useState('');
   const [hidePassword, setHidePassword] = useState(true);
+
   const [birthYear, setBirthYear] = useState<string | undefined>();
   const [birthDay, setBirthDay] = useState<string | undefined>();
   const [birthMonth, setBirthMonth] = useState<string | undefined>();
+
+  const [validateMode, setValidateMode] = useState(false);
+
+  const dispatch = useDispatch();
 
   const toggleHidePassword = () => setHidePassword(!hidePassword);
 
@@ -42,6 +49,7 @@ const SignUpModal: FC<IProps> = ({ closeModal }) => {
   const onSubmitSignup = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
+    setValidateMode(true);
     try {
       const sigupBody = {
         email,
@@ -50,7 +58,8 @@ const SignUpModal: FC<IProps> = ({ closeModal }) => {
         password,
         birthday: new Date(`${birthYear}-${birthMonth!.replace('월', '')}-${birthDay}`).toISOString(),
       };
-      await signupAPI(sigupBody);
+      const { data } = await signupAPI(sigupBody);
+      dispatch(userActions.setLoggedUser(data));
     } catch (e) {
       console.log(e);
     }
@@ -78,6 +87,7 @@ const SignUpModal: FC<IProps> = ({ closeModal }) => {
       name: 'email',
       value: email,
       dataset: 'email',
+      errorMsg: '이메일이 필요합니다.',
     },
     {
       placeholder: '이름(예: 길동)',
@@ -86,6 +96,7 @@ const SignUpModal: FC<IProps> = ({ closeModal }) => {
       name: undefined,
       value: lastname,
       dataset: 'lastname',
+      errorMsg: '이름을 입력하세요.',
     },
     {
       placeholder: '성(예: 홍)',
@@ -94,6 +105,7 @@ const SignUpModal: FC<IProps> = ({ closeModal }) => {
       name: undefined,
       value: firstname,
       dataset: 'firstname',
+      errorMsg: '성을 입력하세요.',
     },
     {
       placeholder: '비밀번호 설정하기',
@@ -106,6 +118,7 @@ const SignUpModal: FC<IProps> = ({ closeModal }) => {
       name: undefined,
       value: password,
       dataset: 'password',
+      errorMsg: '비밀번호를 입력하세요.',
     },
   ];
 
@@ -118,7 +131,7 @@ const SignUpModal: FC<IProps> = ({ closeModal }) => {
     <form css={S.wrapper} onSubmit={onSubmitSignup}>
       <CloseIcon css={S.closeIcon} onClick={closeModal} />
       {inputList.map((input) => {
-        const { placeholder, type, icon, name, value, dataset } = input;
+        const { placeholder, type, icon, name, value, dataset, errorMsg } = input;
         return (
           <div css={S.inputWrapper} key={dataset}>
             <Input
@@ -129,6 +142,10 @@ const SignUpModal: FC<IProps> = ({ closeModal }) => {
               value={value}
               dataset={dataset}
               onChange={onChangeInputs}
+              validateMode={validateMode}
+              useValidation
+              isvalid={!!value}
+              errorMsg={errorMsg}
             />
           </div>
         );

@@ -1,14 +1,21 @@
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
-import { colors, sizes, font } from 'styles/constants';
+import { colors, sizes, font, font_weight } from 'styles/constants';
 
-export const Container = styled.div<{ iconExist: boolean }>`
+type TContainerProps = {
+  iconExist: boolean;
+  isvalid: boolean;
+  useValidation: boolean | undefined;
+};
+
+export const Container = styled.div<TContainerProps>`
   input {
     position: relative;
     width: 100%;
     height: 46px;
     padding: ${({ iconExist }) => (iconExist ? '0 44px 0 11px' : '0 11px')};
-    border: 1px solid ${colors.lightgray100};
+    border: 1px solid
+      ${({ isvalid, useValidation }) => (useValidation && !isvalid ? colors.error : colors.lightgray100)};
     border-radius: ${sizes.borderRadius};
     font-size: ${font.regular};
     outline: none;
@@ -16,7 +23,8 @@ export const Container = styled.div<{ iconExist: boolean }>`
       color: ${colors.lightgray100};
     }
     &:focus {
-      border-color: ${colors.black001} !important ;
+      border-color: ${({ isvalid, useValidation }) =>
+        useValidation && !isvalid ? colors.error : colors.black001} !important ;
     }
   }
 `;
@@ -28,4 +36,11 @@ export const iconWrapper = css`
   top: 0;
   right: 11px;
   height: 46px;
+`;
+
+export const errorMsg = css`
+  margin-top: 8px;
+  font-weight: ${font_weight.bold};
+  font-size: ${font.medium};
+  color: ${colors.error};
 `;

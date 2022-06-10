@@ -4,7 +4,7 @@ import jwt from 'jsonwebtoken';
 import addDays from 'date-fns/addDays';
 
 import Data from 'lib/data';
-import { StoredUserType } from 'types';
+import { IStoredUserType } from 'types';
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method === 'POST') {
@@ -25,7 +25,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
     const users = Data.user.getUsers();
     const userId = users.length ? users[users.length - 1].id + 1 : 1;
-    const newUser: StoredUserType = {
+    const newUser: IStoredUserType = {
       id: userId,
       email,
       firstname,
@@ -45,7 +45,12 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       resolve(token);
     });
 
-    return res.end();
+    const newUserWithoutPassword: Partial<Pick<IStoredUserType, 'password'>> = newUser;
+
+    delete newUserWithoutPassword.password;
+    res.statusCode = 200;
+
+    return res.send(newUser);
   }
   res.statusCode = 405;
   return res.end();
