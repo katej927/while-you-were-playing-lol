@@ -1,4 +1,3 @@
-export type { IEachMatch, IEachMatchInfo, IEachMatchTime } from './riotState';
+export type { IEachMatch, IEachMatchInfo, IEachMatchTime, UserState, CommonState } from './reduxState';
 export type { IParticipant } from './riotApi';
 export type { IStoredUserType, IUserType } from './user';
-export type { UserState } from './userState.d';

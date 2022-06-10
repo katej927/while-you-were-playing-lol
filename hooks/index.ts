@@ -1,2 +1,4 @@
 import useModal from './useModal';
-export { useModal };
+import useValidateMode from './useValidateMode';
+
+export { useModal, useValidateMode };

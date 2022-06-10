@@ -1,9 +1,11 @@
 import { FC, useState, SyntheticEvent, FormEvent } from 'react';
 import { useDispatch } from 'react-redux';
 import { userActions } from 'store/user';
+import { commonActions } from 'store/common';
 
 import { signupAPI } from 'lib/api/auth';
 import { DAYS, MONTHS, YEARS, convertBDaySelectors, convertInputList } from './_shared';
+import { useValidateMode } from 'hooks';
 
 import { Input, Selector, Button } from 'components/common';
 import { CloseIcon, EmailIcon, PersonIcon, OpenedEyeIcon, ClosedEyeIcon } from 'public/static/svg';
@@ -25,9 +27,8 @@ const SignUpModal: FC<IProps> = ({ closeModal }) => {
   const [birthDay, setBirthDay] = useState<string | undefined>();
   const [birthMonth, setBirthMonth] = useState<string | undefined>();
 
-  const [validateMode, setValidateMode] = useState(false);
-
   const dispatch = useDispatch();
+  const { setValidateMode } = useValidateMode();
 
   const toggleHidePassword = () => setHidePassword(!hidePassword);
 
@@ -48,8 +49,8 @@ const SignUpModal: FC<IProps> = ({ closeModal }) => {
 
   const onSubmitSignup = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
     setValidateMode(true);
+
     try {
       const sigupBody = {
         email,
@@ -142,7 +143,6 @@ const SignUpModal: FC<IProps> = ({ closeModal }) => {
               value={value}
               dataset={dataset}
               onChange={onChangeInputs}
-              validateMode={validateMode}
               useValidation
               isvalid={!!value}
               errorMsg={errorMsg}

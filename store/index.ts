@@ -5,10 +5,12 @@ import { TypedUseSelectorHook, useSelector as useReduxSelector } from 'react-red
 
 import riot from './riot';
 import user from './user';
+import common from './common';
 
 const rootReducer = combineReducers({
   riot: riot.reducer,
   user: user.reducer,
+  common: common.reducer,
 });
 
 export type RootState = ReturnType<typeof rootReducer>;
