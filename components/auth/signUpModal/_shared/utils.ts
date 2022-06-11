@@ -10,6 +10,8 @@ export const convertInputList = (
   firstname: string,
   hidePassword: boolean,
   password: string,
+  isPasswordValid: boolean,
+  onFocusPassword: () => void,
   { emailIcon, personIcon, passwordIcon }: IInputListIconProps
 ) => {
   return [
@@ -21,6 +23,8 @@ export const convertInputList = (
       value: email,
       dataset: 'email',
       errorMsg: '이메일이 필요합니다.',
+      isValid: !!email,
+      onFocus: undefined,
     },
     {
       placeholder: '이름(예: 길동)',
@@ -30,6 +34,8 @@ export const convertInputList = (
       value: lastname,
       dataset: 'lastname',
       errorMsg: '이름을 입력하세요.',
+      isValid: !!lastname,
+      onFocus: undefined,
     },
     {
       placeholder: '성(예: 홍)',
@@ -39,6 +45,8 @@ export const convertInputList = (
       value: firstname,
       dataset: 'firstname',
       errorMsg: '성을 입력하세요.',
+      isValid: !!firstname,
+      onFocus: undefined,
     },
     {
       placeholder: '비밀번호 설정하기',
@@ -48,6 +56,8 @@ export const convertInputList = (
       value: password,
       dataset: 'password',
       errorMsg: '비밀번호를 입력하세요.',
+      isvalid: isPasswordValid,
+      onFocus: onFocusPassword,
     },
   ];
 };

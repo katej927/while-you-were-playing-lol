@@ -1,7 +1,7 @@
 import { AppProps } from 'next/app';
 import { wrapper } from '../store';
 
-import { Layout, Header } from '../components';
+import { Layout } from '../components';
 
 import { Global } from '@emotion/react';
 import GlobalStyle from '../styles/base';
@@ -11,7 +11,6 @@ const app = ({ Component, pageProps }: AppProps) => {
     <>
       <Global styles={GlobalStyle} />
       <Layout>
-        <Header />
         <Component {...pageProps} />
         <div id='root-modal' />
       </Layout>

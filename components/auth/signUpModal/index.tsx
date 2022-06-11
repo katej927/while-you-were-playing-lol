@@ -1,4 +1,4 @@
-import { FC, useState, SyntheticEvent, FormEvent, useMemo } from 'react';
+import { FC, useState, SyntheticEvent, FormEvent, useMemo, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { userActions } from 'store/user';
 
@@ -11,14 +11,16 @@ import {
   checkPasswordValidation,
   convertPasswordWarningTxt,
   convertInputList,
+  PasswordWarning,
 } from './_shared';
+import { IInputList } from '../_shared';
 import { useValidateMode } from 'hooks';
 
-import { Input, Selector, Button } from 'components/common';
-import { CloseIcon, EmailIcon, PersonIcon, OpenedEyeIcon, ClosedEyeIcon } from 'public/static/svg';
+import { Selector } from 'components/common';
+import { AuthModal } from '../_shared';
+import { EmailIcon, PersonIcon, OpenedEyeIcon, ClosedEyeIcon } from 'public/static/svg';
 
 import * as S from './signUpModal.styles';
-import PasswordWarning from '../passwordWarning';
 
 interface IProps {
   closeModal: () => void;
@@ -38,6 +40,12 @@ const SignUpModal: FC<IProps> = ({ closeModal }) => {
 
   const dispatch = useDispatch();
   const { setValidateMode } = useValidateMode();
+
+  useEffect(() => {
+    return () => {
+      setValidateMode(false);
+    };
+  }, []);
 
   const { isPasswordValid, validationDetails } = useMemo(
     () => checkPasswordValidation(password, lastname, email),
@@ -67,6 +75,11 @@ const SignUpModal: FC<IProps> = ({ closeModal }) => {
     e.preventDefault();
     setValidateMode(true);
 
+    const isInputValid = email && lastname && firstname && password;
+    const isSelectorValid = birthYear && birthDay && birthMonth;
+
+    if (!(isInputValid && isSelectorValid && isPasswordValid)) return;
+
     try {
       const sigupBody = {
         email,
@@ -77,6 +90,7 @@ const SignUpModal: FC<IProps> = ({ closeModal }) => {
       };
       const { data } = await signupAPI(sigupBody);
       dispatch(userActions.setLoggedUser(data));
+      closeModal();
     } catch (e) {
       console.log(e);
     }
@@ -84,15 +98,24 @@ const SignUpModal: FC<IProps> = ({ closeModal }) => {
 
   const onFocusPassword = () => setIsFocusPassword(true);
 
-  const inputList = convertInputList(email, lastname, firstname, hidePassword, password, {
-    emailIcon: <EmailIcon css={S.inputIcon} />,
-    personIcon: <PersonIcon css={S.inputIcon} />,
-    passwordIcon: hidePassword ? (
-      <ClosedEyeIcon onClick={toggleHidePassword} css={S.eyeIcons} />
-    ) : (
-      <OpenedEyeIcon onClick={toggleHidePassword} css={S.eyeIcons} />
-    ),
-  });
+  const inputList: IInputList[] = convertInputList(
+    email,
+    lastname,
+    firstname,
+    hidePassword,
+    password,
+    isPasswordValid,
+    onFocusPassword,
+    {
+      emailIcon: <EmailIcon css={S.inputIcon} />,
+      personIcon: <PersonIcon css={S.inputIcon} />,
+      passwordIcon: hidePassword ? (
+        <ClosedEyeIcon onClick={toggleHidePassword} css={S.eyeIcons} />
+      ) : (
+        <OpenedEyeIcon onClick={toggleHidePassword} css={S.eyeIcons} />
+      ),
+    }
+  );
 
   const bDaySelectors = convertBDaySelectors({
     options: [MONTHS, DAYS, YEARS],
@@ -100,28 +123,15 @@ const SignUpModal: FC<IProps> = ({ closeModal }) => {
   });
 
   return (
-    <form css={S.wrapper} onSubmit={onSubmitSignup}>
-      <CloseIcon css={S.closeIcon} onClick={closeModal} />
-      {inputList.map((input) => {
-        const { placeholder, type, icon, name, value, dataset, errorMsg } = input;
-        return (
-          <div css={S.inputWrapper} key={dataset}>
-            <Input
-              placeholder={placeholder}
-              type={type}
-              icon={icon}
-              name={name}
-              value={value}
-              dataset={dataset}
-              onChange={onChangeInputs}
-              useValidation
-              isvalid={dataset === 'password' ? isPasswordValid : !!value}
-              errorMsg={errorMsg}
-              onFocus={dataset === 'password' ? onFocusPassword : undefined}
-            />
-          </div>
-        );
-      })}
+    <AuthModal
+      textToCheckSwitchModal='이미 계정이 있나요?'
+      switchModalText='로그인'
+      submitBtnText='가입하기'
+      onChangeInputs={onChangeInputs}
+      onSubmitForm={onSubmitSignup}
+      closeModal={closeModal}
+      inputList={inputList}
+    >
       {isFocusPassword &&
         passwordWarnings.map((warning) => <PasswordWarning isValid={warning.isValid} text={warning.text} />)}
       <p css={S.title}>생일</p>
@@ -144,8 +154,7 @@ const SignUpModal: FC<IProps> = ({ closeModal }) => {
           );
         })}
       </div>
-      <Button type='submit'>가입하기</Button>
-    </form>
+    </AuthModal>
   );
 };
 

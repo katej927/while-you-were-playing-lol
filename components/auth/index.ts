@@ -1,4 +1,4 @@
 import SignUpModal from './signUpModal';
-import PasswordWarning from './passwordWarning';
+import LoginModal from './loginModal';
 
-export { SignUpModal, PasswordWarning };
+export { SignUpModal, LoginModal };
