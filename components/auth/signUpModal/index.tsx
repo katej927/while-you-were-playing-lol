@@ -1,3 +1,4 @@
+import dynamic from 'next/dynamic';
 import { FC, useState, SyntheticEvent, FormEvent, useMemo, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { userActions } from 'store/user';
@@ -11,16 +12,17 @@ import {
   checkPasswordValidation,
   convertPasswordWarningTxt,
   convertInputList,
-  PasswordWarning,
 } from './_shared';
 import { IInputList } from '../_shared';
 import { useValidateMode } from 'hooks';
 
 import { Selector } from 'components/common';
-import { AuthModal } from '../_shared';
+import CommonAuthModal from '../commonAuthModal';
 import { EmailIcon, PersonIcon, OpenedEyeIcon, ClosedEyeIcon } from 'public/static/svg';
 
 import * as S from './signUpModal.styles';
+
+const DynamicPasswordWarning = dynamic(() => import('./passwordWarning'));
 
 interface IProps {
   closeModal: () => void;
@@ -123,7 +125,7 @@ const SignUpModal: FC<IProps> = ({ closeModal }) => {
   });
 
   return (
-    <AuthModal
+    <CommonAuthModal
       textToCheckSwitchModal='이미 계정이 있나요?'
       switchModalText='로그인'
       submitBtnText='가입하기'
@@ -133,7 +135,7 @@ const SignUpModal: FC<IProps> = ({ closeModal }) => {
       inputList={inputList}
     >
       {isFocusPassword &&
-        passwordWarnings.map((warning) => <PasswordWarning isValid={warning.isValid} text={warning.text} />)}
+        passwordWarnings.map((warning) => <DynamicPasswordWarning isValid={warning.isValid} text={warning.text} />)}
       <p css={S.title}>생일</p>
       <p css={S.titleInfo}>생일은 다른 이용자에게 공개되지 않습니다.</p>
       <div css={S.bDaySelectorWrapper}>
@@ -154,7 +156,7 @@ const SignUpModal: FC<IProps> = ({ closeModal }) => {
           );
         })}
       </div>
-    </AuthModal>
+    </CommonAuthModal>
   );
 };
 

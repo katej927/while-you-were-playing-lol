@@ -2,8 +2,9 @@ import { useMemo } from 'react';
 import { useRouter } from 'next/router';
 import useTranslation from 'next-translate/useTranslation';
 
-import { useSelector } from '../../store';
-import { convertAllMatch, convertTime, CONVERT_ICON_URL, Carousel } from './_shared';
+import { useSelector } from 'store';
+import { convertAllMatch, convertTime, CONVERT_ICON_URL } from './_shared';
+import Carousel from './carousel';
 
 import { NoRecord } from '../errors';
 import { Container } from '../common';

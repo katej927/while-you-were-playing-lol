@@ -1,4 +1,4 @@
-import { FC, ButtonHTMLAttributes } from 'react';
+import { FC, ButtonHTMLAttributes, memo } from 'react';
 import * as S from './button.styles';
 
 interface IProps extends ButtonHTMLAttributes<HTMLButtonElement> {
@@ -13,4 +13,4 @@ const Button: FC<IProps> = ({ children, ...props }) => {
   );
 };
 
-export default Button;
+export default memo(Button);

@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import * as S from './container.styles';
 
 interface IProps {
@@ -14,4 +15,4 @@ const Containter = ({ children, title }: IProps) => {
   );
 };
 
-export default Containter;
+export default memo(Containter);

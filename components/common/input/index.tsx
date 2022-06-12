@@ -1,4 +1,4 @@
-import { InputHTMLAttributes, FC } from 'react';
+import { InputHTMLAttributes, FC, memo } from 'react';
 import { useSelector } from 'store';
 
 import * as S from './input.styles';
@@ -24,4 +24,4 @@ const Input: FC<IProps> = ({ dataset, icon, isvalid = false, useValidation = tru
   );
 };
 
-export default Input;
+export default memo(Input);

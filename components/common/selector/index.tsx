@@ -1,4 +1,4 @@
-import { SelectHTMLAttributes, FC } from 'react';
+import { SelectHTMLAttributes, FC, memo } from 'react';
 import { useSelector } from 'store';
 
 import { ArrowDownIcon } from 'public/static/svg';
@@ -36,4 +36,4 @@ const Selector: FC<IProps> = ({ isValid, dataset, options = [], disabledOptions 
   );
 };
 
-export default Selector;
+export default memo(Selector);

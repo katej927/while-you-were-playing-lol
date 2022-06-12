@@ -13,7 +13,7 @@ import { IEachMatchInfo } from 'types';
 
 import * as S from './carousel.styles';
 
-const DynamicModalPortal = dynamic(() => import('./_shared/carouselModal'));
+const DynamicModalPortal = dynamic(() => import('./carouselModal'));
 
 const Carousel = () => {
   const [modalData, setModalData] = useState<IEachMatchInfo>();

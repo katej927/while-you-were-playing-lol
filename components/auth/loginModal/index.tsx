@@ -5,7 +5,7 @@ import { userActions } from 'store/user';
 import { useValidateMode } from 'hooks';
 import { loginAPI } from 'lib/api';
 import { convertInputList } from './_shared';
-import { AuthModal } from '../_shared';
+import CommonAuthModal from '../commonAuthModal';
 
 import { EmailIcon, ClosedEyeIcon, OpenedEyeIcon } from 'public/static/svg';
 import * as S from './loginModal.styles';
@@ -65,7 +65,7 @@ const LoginModal: FC<IProps> = ({ closeModal }) => {
   };
 
   return (
-    <AuthModal
+    <CommonAuthModal
       onSubmitForm={onSubmitForm}
       closeModal={closeModal}
       inputList={inputList}
