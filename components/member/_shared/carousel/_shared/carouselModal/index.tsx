@@ -2,7 +2,7 @@ import { FC } from 'react';
 import useTranslation from 'next-translate/useTranslation';
 
 import { CloseIcon } from 'public/static/svg';
-import { BACKGROUND_IMG_URL, ITEM_IMG_URL, convertData } from './_shared';
+import { BACKGROUND_IMG_URL, ITEM_IMG_URL, convertData, IResult } from './_shared';
 
 import { IEachMatchInfo } from 'types';
 
@@ -15,7 +15,7 @@ interface IProps {
 
 const carouselModal: FC<IProps> = ({ modalData, closeModal }) => {
   let { t } = useTranslation('common');
-  const convertedData = convertData(modalData);
+  const convertedData: IResult = convertData(modalData);
 
   return (
     <section css={S.wrapper}>

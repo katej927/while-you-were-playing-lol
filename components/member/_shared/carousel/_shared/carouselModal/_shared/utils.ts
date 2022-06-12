@@ -1,17 +1,7 @@
 import { format, secondsToMinutes } from 'date-fns';
 import { addCommas } from 'lib/utils';
 import { IEachMatchInfo } from 'types';
-
-interface IResult {
-  championName: string;
-  playDate: string;
-  playDuration: string;
-  isWin: string;
-  kda: string;
-  damageAmount: string;
-  cs: string;
-  itemList: number[];
-}
+import { IResult } from '.';
 
 // interface IConvertedData {
 //   [key: string]: string | number | boolean | number[];
