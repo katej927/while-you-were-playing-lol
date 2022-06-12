@@ -20,4 +20,9 @@ const write = async (users: IStoredUserType[]) => {
   writeFileSync('data/users.json', JSON.stringify(users));
 };
 
-export default { getUsers, exist, write };
+const find = ({ email }: { email: string }) => {
+  const users = getUsers();
+  return users.find((user) => user.email === email);
+};
+
+export default { getUsers, exist, write, find };

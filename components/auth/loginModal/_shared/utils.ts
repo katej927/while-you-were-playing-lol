@@ -11,6 +11,8 @@ export const convertInputList = (email: string, password: string, hidePassword: 
       icon: icons.emailIcon,
       value: email,
       dataset: 'email',
+      isValid: email,
+      errorMsg: '이메일을 입력해주세요.',
     },
     {
       placeholder: '비밀번호 설정하기',
@@ -18,6 +20,8 @@ export const convertInputList = (email: string, password: string, hidePassword: 
       icon: icons.eyeIcon,
       value: password,
       dataset: 'password',
+      isValid: password,
+      errorMsg: '비밀번호를 입력해주세요.',
     },
   ];
 };

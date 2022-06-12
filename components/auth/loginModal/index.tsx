@@ -1,5 +1,9 @@
-import { FC, FormEvent, SyntheticEvent, useState } from 'react';
+import { FC, FormEvent, SyntheticEvent, useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { userActions } from 'store/user';
 
+import { useValidateMode } from 'hooks';
+import { loginAPI } from 'lib/api';
 import { convertInputList } from './_shared';
 import { AuthModal } from '../_shared';
 
@@ -14,6 +18,15 @@ const LoginModal: FC<IProps> = ({ closeModal }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [hidePassword, setHidePassword] = useState(true);
+
+  const { setValidateMode } = useValidateMode();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    return () => {
+      setValidateMode(false);
+    };
+  }, []);
 
   const toggleHidePassword = () => setHidePassword(!hidePassword);
 
@@ -36,7 +49,20 @@ const LoginModal: FC<IProps> = ({ closeModal }) => {
     if (id === 'password') return setPassword(value);
   };
 
-  const onSubmitForm = async (e: FormEvent<HTMLFormElement>) => {};
+  const onSubmitForm = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setValidateMode(true);
+
+    if (!email || !password) return;
+
+    try {
+      const { data } = await loginAPI({ email, password });
+      dispatch(userActions.setLoggedUser(data));
+      closeModal();
+    } catch (e) {
+      console.log(e);
+    }
+  };
 
   return (
     <AuthModal

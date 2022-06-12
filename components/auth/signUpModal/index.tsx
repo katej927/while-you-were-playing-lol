@@ -2,7 +2,7 @@ import { FC, useState, SyntheticEvent, FormEvent, useMemo, useEffect } from 'rea
 import { useDispatch } from 'react-redux';
 import { userActions } from 'store/user';
 
-import { signupAPI } from 'lib/api/auth';
+import { signupAPI } from 'lib/api';
 import {
   DAYS,
   MONTHS,
