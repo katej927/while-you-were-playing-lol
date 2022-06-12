@@ -28,9 +28,9 @@ const HeaderAuth = () => {
   return (
     <div>
       {BUTTONS_BEFORE_LOGIN.map((btnName) => (
-        <button key={btnName} css={S.authBtns} type='button' onClick={onClickAuthBtn} data-id={btnName}>
+        <S.AuthBtns key={btnName} btnName={btnName} type='button' onClick={onClickAuthBtn} data-id={btnName}>
           {btnName}
-        </button>
+        </S.AuthBtns>
       ))}
       <ModalPortal>
         {authMode === 'signup' ? <SignUpModal closeModal={closeModal} /> : <LoginModal closeModal={closeModal} />}

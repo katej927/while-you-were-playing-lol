@@ -30,18 +30,36 @@ export const mainIcon = css`
   cursor: pointer;
 `;
 
-type Props = {
-  isSelected: boolean;
-};
-
 export const rightBtnWrapper = css`
   ${flex('row')}
 `;
 
-export const LocalBtn = styled.button`
-  border: 1px solid ${(props: Props) => (props.isSelected ? colors.theme : colors.gray101)};
+export const switchLanguageContainer = css`
+  display: flex;
+  justify-content: center;
+
+  position: relative;
+`;
+
+export const switchLanguageBtn = css`
+  svg {
+    fill: ${colors.white001};
+  }
+`;
+
+export const localesContainer = css`
+  width: 150px;
+  position: absolute;
+  background-color: ${colors.white001};
+  top: 34px;
+  border-radius: ${sizes.borderRadius};
+`;
+
+export const LocalBtn = styled.button<{ isSelected: boolean }>`
   border-right: none;
-  padding: 5px 10px;
-  color: ${(props: Props) => (props.isSelected ? colors.white001 : colors.lightPurple)};
-  background-color: ${(props: Props) => (props.isSelected ? colors.theme : colors.gray104)};
+  padding: 0 0 0 20px;
+  color: ${({ isSelected }) => (isSelected ? colors.theme : colors.gray100)};
+  line-height: 40px;
+  width: 100%;
+  text-align: start;
 `;

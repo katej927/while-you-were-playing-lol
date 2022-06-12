@@ -8,6 +8,7 @@ import ClosedEyeIcon from './eye-closed-icon.svg';
 import ArrowDownIcon from './arrow-down-icon.svg';
 import CheckIcon from './check-icon.svg';
 import MenuIcon from './menu-icon.svg';
+import EarthIcon from './earth-icon.svg';
 
 export {
   MainIcon,
@@ -20,4 +21,5 @@ export {
   ArrowDownIcon,
   CheckIcon,
   MenuIcon,
+  EarthIcon,
 };
