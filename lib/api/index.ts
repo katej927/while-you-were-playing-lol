@@ -7,4 +7,4 @@ const axios = Axios.create({
 export default axios;
 
 export { getSummonerDataAPI } from './riot';
-export { signupAPI, loginAPI, meAPI } from './auth';
+export { signupAPI, loginAPI, meAPI, logoutAPI } from './auth';

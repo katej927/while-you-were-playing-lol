@@ -46,6 +46,10 @@ export const LocalBtn = styled.button`
   background-color: ${(props: Props) => (props.isSelected ? colors.theme : colors.gray104)};
 `;
 
+export const userProfileContainer = css`
+  position: relative;
+`;
+
 export const authBtns = css`
   background-color: red;
 `;
@@ -70,5 +74,30 @@ export const userProfile = css`
     width: 30px;
     height: 30px;
     border-radius: 50%;
+  }
+`;
+
+export const userMenuBtnContainer = css`
+  position: absolute;
+  right: 0;
+  top: 52px;
+  width: 240px;
+  padding: 8px;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.12);
+  border-radius: ${sizes.borderRadius};
+  background-color: ${colors.white001};
+
+  li {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 42px;
+    padding: 0 16px;
+    border-radius: ${sizes.borderRadius};
+    cursor: pointer;
+
+    &:hover {
+      background-color: ${colors.lightgray101};
+    }
   }
 `;

@@ -163,6 +163,7 @@ const GlobalStyle = css`
 
   a {
     text-decoration: none;
+    color: black;
   }
 
   select,

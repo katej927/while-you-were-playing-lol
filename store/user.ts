@@ -19,6 +19,10 @@ const user = createSlice({
       state = { ...action.payload, isLogged: true };
       return state;
     },
+    initUser(state) {
+      state = initialState;
+      return state;
+    },
   },
 });
 
