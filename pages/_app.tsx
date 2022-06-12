@@ -39,9 +39,4 @@ app.getInitialProps = wrapper.getInitialAppProps((store) => async (context: AppC
   return { ...appInitialProps };
 });
 
-// export const getServerSideProps: GetServerSideProps = wrapper.getServerSideProps((store) => async ({ req }) => {
-//   try {
-//   } catch (e) {}
-// });
-
 export default wrapper.withRedux(app);
