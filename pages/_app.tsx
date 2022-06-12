@@ -1,6 +1,6 @@
-import { GetServerSideProps } from 'next';
 import App, { AppContext, AppProps } from 'next/app';
 import { wrapper } from '../store';
+import { userActions } from 'store/user';
 
 import axios, { meAPI } from 'lib/api';
 
@@ -26,12 +26,12 @@ app.getInitialProps = wrapper.getInitialAppProps((store) => async (context: AppC
   const appInitialProps = await App.getInitialProps(context);
   const cookieObject = cookieStringToObject(context.ctx.req?.headers.cookie);
   const { isLogged } = store.getState().user;
-  console.log('cookieObject.access_token', cookieObject.access_token);
+
   try {
     if (!isLogged && cookieObject.access_token) {
       axios.defaults.headers.common.cookie = cookieObject.access_token;
       const { data } = await meAPI();
-      console.log('data', data);
+      store.dispatch(userActions.setLoggedUser(data));
     }
   } catch (e) {
     console.log(e);

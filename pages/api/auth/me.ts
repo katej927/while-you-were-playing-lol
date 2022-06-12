@@ -1,11 +1,13 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import { verify } from 'jsonwebtoken';
 
+import Data from 'lib/data';
+import { IStoredUserType } from 'types';
+
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method === 'GET') {
     try {
       const accessToken = req.headers.cookie;
-      console.log('accessToken', accessToken);
 
       if (!accessToken) {
         res.statusCode = 400;
@@ -13,9 +15,18 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       }
 
       const userId = verify(accessToken, process.env.JWT_SECRET!);
-      console.log(userId);
+      const user = Data.user.find({ id: Number(userId) });
 
-      return res.end();
+      if (!user) {
+        res.statusCode = 404;
+        return res.send('해당 유저가 없습니다.');
+      }
+
+      const userWithoutPassword: Partial<Pick<IStoredUserType, 'password'>> = user;
+
+      delete userWithoutPassword.password;
+      res.statusCode = 200;
+      return res.send(userWithoutPassword);
     } catch (e) {
       console.log(e);
       res.statusCode = 500;
