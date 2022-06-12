@@ -2,7 +2,7 @@ import { NextSeo } from 'next-seo';
 import { useRouter } from 'next/router';
 import useTranslation from 'next-translate/useTranslation';
 
-import { Header } from './_shared';
+import Header from './header';
 
 import * as S from './layout.styles';
 
