@@ -18,6 +18,8 @@ const Member = () => {
     query: { name },
   } = router;
 
+  console.log('allMatchData, profileIconId', allMatchData, profileIconId);
+
   if (!allMatchData.length) return <NoRecord />;
 
   let { t } = useTranslation('common');

@@ -1,3 +1,4 @@
+import { signIn } from 'next-auth/react';
 import { FC, FormEvent, SyntheticEvent, useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { userActions } from 'store/user';
@@ -56,8 +57,13 @@ const LoginModal: FC<IProps> = ({ closeModal }) => {
     if (!email || !password) return;
 
     try {
-      const { data } = await loginAPI({ email, password });
-      dispatch(userActions.setLoggedUser(data));
+      // const { data } = await loginAPI({ email, password });
+      // dispatch(userActions.setLoggedUser(data));
+      await signIn('credentials', {
+        redirect: false,
+        email,
+        password,
+      });
       closeModal();
     } catch (e) {
       console.log(e);

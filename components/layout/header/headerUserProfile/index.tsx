@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { useState, useRef } from 'react';
 import { useDispatch } from 'react-redux';
 import { useClickAway } from 'react-use';
+import { signOut } from 'next-auth/react';
 
 import { useSelector } from 'store';
 import { userActions } from 'store/user';
@@ -22,14 +23,18 @@ const HeaderUserProfile = () => {
 
   const onClickUserProfileBtn = () => setIsUserMenuOPen(!isUserMenuOpen);
 
-  const onClickLogout = async () => {
-    try {
-      await logoutAPI();
-      dispatch(userActions.initUser());
-    } catch (e) {
-      console.log(e);
-    }
-  };
+  // const onClickLogout = async () => {
+  //   try {
+  //     await logoutAPI();
+  //     dispatch(userActions.initUser());
+
+  //   } catch (e) {
+  //     console.log(e);
+  //   }
+  // };
+
+  const onClickLogout = () => signOut();
+
   return (
     <div ref={ref} css={S.userProfileContainer}>
       <button type='button' css={S.userProfile} onClick={onClickUserProfileBtn}>

@@ -15,6 +15,7 @@ import {
 } from './_shared';
 import { IInputList } from '../_shared';
 import { useValidateMode } from 'hooks';
+import { createUser } from 'lib/api';
 
 import { Selector } from 'components/common';
 import CommonAuthModal from '../commonAuthModal';
@@ -30,8 +31,8 @@ interface IProps {
 
 const SignUpModal: FC<IProps> = ({ closeModal }) => {
   const [email, setEmail] = useState('');
-  const [lastname, setLastname] = useState('');
-  const [firstname, setFirstname] = useState('');
+  const [name, setName] = useState('');
+  const [summonerName, setSummonerName] = useState('');
   const [password, setPassword] = useState('');
   const [hidePassword, setHidePassword] = useState(true);
   const [isFocusPassword, setIsFocusPassword] = useState(false);
@@ -40,7 +41,7 @@ const SignUpModal: FC<IProps> = ({ closeModal }) => {
   const [birthDay, setBirthDay] = useState<string | undefined>();
   const [birthMonth, setBirthMonth] = useState<string | undefined>();
 
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const { setValidateMode } = useValidateMode();
 
   useEffect(() => {
@@ -50,8 +51,8 @@ const SignUpModal: FC<IProps> = ({ closeModal }) => {
   }, []);
 
   const { isPasswordValid, validationDetails } = useMemo(
-    () => checkPasswordValidation(password, lastname, email),
-    [password, lastname, email]
+    () => checkPasswordValidation(password, name, email),
+    [password, name, email]
   );
 
   const passwordWarnings = convertPasswordWarningTxt(validationDetails);
@@ -65,8 +66,8 @@ const SignUpModal: FC<IProps> = ({ closeModal }) => {
     },
   }: SyntheticEvent<HTMLInputElement | HTMLSelectElement>) => {
     if (id === 'email') return setEmail(value);
-    if (id === 'lastname') return setLastname(value);
-    if (id === 'firstname') return setFirstname(value);
+    if (id === 'name') return setName(value);
+    if (id === 'summonerName') return setSummonerName(value);
     if (id === 'password') return setPassword(value);
     if (id === 'bDay-month') return setBirthMonth(value);
     if (id === 'bDay-day') return setBirthDay(value);
@@ -77,7 +78,7 @@ const SignUpModal: FC<IProps> = ({ closeModal }) => {
     e.preventDefault();
     setValidateMode(true);
 
-    const isInputValid = email && lastname && firstname && password;
+    const isInputValid = email && name && summonerName && password;
     const isSelectorValid = birthYear && birthDay && birthMonth;
 
     if (!(isInputValid && isSelectorValid && isPasswordValid)) return;
@@ -85,25 +86,28 @@ const SignUpModal: FC<IProps> = ({ closeModal }) => {
     try {
       const sigupBody = {
         email,
-        lastname,
-        firstname,
+        name,
+        summonerName,
         password,
         birthday: new Date(`${birthYear}-${birthMonth!.replace('월', '')}-${birthDay}`).toISOString(),
       };
-      const { data } = await signupAPI(sigupBody);
-      dispatch(userActions.setLoggedUser(data));
+      const result = await createUser(sigupBody);
+      console.log('result', result);
+      // const { data } = await signupAPI(sigupBody);
+      // dispatch(userActions.setLoggedUser(data));
       closeModal();
     } catch (e) {
       console.log(e);
     }
   };
+  console.log('password', password);
 
   const onFocusPassword = () => setIsFocusPassword(true);
 
   const inputList: IInputList[] = convertInputList(
     email,
-    lastname,
-    firstname,
+    name,
+    summonerName,
     hidePassword,
     password,
     isPasswordValid,

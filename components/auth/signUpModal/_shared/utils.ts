@@ -6,8 +6,8 @@ interface IInputListIconProps {
 
 export const convertInputList = (
   email: string,
-  lastname: string,
-  firstname: string,
+  name: string,
+  summonerName: string,
   hidePassword: boolean,
   password: string,
   isPasswordValid: boolean,
@@ -27,25 +27,25 @@ export const convertInputList = (
       onFocus: undefined,
     },
     {
-      placeholder: '이름(예: 길동)',
+      placeholder: '이름(예: 홍길동)',
       type: undefined,
       icon: personIcon,
       name: undefined,
-      value: lastname,
-      dataset: 'lastname',
+      value: name,
+      dataset: 'name',
       errorMsg: '이름을 입력하세요.',
-      isValid: !!lastname,
+      isValid: !!name,
       onFocus: undefined,
     },
     {
-      placeholder: '성(예: 홍)',
+      placeholder: '롤 소환사명',
       type: undefined,
       icon: personIcon,
       name: undefined,
-      value: firstname,
-      dataset: 'firstname',
-      errorMsg: '성을 입력하세요.',
-      isValid: !!firstname,
+      value: summonerName,
+      dataset: 'summonerName',
+      errorMsg: '소환사명을 입력하세요.',
+      isValid: !!summonerName,
       onFocus: undefined,
     },
     {
@@ -76,9 +76,9 @@ export const convertBDaySelectors = (data: IBDaySelectorsProps) => {
   ];
 };
 
-export const checkPasswordValidation = (password: string, lastname: string, email: string) => {
+export const checkPasswordValidation = (password: string, name: string, email: string) => {
   const isPasswordHasNameOrEmail =
-    !password || !lastname || password.includes(lastname) || password.includes(email.split('@')[0]);
+    !password || !name || password.includes(name) || password.includes(email.split('@')[0]);
   const isPasswordOverMinLength = password.length >= PASSWORD_MIN_LENGTH;
   const isPasswordHasNumOrSymbol = !(SPECIAL_CHARACTER_REGEX.test(password) || NUMBER_REGEX.test(password));
 

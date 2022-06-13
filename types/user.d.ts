@@ -7,6 +7,6 @@ export interface IUserType {
   profileImage: string;
 }
 
-export interface IStoredUserType extends IUserType {
+export interface StoredUserType extends IUserType {
   password: string;
 }

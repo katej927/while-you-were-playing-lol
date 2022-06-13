@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { SyntheticEvent } from 'react';
 import { useDispatch } from 'react-redux';
 

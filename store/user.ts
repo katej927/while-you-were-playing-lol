@@ -4,8 +4,8 @@ import { IUserType, UserState } from 'types';
 const initialState: UserState = {
   id: 0,
   email: '',
-  firstname: '',
-  lastname: '',
+  summonerName: '',
+  name: '',
   birthday: '',
   profileImage: '',
   isLogged: false,

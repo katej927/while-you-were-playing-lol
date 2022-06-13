@@ -1,8 +1,9 @@
 import dynamic from 'next/dynamic';
 import { useRouter } from 'next/router';
 import { SyntheticEvent, useState } from 'react';
+import { useSession } from 'next-auth/react';
 
-import { useSelector } from 'store';
+// import { useSelector } from 'store';
 import { convertLanguages } from './_shared';
 
 import { MainIcon, EarthIcon } from 'public/static/svg';
@@ -13,8 +14,8 @@ const DynamicHeaderUserProfile = dynamic(() => import('./headerUserProfile'));
 
 const Header = () => {
   const [isLocaleDropDownOpen, setIsLocaleDropDownOpen] = useState(false);
-
-  const isLogged = useSelector((state) => state.user.isLogged);
+  const { data: session, status } = useSession();
+  console.log('session', session, 'status', status);
 
   const router = useRouter();
   const { pathname, asPath, query, locales, locale: curlocale } = router;
@@ -59,8 +60,8 @@ const Header = () => {
             )}
           </div>
           <div>
-            {isLogged && <DynamicHeaderUserProfile />}
-            {!isLogged && <DynamicHeaderAuth />}
+            {status === 'authenticated' && <DynamicHeaderUserProfile />}
+            {status === 'unauthenticated' && <DynamicHeaderAuth />}
           </div>
         </div>
       </div>

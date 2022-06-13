@@ -42,6 +42,7 @@ export const switchLanguageContainer = css`
 `;
 
 export const switchLanguageBtn = css`
+  margin-right: 6px;
   svg {
     fill: ${colors.white001};
   }
