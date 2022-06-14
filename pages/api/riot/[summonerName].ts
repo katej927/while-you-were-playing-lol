@@ -23,7 +23,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       );
 
       const { data: matchIdLists } = await axios.get(
-        `${process.env.NEXT_PUBLIC_RIOT_ROUTING_ASIA}/lol/match/v5/matches/by-puuid/${puuid}/ids?start=00&count=19&api_key=${process.env.RIOT_API_KEY}`
+        `${process.env.NEXT_PUBLIC_RIOT_ROUTING_ASIA}/lol/match/v5/matches/by-puuid/${puuid}/ids?start=00&count=15&api_key=${process.env.RIOT_API_KEY}`
       );
 
       const allMatchData = await Promise.all(

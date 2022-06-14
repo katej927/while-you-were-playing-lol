@@ -83,8 +83,7 @@ const SignUpModal: FC<IProps> = ({ closeModal }) => {
         password,
         birthday: new Date(`${birthYear}-${birthMonth!.replace('월', '')}-${birthDay}`).toISOString(),
       };
-      const result = await createUser(sigupBody);
-      console.log('result', result);
+      await createUser(sigupBody);
       closeModal();
     } catch (e) {
       console.log(e);

@@ -34,4 +34,6 @@ export const icon = css`
   position: absolute;
   right: 11px;
   top: 11px;
+  width: 20px;
+  cursor: pointer;
 `;

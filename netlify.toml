@@ -1,5 +1,0 @@
-[[plugins]]
-package = 'netlify-plugin-prisma-provider'
-  [plugins.inputs]
-  path = 'prisma/schema.prisma'
-  varName = 'DATABASE_PROVIDER'

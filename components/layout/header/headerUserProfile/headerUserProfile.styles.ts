@@ -10,7 +10,7 @@ export const userProfileContainer = css`
 export const userProfile = css`
   ${flex('row')}
   margin-left: 10px;
-  padding: 4px 16px;
+  padding: 8px 16px;
   border: 0;
   border-radius: ${sizes.borderRadius};
   background-color: ${colors.gray104};
@@ -21,6 +21,7 @@ export const userProfile = css`
   svg {
     fill: ${colors.white001};
     margin-left: 16px;
+    width: 20px;
   }
 `;
 

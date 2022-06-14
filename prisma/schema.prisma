@@ -6,8 +6,8 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite"
-  url      = "file:mydb.db"
+   provider = "sqlite"
+   url      = "file:mydb.db"
 }
 
 model User {
