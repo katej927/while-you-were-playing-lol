@@ -3179,7 +3179,7 @@ glob-parent@^6.0.1:
   dependencies:
     is-glob "^4.0.3"
 
-glob@^7.1.3, glob@^7.1.4:
+glob@^7.1.3, glob@^7.1.4, glob@^7.1.6:
   version "7.2.3"
   resolved "https://registry.npmjs.org/glob/-/glob-7.2.3.tgz"
   integrity sha512-nFR0zLpU2YCaRxwoCJvL6UvCH2JFyFVIvwTLsIf21AuHlMskA1hhTdk+LlYJtOlYt9v6dvszD2BGRqBL+iQK9Q==
@@ -4224,6 +4224,13 @@ natural-compare@^1.4.0:
   version "1.4.0"
   resolved "https://registry.npmjs.org/natural-compare/-/natural-compare-1.4.0.tgz"
   integrity sha512-OWND8ei3VtNC9h7V60qff3SVobHr996CTwgxubgyQYEpg290h9J0buyECNNJexkFm5sOajh5G116RYA1c8ZMSw==
+
+netlify-plugin-prisma-provider@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/netlify-plugin-prisma-provider/-/netlify-plugin-prisma-provider-0.3.0.tgz#8b56ddf35c350583b6265a5579fe7921a5e13843"
+  integrity sha512-o4rnxWNHDg1yJGnpKAtMX5eGgazkuKru+Qa13+t/SIxg2wmMXvnMvkzXB5kd5LnAov0bODT7DIQrHA2k5wiMCQ==
+  dependencies:
+    glob "^7.1.6"
 
 next-auth@^4.5.0:
   version "4.5.0"
