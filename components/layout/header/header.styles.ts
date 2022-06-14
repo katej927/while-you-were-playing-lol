@@ -52,7 +52,7 @@ export const localesContainer = css`
   width: 150px;
   position: absolute;
   background-color: ${colors.white001};
-  top: 34px;
+  top: 41px;
   border-radius: ${sizes.borderRadius};
 `;
 

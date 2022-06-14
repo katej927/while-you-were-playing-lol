@@ -127,7 +127,9 @@ const SignUpModal: FC<IProps> = ({ closeModal }) => {
       inputList={inputList}
     >
       {isFocusPassword &&
-        passwordWarnings.map((warning) => <DynamicPasswordWarning isValid={warning.isValid} text={warning.text} />)}
+        passwordWarnings.map((warning) => (
+          <DynamicPasswordWarning key={warning.text} isValid={warning.isValid} text={warning.text} />
+        ))}
       <p css={S.title}>생일</p>
       <p css={S.titleInfo}>생일은 다른 이용자에게 공개되지 않습니다.</p>
       <div css={S.bDaySelectorWrapper}>

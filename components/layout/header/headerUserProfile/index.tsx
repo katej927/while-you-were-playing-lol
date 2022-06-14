@@ -1,8 +1,9 @@
 import Link from 'next/link';
 import { useState, useRef } from 'react';
 import { useClickAway } from 'react-use';
-import { signOut } from 'next-auth/react';
+import { signOut, useSession } from 'next-auth/react';
 
+import { ArrowDownIcon } from 'public/static/svg';
 import * as S from './headerUserProfile.styles';
 
 const HeaderUserProfile = () => {
@@ -12,6 +13,8 @@ const HeaderUserProfile = () => {
     if (isUserMenuOpen) setIsUserMenuOPen(false);
   });
 
+  const { data } = useSession();
+
   const onClickUserProfileBtn = () => setIsUserMenuOPen(!isUserMenuOpen);
 
   const onClickLogout = () => signOut();
@@ -19,11 +22,12 @@ const HeaderUserProfile = () => {
   return (
     <div ref={ref} css={S.userProfileContainer}>
       <button type='button' css={S.userProfile} onClick={onClickUserProfileBtn}>
-        메뉴
+        {`${data?.user?.name} 님`}
+        <ArrowDownIcon />
       </button>
       {isUserMenuOpen && (
         <ul css={S.userMenuBtnContainer}>
-          <Link href={`/summoners/${'사탕새'}`}>
+          <Link href={`/summoners/${data?.user?.name}`}>
             <a role='presentation' onClick={onClickUserProfileBtn}>
               <li>내 기록 보기</li>
             </a>
