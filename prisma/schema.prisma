@@ -14,7 +14,6 @@ model User {
   id 					 Int 			@id @default(autoincrement())
   email 			 String   @unique
 	name 				 String
-  summonerName String
 	password 		 String
   birthday 		 String
   createdAt 	 DateTime @default(now()) @map(name: "created_at")

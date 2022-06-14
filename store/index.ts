@@ -4,13 +4,11 @@ import { configureStore, combineReducers } from '@reduxjs/toolkit';
 import { TypedUseSelectorHook, useSelector as useReduxSelector } from 'react-redux';
 
 import riot from './riot';
-import user from './user';
 import common from './common';
 import auth from './auth';
 
 const rootReducer = combineReducers({
   riot: riot.reducer,
-  user: user.reducer,
   common: common.reducer,
   auth: auth.reducer,
 });

@@ -1,9 +1,3 @@
-import { IUserType } from '.';
-
-export interface UserState extends IUserType {
-  isLogged: boolean;
-}
-
 export interface CommonState {
   validateMode: boolean;
 }

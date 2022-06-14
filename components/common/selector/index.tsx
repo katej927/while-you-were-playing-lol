@@ -15,7 +15,6 @@ interface IProps extends SelectHTMLAttributes<HTMLSelectElement> {
 
 const Selector: FC<IProps> = ({ isValid, dataset, options = [], disabledOptions = [], ...props }) => {
   const validateMode = useSelector((state) => state.common.validateMode);
-  console.log('validateMode', validateMode);
 
   return (
     <S.Container isValid={isValid} validateMode={validateMode}>

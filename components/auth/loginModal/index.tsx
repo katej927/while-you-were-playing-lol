@@ -1,10 +1,7 @@
 import { signIn } from 'next-auth/react';
 import { FC, FormEvent, SyntheticEvent, useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { userActions } from 'store/user';
 
 import { useValidateMode } from 'hooks';
-import { loginAPI } from 'lib/api';
 import { convertInputList } from './_shared';
 import CommonAuthModal from '../commonAuthModal';
 
@@ -21,7 +18,6 @@ const LoginModal: FC<IProps> = ({ closeModal }) => {
   const [hidePassword, setHidePassword] = useState(true);
 
   const { setValidateMode } = useValidateMode();
-  const dispatch = useDispatch();
 
   useEffect(() => {
     return () => {
@@ -57,8 +53,6 @@ const LoginModal: FC<IProps> = ({ closeModal }) => {
     if (!email || !password) return;
 
     try {
-      // const { data } = await loginAPI({ email, password });
-      // dispatch(userActions.setLoggedUser(data));
       await signIn('credentials', {
         redirect: false,
         email,

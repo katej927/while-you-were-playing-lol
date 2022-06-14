@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import axios from 'axios';
 
-import { IParticipant } from './../../../types/riotApi.d';
+import { IParticipant } from 'types/riotApi.d';
 
 // 재확인 필요
 export default async (req: NextApiRequest, res: NextApiResponse) => {

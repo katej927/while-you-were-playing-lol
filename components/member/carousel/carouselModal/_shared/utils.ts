@@ -3,10 +3,6 @@ import { addCommas } from 'lib/utils';
 import { IEachMatchInfo } from 'types';
 import { IResult } from '.';
 
-// interface IConvertedData {
-//   [key: string]: string | number | boolean | number[];
-// }
-
 export const convertData = (data: IEachMatchInfo) => {
   const {
     time: { gameCreation, gameDuration },

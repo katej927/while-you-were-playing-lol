@@ -1,14 +1,8 @@
 import Link from 'next/link';
 import { useState, useRef } from 'react';
-import { useDispatch } from 'react-redux';
 import { useClickAway } from 'react-use';
 import { signOut } from 'next-auth/react';
 
-import { useSelector } from 'store';
-import { userActions } from 'store/user';
-import { logoutAPI } from 'lib/api';
-
-import { MenuIcon } from 'public/static/svg';
 import * as S from './headerUserProfile.styles';
 
 const HeaderUserProfile = () => {
@@ -18,28 +12,14 @@ const HeaderUserProfile = () => {
     if (isUserMenuOpen) setIsUserMenuOPen(false);
   });
 
-  const profileImage = useSelector((state) => state.user.profileImage);
-  const dispatch = useDispatch();
-
   const onClickUserProfileBtn = () => setIsUserMenuOPen(!isUserMenuOpen);
-
-  // const onClickLogout = async () => {
-  //   try {
-  //     await logoutAPI();
-  //     dispatch(userActions.initUser());
-
-  //   } catch (e) {
-  //     console.log(e);
-  //   }
-  // };
 
   const onClickLogout = () => signOut();
 
   return (
     <div ref={ref} css={S.userProfileContainer}>
       <button type='button' css={S.userProfile} onClick={onClickUserProfileBtn}>
-        <MenuIcon />
-        <img src={profileImage} alt='profileImage' />
+        메뉴
       </button>
       {isUserMenuOpen && (
         <ul css={S.userMenuBtnContainer}>

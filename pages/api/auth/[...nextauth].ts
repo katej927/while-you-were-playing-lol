@@ -14,37 +14,24 @@ export default NextAuth({
         password: { label: '패스워드', type: 'password' },
       },
       async authorize(credentials) {
-        console.log('credentials', credentials);
         const user = await prisma.user.findUnique({
           where: {
             email: String(credentials?.email),
           },
           select: {
             name: true,
-            email: true,
-            summonerName: true,
             password: true,
           },
         });
-
-        console.log('user', user);
-
         if (!user) throw new Error('No user found!');
 
         const isValid = compareSync(credentials!.password, user.password);
 
         if (!isValid) throw new Error('Could not log you in!');
 
-        console.log('result', { name: user.name, email: user.email });
-        return user;
+        return { name: user.name };
       },
     }),
   ],
-  callbacks: {
-    session: async ({ session, user }) => {
-      console.log('callbacks session', session);
-      return session;
-    },
-  },
   secret: process.env.NEXTAUTH_SECRET,
 });
