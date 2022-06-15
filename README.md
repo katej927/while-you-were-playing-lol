@@ -62,17 +62,29 @@
   실제 Riot API를 이용해서 user의 최근 15~20회의 League of Legends 게임 이용 시간을 확인하고 얼만큼의 다른 기회 비용이 있었는지를 알려준다
 
 - API 호출 최적화 (by `promise.all`)
+
   다량의(20개) API 호출을 동시에 해서 대기 시간을 감소 시키고 필요한 정보만 추출하고 정리하여 한 번에 client state로 주기 위함.
+
 - 한영 지원 (by `next-translate (i18n)`)
+
 - 테스트 (by `Jest`)
+
   함수로 계산된 값들이 정확한지 (기댓값과 일치하는지) 확인
-- 반응형 (일부) flex 활용하여 크롬으로 확인할 수 있는 모든 사이즈 (iPhone SE ~ Nest Hub Max)에서 컴포넌트의 위치가 동적으로 변한다.
-  (진행 중)
+
+- 반응형 (일부)
+
+  flex 활용하여 크롬으로 확인할 수 있는 모든 사이즈 (iPhone SE ~ Nest Hub Max)에서 컴포넌트의 위치가 동적으로 변한다. (진행 중)
+
 - Responsive Carousel
+
   화면 너비에 비례하여 보여지는 카드의 갯수가 정해짐
+
 - SSR 지원을 위해 `Next.js`, `emotion` 사용
+
 - Modal
-  - `createPortal` 활용 (React 공식 문서 참고)
+
+  `createPortal` 활용 (React 공식 문서 참고)
+
 - Authentication
 
   > 회원가입, 로그인, 로그인 유지, 로그아웃, Validation check 구현
