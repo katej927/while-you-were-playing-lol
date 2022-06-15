@@ -27,28 +27,28 @@
 
 # 📌 Techs<a name="main3"></a>
 
-|   Categories   |              Library               |               content               |
-| :------------: | :--------------------------------: | :---------------------------------: |
-|      Base      |              Next.js               |           React Framework           |
-|       -        |           Redux Toolkit            |           State Container           |
-|       -        |      emotion (react, styled)       |             css styles              |
-|       -        |             TypeScript             |        Programming Language         |
-|       -        | Riot Games API (League of Legends) |              Open API               |
-| Authentication |            NextAuth.js             |     Authentication for Next.js      |
-|       -        |      Prisma (+@prisma/client)      |      Node.js / TypeScript ORM       |
-|       -        |       PostgreSQL (← SQLite)        |  object-relational database system  |
-|       -        |               Docker               |          software platform          |
-|       -        |              bcryptjs              |          password-hashing           |
-|       -        |               Heroku               |     Cloud Application Platform      |
-|       -        |               vercel               |         Deployment Platform         |
-|      i18n      |       next-translate (i18n)        |    translations in a Next.js env    |
-|       -        |              Next SEO              |             SEO Plugin              |
-|      Test      |                Jest                |        JS testing Framework         |
-|     Slide      |    react-slick + slick-carousel    |         Carousel component          |
-|      Etc       |            bignumber.js            |   arbitrary-precision arithmetic    |
-|       -        |              date-fns              |           JS date utility           |
-|       -        |             react-use              | Collection of essential React Hooks |
-|       -        |               axios                |      Promise based HTTP client      |
+|   Categories   |           Library            |               content               |
+| :------------: | :--------------------------: | :---------------------------------: |
+|      Base      |           Next.js            |           React Framework           |
+|       -        |        Redux Toolkit         |           State Container           |
+|       -        |   emotion (react, styled)    |             css styles              |
+|       -        |          TypeScript          |        Programming Language         |
+|       -        |        Riot Games API        |              Open API               |
+| Authentication |         NextAuth.js          |     Authentication for Next.js      |
+|       -        |   Prisma (+@prisma/client)   |      Node.js / TypeScript ORM       |
+|       -        |    PostgreSQL (← SQLite)     |  object-relational database system  |
+|       -        |            Docker            |          software platform          |
+|       -        |           bcryptjs           |          password-hashing           |
+|       -        |            Heroku            |     Cloud Application Platform      |
+|       -        |            vercel            |         Deployment Platform         |
+|      i18n      |        next-translate        |    translations in a Next.js env    |
+|       -        |           Next SEO           |             SEO Plugin              |
+|      Test      |             Jest             |        JS testing Framework         |
+|     Slide      | react-slick + slick-carousel |         Carousel component          |
+|      Etc       |         bignumber.js         |   arbitrary-precision arithmetic    |
+|       -        |           date-fns           |           JS date utility           |
+|       -        |          react-use           | Collection of essential React Hooks |
+|       -        |            axios             |      Promise based HTTP client      |
 
 # 📌 Functions<a name="main4"></a>
 
