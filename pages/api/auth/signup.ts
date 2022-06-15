@@ -8,7 +8,6 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
   let prisma = new PrismaClient();
 
   const data = req.body;
-  console.log('data', data);
 
   const isExistedUser = await prisma.user.findUnique({
     where: {
