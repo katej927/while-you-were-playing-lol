@@ -11,6 +11,6 @@ export const YEARS = Array.from(Array(lengthOfYears), (_, i) => String(currentYe
 
 export const PASSWORD_MIN_LENGTH = 8;
 
-export const SPECIAL_CHARACTER_REGEX = /[{}[\]/?.,;:|)*~`!^\-_+<>@#$%&\\=('"]/g;
+export const SPECIAL_CHARACTER_REGEX = /\W/;
 
-export const NUMBER_REGEX = /[0-9]/g;
+export const NUMBER_REGEX = /\d/;

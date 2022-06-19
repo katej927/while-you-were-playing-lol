@@ -1,14 +1,6 @@
 import dynamic from 'next/dynamic';
 import { FC, useState, SyntheticEvent, FormEvent, useMemo, useEffect } from 'react';
-import {
-  DAYS,
-  MONTHS,
-  YEARS,
-  convertBDaySelectors,
-  checkPasswordValidation,
-  convertPasswordWarningTxt,
-  convertInputList,
-} from './_shared';
+import { DAYS, MONTHS, YEARS, convertBDaySelectors, checkPasswordValidation, convertInputList } from './_shared';
 import { IInputList } from '../_shared';
 import { useValidateMode } from 'hooks';
 import { createUser } from 'lib/api';
@@ -44,14 +36,10 @@ const SignUpModal: FC<IProps> = ({ closeModal }) => {
     };
   }, []);
 
-  const { isPasswordValid, validationDetails } = useMemo(
+  const { isPasswordValid, passwordWarnings } = useMemo(
     () => checkPasswordValidation(password, name, email),
     [password, name, email]
   );
-
-  const passwordWarnings = convertPasswordWarningTxt(validationDetails);
-
-  const toggleHidePassword = () => setHidePassword(!hidePassword);
 
   const onChangeInputs = ({
     currentTarget: {
@@ -92,6 +80,8 @@ const SignUpModal: FC<IProps> = ({ closeModal }) => {
 
   const onFocusPassword = () => setIsFocusPassword(true);
 
+  const toggleHidePassword = () => setHidePassword(!hidePassword);
+
   const inputList: IInputList[] = convertInputList(
     email,
     name,
@@ -126,9 +116,10 @@ const SignUpModal: FC<IProps> = ({ closeModal }) => {
       inputList={inputList}
     >
       {isFocusPassword &&
-        passwordWarnings.map((warning) => (
-          <DynamicPasswordWarning key={warning.text} isValid={warning.isValid} text={warning.text} />
-        ))}
+        passwordWarnings.map((warning) => {
+          console.log('warning', warning);
+          return <DynamicPasswordWarning key={warning.text} isValid={warning.isValid} text={warning.text} />;
+        })}
       <p css={S.title}>생일</p>
       <p css={S.titleInfo}>생일은 다른 이용자에게 공개되지 않습니다.</p>
       <div css={S.bDaySelectorWrapper}>

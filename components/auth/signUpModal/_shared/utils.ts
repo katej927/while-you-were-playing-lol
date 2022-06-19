@@ -65,31 +65,16 @@ export const convertBDaySelectors = (data: IBDaySelectorsProps) => {
 };
 
 export const checkPasswordValidation = (password: string, name: string, email: string) => {
-  const isPasswordHasNameOrEmail =
-    !password || !name || password.includes(name) || password.includes(email.split('@')[0]);
+  const isPasswordHasNameOrEmail = !password.includes(name) && !password.includes(email.split('@')[0]);
   const isPasswordOverMinLength = password.length >= PASSWORD_MIN_LENGTH;
-  const isPasswordHasNumOrSymbol = !(SPECIAL_CHARACTER_REGEX.test(password) || NUMBER_REGEX.test(password));
+  const isPasswordHasNumOrSymbol = SPECIAL_CHARACTER_REGEX.test(password) || NUMBER_REGEX.test(password);
 
-  const validationDetails = { isPasswordHasNameOrEmail, isPasswordOverMinLength, isPasswordHasNumOrSymbol };
-  const isPasswordValid = !isPasswordHasNameOrEmail && isPasswordOverMinLength && !isPasswordHasNumOrSymbol;
-
-  return { isPasswordValid, validationDetails };
-};
-
-interface IWarningTxtProps {
-  isPasswordHasNameOrEmail: boolean;
-  isPasswordOverMinLength: boolean;
-  isPasswordHasNumOrSymbol: boolean;
-}
-
-export const convertPasswordWarningTxt = ({
-  isPasswordHasNameOrEmail,
-  isPasswordOverMinLength,
-  isPasswordHasNumOrSymbol,
-}: IWarningTxtProps) => {
-  return [
+  const passwordWarnings = [
     { isValid: isPasswordHasNameOrEmail, text: '비밀번호에 본인 이름이나 이메일 주소를 포함할 수 없습니다.' },
-    { isValid: !isPasswordOverMinLength, text: '최소 8자' },
+    { isValid: isPasswordOverMinLength, text: '최소 8자' },
     { isValid: isPasswordHasNumOrSymbol, text: '숫자나 기호를 포함하세요.' },
   ];
+  const isPasswordValid = isPasswordHasNameOrEmail && isPasswordOverMinLength && isPasswordHasNumOrSymbol;
+
+  return { isPasswordValid, passwordWarnings };
 };

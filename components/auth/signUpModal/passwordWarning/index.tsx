@@ -11,7 +11,7 @@ interface IProps {
 const PasswordWarning: FC<IProps> = ({ text, isValid }) => {
   return (
     <S.Container isValid={isValid}>
-      {isValid ? <CloseIcon /> : <CheckIcon />}
+      {isValid ? <CheckIcon /> : <CloseIcon />}
       {text}
     </S.Container>
   );
