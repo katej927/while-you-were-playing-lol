@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { authActions } from 'store/auth';
 import { useSelector } from 'store';
 
-import { Input, Button } from 'components/common';
+import Input from './input';
 import { IProps } from './_shared';
 
 import { CloseIcon } from 'public/static/svg';
@@ -49,7 +49,9 @@ const AuthModal: FC<IProps> = ({
         );
       })}
       {children}
-      <Button type='submit'>{submitBtnText}</Button>
+      <button type='submit' css={S.submitBtn}>
+        {submitBtnText}
+      </button>
       <p css={S.checkAccount}>
         {textToCheckSwitchModal}
         <span role='presentation' onClick={onClickSwitchAuthMode}>

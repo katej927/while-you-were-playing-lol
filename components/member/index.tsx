@@ -7,7 +7,7 @@ import { convertAllMatch, convertTime, CONVERT_ICON_URL } from './_shared';
 import Carousel from './carousel';
 
 import { NoRecord } from '../errors';
-import { Container } from '../common';
+import Container from './container';
 
 import * as S from './member.styles';
 
