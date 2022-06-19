@@ -20,8 +20,9 @@ const AuthModal: FC<IProps> = ({
   switchModalText,
   textToCheckSwitchModal,
 }) => {
-  const dispatch = useDispatch();
   const currentAuthMode = useSelector((state) => state.auth.authMode);
+  const dispatch = useDispatch();
+
   const { t } = useTranslation('common');
 
   const onClickSwitchAuthMode = () =>
@@ -45,7 +46,7 @@ const AuthModal: FC<IProps> = ({
               value={value}
               dataset={dataset}
               onChange={onChangeInputs}
-              useValidation
+              isCheckValidation
               isvalid={isValid}
               errorMsg={errorMsg}
               onFocus={onFocus}

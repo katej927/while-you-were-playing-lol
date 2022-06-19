@@ -122,7 +122,6 @@ const SignUpModal: FC<IProps> = ({ closeModal }) => {
     >
       {isFocusPassword &&
         passwordWarnings.map((warning) => {
-          console.log('warning', warning);
           return <DynamicPasswordWarning key={warning.text} isValid={warning.isValid} text={warning.text} />;
         })}
       <p css={S.title}>생일</p>

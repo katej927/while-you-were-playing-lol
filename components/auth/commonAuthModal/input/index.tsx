@@ -7,18 +7,18 @@ interface IProps extends InputHTMLAttributes<HTMLInputElement> {
   icon?: JSX.Element;
   dataset: string;
   isvalid?: boolean;
-  useValidation?: boolean;
+  isCheckValidation?: boolean;
   errorMsg?: string;
 }
 
-const Input: FC<IProps> = ({ dataset, icon, isvalid = false, useValidation = true, errorMsg, ...props }) => {
+const Input: FC<IProps> = ({ dataset, icon, isvalid = false, isCheckValidation = true, errorMsg, ...props }) => {
   const validateMode = useSelector((state) => state.common.validateMode);
 
   return (
-    <S.Container iconExist={!!icon} isvalid={isvalid} useValidation={useValidation && validateMode}>
+    <S.Container iconExist={!!icon} isvalid={isvalid} isValidateMode={isCheckValidation && validateMode}>
       <input data-id={dataset} {...props} />
       <div css={S.iconWrapper}>{icon}</div>
-      {useValidation && !isvalid && validateMode && errorMsg && <p css={S.errorMsg}>{errorMsg}</p>}
+      {isCheckValidation && !isvalid && validateMode && errorMsg && <p css={S.errorMsg}>{errorMsg}</p>}
     </S.Container>
   );
 };

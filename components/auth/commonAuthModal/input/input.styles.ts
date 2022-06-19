@@ -5,7 +5,7 @@ import { colors, sizes, font, font_weight } from 'styles/constants';
 type TContainerProps = {
   iconExist: boolean;
   isvalid: boolean;
-  useValidation: boolean | undefined;
+  isValidateMode: boolean | undefined;
 };
 
 export const Container = styled.div<TContainerProps>`
@@ -15,7 +15,7 @@ export const Container = styled.div<TContainerProps>`
     height: 46px;
     padding: ${({ iconExist }) => (iconExist ? '0 44px 0 11px' : '0 11px')};
     border: 1px solid
-      ${({ isvalid, useValidation }) => (useValidation && !isvalid ? colors.error : colors.lightgray100)};
+      ${({ isvalid, isValidateMode }) => (isValidateMode && !isvalid ? colors.error : colors.lightgray100)};
     border-radius: ${sizes.borderRadius};
     font-size: ${font.regular};
     outline: none;
@@ -23,8 +23,8 @@ export const Container = styled.div<TContainerProps>`
       color: ${colors.lightgray100};
     }
     &:focus {
-      border-color: ${({ isvalid, useValidation }) =>
-        useValidation && !isvalid ? colors.error : colors.black001} !important ;
+      border-color: ${({ isvalid, isValidateMode }) =>
+        isValidateMode && !isvalid ? colors.error : colors.black001} !important ;
     }
   }
 `;
