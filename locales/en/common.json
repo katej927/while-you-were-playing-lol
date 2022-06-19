@@ -31,5 +31,7 @@
   "cs": "CS",
   "itemList": "Item",
   "victory": "Victory",
-  "defeat": "Defeat"
+  "defeat": "Defeat",
+  "login": "Login",
+  "signup": "Sign up"
 }

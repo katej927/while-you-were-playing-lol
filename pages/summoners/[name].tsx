@@ -15,16 +15,17 @@ interface IProps {
   data: IEachMatch;
 }
 
-const todo: NextPage<IProps> = ({ data }) => {
+const summonersName: NextPage<IProps> = ({ data }) => {
   const dispatch = useDispatch();
   dispatch(riotActions.setRiot(data));
+
   return (
     <Suspense fallback={<Loading />}>
       <DynamicMemberPage />
     </Suspense>
   );
 };
-export default todo;
+export default summonersName;
 
 export const getServerSideProps: GetServerSideProps = async ({ query: { name } }) => {
   try {

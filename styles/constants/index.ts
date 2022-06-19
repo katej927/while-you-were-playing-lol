@@ -35,5 +35,6 @@ export const font = {
 };
 
 export const font_weight = {
+  medium: 500,
   bold: 600,
 };

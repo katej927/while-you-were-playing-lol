@@ -30,7 +30,11 @@ const Member = () => {
     <main>
       <header css={S.header}>
         <div css={S.headerContentWrapper}>
-          {profileIconId ? <img src={CONVERT_ICON_URL(profileIconId)} css={S.profileIcon} /> : <div />}
+          {profileIconId && profileIconId <= 4530 ? (
+            <img src={CONVERT_ICON_URL(profileIconId)} css={S.profileIcon} />
+          ) : (
+            <div />
+          )}
           <h2 css={S.summonerName}>{name}</h2>
         </div>
       </header>

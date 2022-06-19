@@ -6,7 +6,7 @@ interface RiotReduxState {
 }
 
 const initialState: RiotReduxState = {
-  riot: { profileIconId: undefined, allMatchData: [] },
+  riot: { profileIconId: 0, allMatchData: [] },
 };
 
 const riot = createSlice({

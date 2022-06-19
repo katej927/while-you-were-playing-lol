@@ -31,6 +31,6 @@ export interface IEachMatchInfo {
 }
 
 export interface IEachMatch {
-  profileIconId: number | undefined;
+  profileIconId: number;
   allMatchData: IEachMatchInfo[];
 }

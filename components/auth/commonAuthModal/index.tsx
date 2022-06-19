@@ -2,6 +2,7 @@ import { FC } from 'react';
 import { useDispatch } from 'react-redux';
 import { authActions } from 'store/auth';
 import { useSelector } from 'store';
+import useTranslation from 'next-translate/useTranslation';
 
 import Input from './input';
 import { IProps } from './_shared';
@@ -21,13 +22,17 @@ const AuthModal: FC<IProps> = ({
 }) => {
   const dispatch = useDispatch();
   const currentAuthMode = useSelector((state) => state.auth.authMode);
+  const { t } = useTranslation('common');
 
   const onClickSwitchAuthMode = () =>
     dispatch(authActions.setAuthMode(currentAuthMode === 'login' ? 'signup' : 'login'));
 
   return (
     <form css={S.wrapper} onSubmit={onSubmitForm}>
-      <CloseIcon css={S.closeIcon} onClick={closeModal} />
+      <h5 css={S.title}>{t(currentAuthMode)}</h5>
+      <button css={S.closeIconBtn} onClick={closeModal}>
+        <CloseIcon />
+      </button>
       {inputList.map((input) => {
         const { placeholder, type, icon, name, value, dataset, errorMsg, isValid, onFocus } = input;
         return (

@@ -1,9 +1,13 @@
 import dynamic from 'next/dynamic';
 import { FC, useState, SyntheticEvent, FormEvent, useMemo, useEffect } from 'react';
-import { DAYS, MONTHS, YEARS, convertBDaySelectors, checkPasswordValidation, convertInputList } from './_shared';
-import { IInputList } from '../_shared';
+import { useDispatch } from 'react-redux';
+
 import { useValidateMode } from 'hooks';
 import { createUser } from 'lib/api';
+import { authActions } from 'store/auth';
+
+import { DAYS, MONTHS, YEARS, convertBDaySelectors, checkPasswordValidation, convertInputList } from './_shared';
+import { IInputList } from '../_shared';
 
 import { Selector } from 'components/common';
 import CommonAuthModal from '../commonAuthModal';
@@ -29,6 +33,7 @@ const SignUpModal: FC<IProps> = ({ closeModal }) => {
   const [birthMonth, setBirthMonth] = useState<string | undefined>();
 
   const { setValidateMode } = useValidateMode();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     return () => {
@@ -72,7 +77,7 @@ const SignUpModal: FC<IProps> = ({ closeModal }) => {
         birthday: new Date(`${birthYear}-${birthMonth!.replace('월', '')}-${birthDay}`).toISOString(),
       };
       await createUser(sigupBody);
-      closeModal();
+      dispatch(authActions.setAuthMode('login'));
     } catch (e) {
       console.log(e);
     }

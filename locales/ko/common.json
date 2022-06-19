@@ -32,5 +32,7 @@
   "cs": "CS",
   "itemList": "아이템",
   "victory": "승리",
-  "defeat": "패배"
+  "defeat": "패배",
+  "login": "로그인",
+  "signup": "회원가입"
 }
