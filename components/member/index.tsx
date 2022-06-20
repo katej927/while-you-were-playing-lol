@@ -4,9 +4,10 @@ import useTranslation from 'next-translate/useTranslation';
 import { useSelector } from 'store';
 
 import { convertAllMatch, convertTime, CONVERT_ICON_URL } from './_shared';
+import { NoRecord } from 'components/common/errors';
 import Carousel from './carousel';
-import { NoRecord } from 'components/errors';
 import Container from './container';
+import Graph from './graph';
 
 import * as S from './member.styles';
 
@@ -48,6 +49,9 @@ const Member = () => {
               );
             })}
           </div>
+        </Container>
+        <Container title='그래프하드코딩타이틀'>
+          <Graph playinDate={playinDate} />
         </Container>
         <Container title={t('slide')}>
           <Carousel />

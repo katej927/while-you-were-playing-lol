@@ -13,9 +13,11 @@ export const colors = {
   theme: 'rgb(124, 71, 233)',
   lightPurple: 'rgb(192, 165, 255)',
   blue: 'rgb(30, 161, 247)',
+  lightBlue: 'rgb(34, 184, 207)',
   turquoise: 'rgb(0, 187, 163)',
   lightGreen: 'rgb(127, 208, 71)',
-  yellow: ' rgb(255, 193, 31)',
+  yellow: 'rgb(255, 193, 31)',
+  orange: 'rgb(255, 121, 5)',
   red: 'rgb(240, 101, 149)',
   error: '#E84057',
 };

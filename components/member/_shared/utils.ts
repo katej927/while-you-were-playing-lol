@@ -2,7 +2,7 @@ import { secondsToMilliseconds, isSameDay, millisecondsToHours, millisecondsToMi
 import BigNumber from 'bignumber.js';
 
 import { addCommas } from 'lib/utils';
-import { IEachMatchInfo, IEachMatchTime } from '../../../types';
+import { IEachMatchInfo, IEachMatchTime } from 'types';
 
 export const convertAllMatch = (allMatchData: IEachMatchInfo[]) => {
   const gameMillisecTime = secondsToMilliseconds(
@@ -20,20 +20,18 @@ export const convertAllMatch = (allMatchData: IEachMatchInfo[]) => {
   allMatchData?.forEach((match, idx) => {
     const { gameCreation: curDate, gameDuration: curDur } = match.time;
     const { gameCreation: compDate, gameDuration: compDur } = compareDate;
+
     if (idx === 0) return;
 
     const isSameDate = isSameDay(curDate, compDate);
+
     if (isSameDate) compareDate = { gameCreation: compDate, gameDuration: curDur + compDur };
     if (!isSameDate) {
-      if (allMatchData.length - 1 === idx) {
-        playinDate.push(compareDate, {
-          gameCreation: allMatchData[idx].time.gameCreation,
-          gameDuration: allMatchData[idx].time.gameDuration,
-        });
-      } else {
-        playinDate.push(compareDate);
-        compareDate = match.time;
-      }
+      playinDate.push(compareDate);
+      compareDate = match.time;
+    }
+    if (allMatchData.length - 1 === idx) {
+      playinDate.push(compareDate);
     }
   });
 

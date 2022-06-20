@@ -3,7 +3,7 @@ import dynamic from 'next/dynamic';
 import { Suspense } from 'react';
 import { Loading } from 'components/common';
 
-const DynamicError500 = dynamic(() => import('../components/errors/error500'), { suspense: true });
+const DynamicError500 = dynamic(() => import('../components/common/errors/error500'), { suspense: true });
 
 const Error: NextPage = () => {
   return (
