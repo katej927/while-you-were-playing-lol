@@ -9,7 +9,7 @@ export const convertLeftAxisTickValues = (data: IEachMatchTime[]) =>
   data.map((play) => format(new Date(play.gameCreation), 'yyyy/MM/dd')).reverse();
 
 export const convertRightAxisTickValues = (data: IEachMatchTime[]) =>
-  data.map((play) => addCommas(secondsToMinutes(play.gameDuration)) + '분');
+  data.map((play) => addCommas(secondsToMinutes(play.gameDuration)) + ' 분').reverse();
 
 const repeatColors = (colors: string[], time: number) => [].concat(...Array(time).fill(colors));
 
