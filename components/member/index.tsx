@@ -1,22 +1,20 @@
 import { useMemo } from 'react';
 import { useRouter } from 'next/router';
 import useTranslation from 'next-translate/useTranslation';
-
 import { useSelector } from 'store';
+
 import { convertAllMatch, convertTime, CONVERT_ICON_URL } from './_shared';
 import Carousel from './carousel';
-
-import { NoRecord } from '../errors';
+import { NoRecord } from 'components/errors';
 import Container from './container';
 
 import * as S from './member.styles';
 
 const Member = () => {
   const { allMatchData, profileIconId } = useSelector((state) => state.riot.riot);
-  const router = useRouter();
   const {
     query: { name },
-  } = router;
+  } = useRouter();
 
   if (!allMatchData.length) return <NoRecord />;
 

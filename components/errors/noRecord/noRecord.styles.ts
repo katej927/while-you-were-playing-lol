@@ -1,6 +1,6 @@
 import { css } from '@emotion/react';
-import { flex } from '../../../styles/mixin';
-import { font, colors } from '../../../styles/constants';
+import { flex } from 'styles/mixin';
+import { font, colors } from 'styles/constants';
 
 export const wrapper = css`
   ${flex('column')}

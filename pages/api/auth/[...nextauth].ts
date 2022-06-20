@@ -23,6 +23,7 @@ export default NextAuth({
             password: true,
           },
         });
+
         if (!user) throw new Error('No user found!');
 
         const isValid = compareSync(credentials!.password, user.password);

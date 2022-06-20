@@ -1,7 +1,7 @@
 import Link from 'next/link';
+import { signOut, useSession } from 'next-auth/react';
 import { useState, useRef } from 'react';
 import { useClickAway } from 'react-use';
-import { signOut, useSession } from 'next-auth/react';
 
 import { ArrowDownIcon } from 'public/static/svg';
 import * as S from './headerUserProfile.styles';

@@ -17,6 +17,7 @@ const DynamicModalPortal = dynamic(() => import('./carouselModal'));
 
 const Carousel = () => {
   const [modalData, setModalData] = useState<IEachMatchInfo>();
+
   const { allMatchData } = useSelector((state) => state.riot.riot);
   const { openModal, closeModal, ModalPortal } = useModal();
   const { t } = useTranslation('common');

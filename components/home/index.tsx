@@ -27,11 +27,11 @@ const Home = () => {
 
   return (
     <main css={S.homeWrapper}>
-      <header css={S.header}>
+      <div css={S.header}>
         <h1>{t('title1')}</h1>
         <MainIcon css={S.mainIcon} />
         <h1>{t('title2')}</h1>
-      </header>
+      </div>
       <form css={S.homeForm} onSubmit={onSubmit}>
         <div css={S.region}>{t('region')}</div>
         <div css={S.searchWrapper}>
@@ -44,4 +44,5 @@ const Home = () => {
     </main>
   );
 };
+
 export default Home;

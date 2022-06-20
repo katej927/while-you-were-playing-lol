@@ -1,7 +1,7 @@
 import dynamic from 'next/dynamic';
 import { useRouter } from 'next/router';
-import { SyntheticEvent, useState } from 'react';
 import { useSession } from 'next-auth/react';
+import { SyntheticEvent, useState } from 'react';
 
 import { convertLanguages } from './_shared';
 

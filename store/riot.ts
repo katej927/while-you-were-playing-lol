@@ -16,9 +16,6 @@ const riot = createSlice({
     setRiot(state, action: PayloadAction<IEachMatch>) {
       state.riot = action.payload;
     },
-    initRiot(state) {
-      state.riot = initialState.riot;
-    },
   },
 });
 

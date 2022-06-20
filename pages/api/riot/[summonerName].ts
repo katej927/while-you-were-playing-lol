@@ -3,7 +3,6 @@ import axios from 'axios';
 
 import { IParticipant } from 'types/riotApi.d';
 
-// 재확인 필요
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method === 'GET') {
     const { summonerName } = req.query;

@@ -1,11 +1,10 @@
 import { FC } from 'react';
 import useTranslation from 'next-translate/useTranslation';
 
-import { CloseIcon } from 'public/static/svg';
 import { BACKGROUND_IMG_URL, ITEM_IMG_URL, convertData, IResult } from './_shared';
-
 import { IEachMatchInfo } from 'types';
 
+import { CloseIcon } from 'public/static/svg';
 import * as S from './carouselModal.styles';
 
 interface IProps {
@@ -21,8 +20,8 @@ const carouselModal: FC<IProps> = ({ modalData, closeModal }) => {
     <section css={S.wrapper}>
       <img css={S.img} src={BACKGROUND_IMG_URL(`${convertedData['championName']}`)} />
       <dl css={S.descWrapper}>
-        {Object.keys(convertedData).map((key, idx) => (
-          <div key={`casouselModal-desc-${idx + 1}`}>
+        {Object.keys(convertedData).map((key) => (
+          <div key={key}>
             <dt css={S.subject}>{t(key)}</dt>
             <dd css={S.content}>
               {key === 'itemList'

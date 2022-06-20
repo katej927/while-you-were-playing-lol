@@ -36,16 +36,12 @@ export const timeBlockWrapper = css`
   flex-wrap: wrap;
 `;
 
-type TBackgroundProps = {
-  is1st: boolean;
-};
-
-export const TimeBlock = styled.div`
+export const TimeBlock = styled.div<{ is1st: boolean }>`
   display: flex;
   flex-direction: column;
   padding: 12px 16px;
   border-radius: ${sizes.borderRadius};
-  background-color: ${(props: TBackgroundProps) => (props.is1st ? colors.theme : colors.gray102)};
+  background-color: ${({ is1st }) => (is1st ? colors.theme : colors.gray102)};
   width: calc(100% / 3);
   min-width: fit-content;
   margin-left: 8px;
@@ -84,14 +80,10 @@ export const opportunityKind = css`
   color: ${colors.lightgray100};
 `;
 
-type Props = {
-  idx: number;
-};
-
-export const Opportunity = styled.span`
+export const Opportunity = styled.span<{ idx: number }>`
   font-size: ${font.large};
   line-height: 36px;
 
-  color: ${(props: Props) =>
-    [colors.theme, colors.blue, colors.turquoise, colors.lightGreen, colors.yellow, colors.red][props.idx]};
+  color: ${({ idx }) =>
+    [colors.theme, colors.blue, colors.turquoise, colors.lightGreen, colors.yellow, colors.red][idx]};
 `;

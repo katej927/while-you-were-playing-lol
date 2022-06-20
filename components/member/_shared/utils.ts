@@ -12,8 +12,9 @@ export const convertAllMatch = (allMatchData: IEachMatchInfo[]) => {
     }, 0)
   );
 
-  const { gameCreation: firstGameCreation, gameDuration: firstGameDuration } = allMatchData[0].time;
   let playinDate: IEachMatchTime[] = [];
+
+  const { gameCreation: firstGameCreation, gameDuration: firstGameDuration } = allMatchData[0].time;
   let compareDate = { gameCreation: firstGameCreation, gameDuration: firstGameDuration };
 
   allMatchData?.forEach((match, idx) => {
@@ -39,6 +40,14 @@ export const convertAllMatch = (allMatchData: IEachMatchInfo[]) => {
   return { gameMillisecTime, playinDate };
 };
 
+interface IPropsTime {
+  [key: string]: string;
+}
+
+interface IPropsCost {
+  [key: string]: string[];
+}
+
 export const convertTime = (time: number) => {
   const toHoursNum = millisecondsToHours(time);
   const wageThisYear = 9160;
@@ -53,14 +62,6 @@ export const convertTime = (time: number) => {
   const toWalkCalories = addCommas(toHoursNum * 350);
   const seoulToNewYorkShuttle = addCommas(toHoursNum / 30);
   const love = 0;
-
-  interface IPropsTime {
-    [key: string]: string;
-  }
-
-  interface IPropsCost {
-    [key: string]: string[];
-  }
 
   const timeBlock: IPropsTime = { day: toDays, hours: toHours, minutes: toMinutes };
 

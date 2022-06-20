@@ -12,10 +12,9 @@ interface IProps {
 
 const Layout = ({ children }: IProps) => {
   const { t } = useTranslation('');
-  const router = useRouter();
   const {
     query: { name },
-  } = router;
+  } = useRouter();
 
   const titleSet = name ? `${t('common:titleOfApp')} | ${name}` : `${t('common:titleOfApp')}`;
 

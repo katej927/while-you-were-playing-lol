@@ -1,9 +1,16 @@
 import { NextPage } from 'next';
 import dynamic from 'next/dynamic';
-const DynamicError500 = dynamic(() => import('../components/errors/error500'));
+import { Suspense } from 'react';
+import { Loading } from 'components/common';
+
+const DynamicError500 = dynamic(() => import('../components/errors/error500'), { suspense: true });
 
 const Error: NextPage = () => {
-  return <DynamicError500 />;
+  return (
+    <Suspense fallback={<Loading />}>
+      <DynamicError500 />
+    </Suspense>
+  );
 };
 
 export default Error;
