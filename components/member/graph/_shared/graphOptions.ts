@@ -4,7 +4,7 @@ export const GRAPH_OPTIONS = {
   chart: {
     domainPadding: { x: 10, y: 40 },
     padding: { left: 53 },
-    height: 170,
+    height: 150,
     width: 440,
   },
   leftAxisLabel: {
@@ -19,7 +19,7 @@ export const GRAPH_OPTIONS = {
     barWidth: 13,
     animate: {
       duration: 2000,
-      onLoad: { duration: 1000 },
+      onLoad: { duration: 2000 },
     },
   },
   rightAxis: {

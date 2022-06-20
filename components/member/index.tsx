@@ -50,7 +50,7 @@ const Member = () => {
             })}
           </div>
         </Container>
-        <Container title='그래프하드코딩타이틀'>
+        <Container title={t('graphTitle')}>
           <Graph playinDate={playinDate} />
         </Container>
         <Container title={t('slide')}>
