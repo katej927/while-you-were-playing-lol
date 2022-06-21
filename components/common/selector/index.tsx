@@ -1,4 +1,4 @@
-import { SelectHTMLAttributes, FC, memo } from 'react';
+import { SelectHTMLAttributes, memo } from 'react';
 import { useSelector } from 'store';
 
 import { ArrowDownIcon } from 'public/static/svg';
@@ -13,7 +13,7 @@ interface IProps extends SelectHTMLAttributes<HTMLSelectElement> {
   isValid: boolean;
 }
 
-const Selector: FC<IProps> = ({ isValid, dataset, options = [], disabledOptions = [], ...props }) => {
+const Selector = ({ isValid, dataset, options = [], disabledOptions = [], ...props }: IProps) => {
   const validateMode = useSelector((state) => state.common.validateMode);
 
   return (

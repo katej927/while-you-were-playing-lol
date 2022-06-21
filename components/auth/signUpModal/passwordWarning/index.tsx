@@ -1,5 +1,3 @@
-import { FC } from 'react';
-
 import { CloseIcon, CheckIcon } from 'public/static/svg';
 import * as S from './passwordWarning.styles';
 
@@ -8,7 +6,7 @@ interface IProps {
   isValid: boolean;
 }
 
-const PasswordWarning: FC<IProps> = ({ text, isValid }) => {
+const PasswordWarning = ({ text, isValid }: IProps) => {
   return (
     <S.Container isValid={isValid}>
       {isValid ? <CheckIcon /> : <CloseIcon />}

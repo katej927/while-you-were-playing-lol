@@ -1,4 +1,4 @@
-import { useRef, useEffect, useState, FC, ReactNode } from 'react';
+import { useRef, useEffect, useState, ReactNode } from 'react';
 import { createPortal } from 'react-dom';
 
 import * as S from './useModal.styles';
@@ -16,7 +16,7 @@ const useModal = () => {
     children: ReactNode;
   }
 
-  const ModalPortal: FC<IProps> = ({ children }) => {
+  const ModalPortal = ({ children }: IProps) => {
     const ref = useRef<Element | null>();
     const [mounted, SetMounted] = useState(false);
 

@@ -1,4 +1,3 @@
-import { FC } from 'react';
 import { useDispatch } from 'react-redux';
 import { authActions } from 'store/auth';
 import { useSelector } from 'store';
@@ -10,7 +9,7 @@ import { IProps } from './_shared';
 import { CloseIcon } from 'public/static/svg';
 import * as S from './authModal.styles';
 
-const AuthModal: FC<IProps> = ({
+const AuthModal = ({
   onSubmitForm,
   closeModal,
   inputList,
@@ -19,7 +18,7 @@ const AuthModal: FC<IProps> = ({
   submitBtnText,
   switchModalText,
   textToCheckSwitchModal,
-}) => {
+}: IProps) => {
   const currentAuthMode = useSelector((state) => state.auth.authMode);
   const dispatch = useDispatch();
 

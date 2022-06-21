@@ -9,6 +9,15 @@ import ArrowDownIcon from './arrow-down-icon.svg';
 import CheckIcon from './check-icon.svg';
 import MenuIcon from './menu-icon.svg';
 import EarthIcon from './earth-icon.svg';
+import BRIcon from './br.svg';
+// import EUNIcon from './eun.svg';
+// import EUWIcon from './euw.svg';
+// import JPIcon from './jp.svg';
+// import KRIcon from './kr.svg';
+// import LANIcon from './lan.svg';
+// import LASIcon from './las.svg';
+// import NAIcon from './na.svg';
+// import OCIcon from './oce.svg';
 
 export {
   MainIcon,
@@ -22,4 +31,5 @@ export {
   CheckIcon,
   MenuIcon,
   EarthIcon,
+  BRIcon,
 };

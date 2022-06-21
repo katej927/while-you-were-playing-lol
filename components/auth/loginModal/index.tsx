@@ -1,5 +1,5 @@
 import { signIn } from 'next-auth/react';
-import { FC, FormEvent, SyntheticEvent, useEffect, useState } from 'react';
+import { FormEvent, SyntheticEvent, useEffect, useState } from 'react';
 
 import { useValidateMode } from 'hooks';
 import { convertInputList } from './_shared';
@@ -12,7 +12,7 @@ interface IProps {
   closeModal: () => void;
 }
 
-const LoginModal: FC<IProps> = ({ closeModal }) => {
+const LoginModal = ({ closeModal }: IProps) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [hidePassword, setHidePassword] = useState(true);

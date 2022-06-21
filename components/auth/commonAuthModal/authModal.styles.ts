@@ -1,26 +1,20 @@
 import { css } from '@emotion/react';
-import { colors, font, sizes, font_weight } from 'styles/constants';
+import { colors, font, sizes, font_weight, modal } from 'styles/constants';
 
 export const wrapper = css`
   position: relative;
   width: 568px;
-  padding: 40px;
+  padding: ${modal.padding};
   background-color: ${colors.white001};
   z-index: 11;
 `;
 
 export const title = css`
-  margin-bottom: 40px;
-  font-size: ${font.large};
-  font-weight: ${font_weight.medium};
-  text-align: center;
+  ${modal.title}
 `;
 
 export const closeIconBtn = css`
-  position: absolute;
-  top: 32px;
-  right: 32px;
-  cursor: pointer;
+  ${modal.closeIcon}
 `;
 
 export const inputWrapper = css`

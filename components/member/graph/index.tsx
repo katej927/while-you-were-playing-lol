@@ -1,4 +1,3 @@
-import { FC } from 'react';
 import { VictoryChart, VictoryBar, VictoryAxis, VictoryLabel } from 'victory';
 
 import { convertLeftAxisTickValues, convertRightAxisTickValues, convertData } from './_shared';
@@ -11,7 +10,7 @@ interface IProps {
   playinDate: IEachMatchTime[];
 }
 
-const Graph: FC<IProps> = ({ playinDate }) => {
+const Graph = ({ playinDate }: IProps) => {
   const convertedLeftAxisTickValues = convertLeftAxisTickValues(playinDate);
   const convertedRightAxisTickValues = convertRightAxisTickValues(playinDate);
   const convertedData = convertData(playinDate);

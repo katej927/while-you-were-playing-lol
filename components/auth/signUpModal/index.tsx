@@ -1,5 +1,5 @@
 import dynamic from 'next/dynamic';
-import { FC, useState, SyntheticEvent, FormEvent, useMemo, useEffect } from 'react';
+import { useState, SyntheticEvent, FormEvent, useMemo, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
 import { useValidateMode } from 'hooks';
@@ -21,7 +21,7 @@ interface IProps {
   closeModal: () => void;
 }
 
-const SignUpModal: FC<IProps> = ({ closeModal }) => {
+const SignUpModal = ({ closeModal }: IProps) => {
   const [email, setEmail] = useState('');
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');

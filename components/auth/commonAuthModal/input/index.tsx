@@ -1,4 +1,4 @@
-import { InputHTMLAttributes, FC, memo } from 'react';
+import { InputHTMLAttributes, memo } from 'react';
 import { useSelector } from 'store';
 
 import * as S from './input.styles';
@@ -11,7 +11,7 @@ interface IProps extends InputHTMLAttributes<HTMLInputElement> {
   errorMsg?: string;
 }
 
-const Input: FC<IProps> = ({ dataset, icon, isvalid = false, isCheckValidation = true, errorMsg, ...props }) => {
+const Input = ({ dataset, icon, isvalid = false, isCheckValidation = true, errorMsg, ...props }: IProps) => {
   const validateMode = useSelector((state) => state.common.validateMode);
 
   return (

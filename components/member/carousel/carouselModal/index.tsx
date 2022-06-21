@@ -1,4 +1,3 @@
-import { FC } from 'react';
 import useTranslation from 'next-translate/useTranslation';
 
 import { BACKGROUND_IMG_URL, ITEM_IMG_URL, convertData, IResult } from './_shared';
@@ -12,7 +11,7 @@ interface IProps {
   closeModal: () => void;
 }
 
-const carouselModal: FC<IProps> = ({ modalData, closeModal }) => {
+const carouselModal = ({ modalData, closeModal }: IProps) => {
   let { t } = useTranslation('common');
   const convertedData: IResult = convertData(modalData);
 

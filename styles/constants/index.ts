@@ -40,3 +40,16 @@ export const font_weight = {
   medium: 500,
   bold: 600,
 };
+
+export const modal = {
+  padding: '40px',
+  closeIcon: `position: absolute;
+  	top: 32px;
+  	right: 32px;
+  	cursor: pointer;`,
+  title: `margin-bottom: 40px;
+  font-size: ${font.large};
+  font-weight: ${font_weight.medium};
+  text-align: center;
+	`,
+};
