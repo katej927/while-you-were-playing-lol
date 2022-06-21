@@ -3,7 +3,7 @@ import GoogleMapReact from 'google-map-react';
 
 import { REGION_OPTIONS, IRegion, ILocation } from './_shared';
 
-import { CloseIcon, BRIcon } from 'public/static/svg';
+import { CloseIcon } from 'public/static/svg';
 import * as S from './regionModal.styles';
 
 interface IProps {
@@ -20,19 +20,12 @@ const RegionModal = ({ closeModal, setRegion }: IProps) => {
 
   const onClickCloseBtn = () => closeModal();
 
-  // const ICONS = (abbreviation: string) => {
-  //   return {
-  //     BR: <BRIcon css={S.regionIcon} />,
-  //     // EUN:
-  //   }[abbreviation];
-  // };
-
   const onClickOption = (region: IRegion) => {
     const { abbreviation, lat, lng, continent } = region;
-    console.log('onClickOption lat, lng', lat, lng);
+    console.log('onClickOption lat, lng', lat, lng, abbreviation);
 
+    setLocation({ lat, lng, abbreviation });
     setRegion(abbreviation);
-    setLocation({ lat: lat, lng: lng, abbreviation });
   };
 
   console.log('location', location);
@@ -59,22 +52,19 @@ const RegionModal = ({ closeModal, setRegion }: IProps) => {
           })}
         </GoogleMapReact>
       </section>
-      <section>
-        <ul>
-          {REGION_OPTIONS.map((region) => {
-            const { abbreviation, continent } = region;
-            return (
-              <li key={abbreviation}>
-                {/* {ICONS(abbreviation)} */}
-                <button css={S.continentBtn} onClick={() => onClickOption(region)}>
-                  <S.Radio />
-                  {continent}
-                </button>
-              </li>
-            );
-          })}
-        </ul>
-      </section>
+      <ul css={S.optionContainer}>
+        {REGION_OPTIONS.map((region) => {
+          const { abbreviation, continent } = region;
+          return (
+            <li key={abbreviation}>
+              <S.ContinentBtn onClick={() => onClickOption(region)} isSelected={abbreviation === location.abbreviation}>
+                <div />
+                {continent}
+              </S.ContinentBtn>
+            </li>
+          );
+        })}
+      </ul>
     </section>
   );
 };
