@@ -1,11 +1,21 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import axios from 'axios';
 
+import {
+  findBasicInfoOfSummonerAPI,
+  findMatchListsAPI,
+  setRoutingRegion,
+  setRoutingContinent,
+  findAllMatchDataAPI,
+} from './_shared';
 import { IParticipant } from 'types/riotApi.d';
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method === 'GET') {
-    const { summonerName } = req.query;
+    const { summonerName, region } = req.query;
+
+    const selectedRegionAPI = setRoutingRegion[`${region}`];
+    const selectedContinentAPI = setRoutingContinent(`${region}`);
 
     if (!summonerName) {
       res.statusCode = 400;
@@ -15,21 +25,13 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     try {
       const {
         data: { puuid, profileIconId },
-      } = await axios.get(
-        encodeURI(
-          `${process.env.NEXT_PUBLIC_RIOT_ROUTING_KR}/lol/summoner/v4/summoners/by-name/${summonerName}?api_key=${process.env.RIOT_API_KEY}`
-        )
-      );
+      } = await axios.get(encodeURI(findBasicInfoOfSummonerAPI(`${summonerName}`, `${selectedRegionAPI}`)));
 
-      const { data: matchIdLists } = await axios.get(
-        `${process.env.NEXT_PUBLIC_RIOT_ROUTING_ASIA}/lol/match/v5/matches/by-puuid/${puuid}/ids?start=00&count=15&api_key=${process.env.RIOT_API_KEY}`
-      );
+      const { data: matchIdLists } = await axios.get(findMatchListsAPI(`${puuid}`, `${selectedContinentAPI}`));
 
       const allMatchData = await Promise.all(
         matchIdLists.map(async (matchId: string[]) => {
-          const eachMatchResult = await axios.get(
-            `${process.env.NEXT_PUBLIC_RIOT_ROUTING_ASIA}/lol/match/v5/matches/${matchId}?api_key=${process.env.RIOT_API_KEY}`
-          );
+          const eachMatchResult = await axios.get(findAllMatchDataAPI(`${matchId}`, `${selectedContinentAPI}`));
           const { gameCreation, gameDuration, participants } = eachMatchResult.data.info;
 
           const {

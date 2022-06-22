@@ -5157,6 +5157,11 @@ stacktrace-js@^2.0.2:
     stack-generator "^2.0.5"
     stacktrace-gps "^3.0.4"
 
+storejs@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/storejs/-/storejs-2.0.1.tgz#3424f4c88ff979e3962413ce60ea43fd660a9657"
+  integrity sha512-hN/Rb7noRSxwTMdO1ksotketRqAy8fyzwXIXe0wPurV1YzlUVdgL0wC9eSOPpzCLiCPSoHICeX4paFrzigeGeg==
+
 string-convert@^0.2.0:
   version "0.2.1"
   resolved "https://registry.npmjs.org/string-convert/-/string-convert-0.2.1.tgz"

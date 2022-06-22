@@ -12,7 +12,7 @@ const DynamicRegionModal = dynamic(() => import('./regionModal'));
 
 const Home = () => {
   const [name, setName] = useState<string>('');
-  const [region, setRegion] = useState<string>('');
+  const [region, setRegion] = useState<string>('KR');
 
   const router = useRouter();
   let { t } = useTranslation('home');
@@ -28,7 +28,7 @@ const Home = () => {
     e.preventDefault();
     try {
       if (!name) return;
-      router.push(`/summoners/${name}`);
+      router.push({ pathname: `/summoners/${name}`, query: { region } });
     } catch (e) {
       console.log(e);
     }
@@ -49,7 +49,7 @@ const Home = () => {
       </div>
       <form css={S.homeForm} onSubmit={onSubmit}>
         <button type='button' css={S.region} onClick={onClickRegionBtn}>
-          {t('region')}
+          {region}
         </button>
         <div css={S.searchWrapper}>
           <input css={S.searchInput} placeholder={t('placeholder')} value={name} onChange={onChange} />

@@ -27,9 +27,9 @@ const summonersName: NextPage<IProps> = ({ data }) => {
 };
 export default summonersName;
 
-export const getServerSideProps: GetServerSideProps = async ({ query: { name } }) => {
+export const getServerSideProps: GetServerSideProps = async ({ query: { name, region } }) => {
   try {
-    const { data } = await getSummonerDataAPI(`${name}`);
+    const { data } = await getSummonerDataAPI({ summonerName: `${name}`, region: `${region}` });
     return { props: { data: data } };
   } catch (e) {
     console.log(e);

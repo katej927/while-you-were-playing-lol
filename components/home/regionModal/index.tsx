@@ -18,15 +18,10 @@ const RegionModal = ({ closeModal, setRegion }: IProps) => {
     lng: REGION_OPTIONS[0].lng,
   });
 
-  useEffect(() => {
-    return () => console.log('unmount');
-  }, []);
-
   const onClickCloseBtn = () => closeModal();
 
   const onClickOption = (region: IRegion) => {
-    const { abbreviation, lat, lng, continent } = region;
-    console.log('onClickOption lat, lng', { abbreviation, lat, lng });
+    const { abbreviation, lat, lng } = region;
 
     setLocation({ abbreviation, lat, lng });
     setRegion(abbreviation);
@@ -41,7 +36,7 @@ const RegionModal = ({ closeModal, setRegion }: IProps) => {
       <section css={S.mapContainer}>
         <GoogleMapReact
           bootstrapURLKeys={{ key: process.env.MY_GOOGLE_MAP_API! }}
-          defaultCenter={{ lat: location.lat, lng: location.lng }}
+          defaultCenter={{ lat: REGION_OPTIONS[0].lat, lng: REGION_OPTIONS[0].lng }}
           defaultZoom={0}
           center={{ lat: location.lat, lng: location.lng }}
         >
@@ -66,11 +61,7 @@ const RegionModal = ({ closeModal, setRegion }: IProps) => {
           const { abbreviation, continent } = region;
           return (
             <li key={abbreviation}>
-              <S.ContinentBtn
-                onClick={() => onClickOption(region)}
-                data-region={region}
-                isSelected={abbreviation === location.abbreviation}
-              >
+              <S.ContinentBtn onClick={() => onClickOption(region)} isSelected={abbreviation === location.abbreviation}>
                 <div />
                 {continent}
               </S.ContinentBtn>

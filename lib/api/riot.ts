@@ -1,5 +1,14 @@
 import axios from '.';
-import { IEachMatch } from '../../types';
+import { IEachMatch } from 'types';
 
-export const getSummonerDataAPI = (summonerName: string) =>
-  axios.get<IEachMatch>(`/api/riot/${encodeURI(summonerName)}`);
+interface IgetSummonerDataProps {
+  summonerName: string;
+  region: string;
+}
+
+export const getSummonerDataAPI = ({ summonerName, region }: IgetSummonerDataProps) =>
+  axios.get<IEachMatch>(`/api/riot/${encodeURI(summonerName)}`, {
+    params: {
+      region,
+    },
+  });
