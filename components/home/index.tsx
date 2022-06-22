@@ -14,7 +14,7 @@ const DynamicRegionModal = dynamic(() => import('./regionModal'), { ssr: false }
 const Home = () => {
   const [name, setName] = useState<string>('');
 
-  const region = useSelector((state) => state.common.region);
+  const region = useSelector((state) => state.common.region.abbreviation);
   const router = useRouter();
   let { t } = useTranslation('home');
   const { openModal, closeModal, ModalPortal } = useModal();

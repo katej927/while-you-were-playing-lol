@@ -1,9 +1,9 @@
-import { useState } from 'react';
 import GoogleMapReact from 'google-map-react';
 import { useDispatch } from 'react-redux';
 
+import { useSelector } from 'store';
 import { commonActions } from 'store/common';
-import { REGION_OPTIONS, IRegion, ILocation } from './_shared';
+import { REGION_OPTIONS, IRegion } from './_shared';
 
 import { CloseIcon } from 'public/static/svg';
 import * as S from './regionModal.styles';
@@ -13,22 +13,19 @@ interface IProps {
 }
 
 const RegionModal = ({ closeModal }: IProps) => {
-  const [location, setLocation] = useState<ILocation>({
-    abbreviation: REGION_OPTIONS[0].abbreviation,
-    lat: REGION_OPTIONS[0].lat,
-    lng: REGION_OPTIONS[0].lng,
-  });
-
+  const {
+    abbreviation: selectedAbbreviation,
+    lat: selectedLat,
+    lng: selectedLng,
+  } = useSelector((state) => state.common.region);
   const dispatch = useDispatch();
 
   const onClickCloseBtn = () => closeModal();
 
-  const onClickOption = ({ abbreviation, lat, lng }: IRegion) => setLocation({ abbreviation, lat, lng });
+  const onClickOption = ({ abbreviation, lat, lng }: IRegion) =>
+    dispatch(commonActions.setRegion({ abbreviation, lat, lng }));
 
-  const onClickSaveBtn = () => {
-    dispatch(commonActions.setRegion(location.abbreviation));
-    closeModal();
-  };
+  const onClickSaveBtn = () => closeModal();
 
   return (
     <section css={S.container}>
@@ -41,7 +38,7 @@ const RegionModal = ({ closeModal }: IProps) => {
           bootstrapURLKeys={{ key: process.env.MY_GOOGLE_MAP_API! }}
           defaultCenter={{ lat: REGION_OPTIONS[0].lat, lng: REGION_OPTIONS[0].lng }}
           defaultZoom={0}
-          center={{ lat: location.lat, lng: location.lng }}
+          center={{ lat: selectedLat, lng: selectedLng }}
         >
           {REGION_OPTIONS.map((region) => {
             const { abbreviation, continent, lat, lng } = region;
@@ -50,7 +47,7 @@ const RegionModal = ({ closeModal }: IProps) => {
                 key={abbreviation}
                 lat={lat}
                 lng={lng}
-                isSelected={abbreviation === location.abbreviation}
+                isSelected={abbreviation === selectedAbbreviation}
                 onClick={() => onClickOption(region)}
               >
                 {continent}
@@ -64,7 +61,7 @@ const RegionModal = ({ closeModal }: IProps) => {
           const { abbreviation, continent } = region;
           return (
             <li key={abbreviation}>
-              <S.ContinentBtn onClick={() => onClickOption(region)} isSelected={abbreviation === location.abbreviation}>
+              <S.ContinentBtn onClick={() => onClickOption(region)} isSelected={abbreviation === selectedAbbreviation}>
                 <div />
                 {continent}
               </S.ContinentBtn>

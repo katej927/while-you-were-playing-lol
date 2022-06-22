@@ -1,6 +1,12 @@
+export interface IRegionState {
+  abbreviation: string;
+  lat: number;
+  lng: number;
+}
+
 export interface CommonState {
   validateMode: boolean;
-  region: string;
+  region: IRegionState;
 }
 
 export interface IEachMatchTime {
