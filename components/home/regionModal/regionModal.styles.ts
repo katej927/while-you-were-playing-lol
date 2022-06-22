@@ -24,7 +24,6 @@ export const title = css`
 export const mapContainer = css`
   width: 100%;
   height: 400px;
-  background-color: green;
 `;
 
 export const Marker = styled.button<IMarkerProps>`
