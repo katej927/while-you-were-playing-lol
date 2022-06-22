@@ -1,5 +1,6 @@
 export interface CommonState {
   validateMode: boolean;
+  region: string;
 }
 
 export interface IEachMatchTime {

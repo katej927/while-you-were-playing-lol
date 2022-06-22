@@ -1,6 +1,8 @@
-import { useState, Dispatch, SetStateAction, useEffect } from 'react';
+import { useState } from 'react';
 import GoogleMapReact from 'google-map-react';
+import { useDispatch } from 'react-redux';
 
+import { commonActions } from 'store/common';
 import { REGION_OPTIONS, IRegion, ILocation } from './_shared';
 
 import { CloseIcon } from 'public/static/svg';
@@ -8,23 +10,24 @@ import * as S from './regionModal.styles';
 
 interface IProps {
   closeModal: () => void;
-  setRegion: Dispatch<SetStateAction<string>>;
 }
 
-const RegionModal = ({ closeModal, setRegion }: IProps) => {
+const RegionModal = ({ closeModal }: IProps) => {
   const [location, setLocation] = useState<ILocation>({
     abbreviation: REGION_OPTIONS[0].abbreviation,
     lat: REGION_OPTIONS[0].lat,
     lng: REGION_OPTIONS[0].lng,
   });
 
+  const dispatch = useDispatch();
+
   const onClickCloseBtn = () => closeModal();
 
-  const onClickOption = (region: IRegion) => {
-    const { abbreviation, lat, lng } = region;
+  const onClickOption = ({ abbreviation, lat, lng }: IRegion) => setLocation({ abbreviation, lat, lng });
 
-    setLocation({ abbreviation, lat, lng });
-    setRegion(abbreviation);
+  const onClickSaveBtn = () => {
+    dispatch(commonActions.setRegion(location.abbreviation));
+    closeModal();
   };
 
   return (
@@ -69,6 +72,9 @@ const RegionModal = ({ closeModal, setRegion }: IProps) => {
           );
         })}
       </ul>
+      <button css={S.saveBtn} type='button' onClick={onClickSaveBtn}>
+        저장하기
+      </button>
     </section>
   );
 };

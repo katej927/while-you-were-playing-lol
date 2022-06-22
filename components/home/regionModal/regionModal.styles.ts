@@ -64,10 +64,7 @@ export const ContinentBtn = styled.button<{ isSelected: boolean }>`
   }
 `;
 
-export const regionIcon = css`
-  width: 24px;
-`;
-
-export const iconLicense = css`
-  display: none;
+export const saveBtn = css`
+  ${modal.button}
+  margin-top: 24px;
 `;

@@ -3,6 +3,7 @@ import { CommonState } from 'types';
 
 const initialState: CommonState = {
   validateMode: false,
+  region: 'KR',
 };
 
 const common = createSlice({
@@ -11,6 +12,9 @@ const common = createSlice({
   reducers: {
     setValidateMode(state, action: PayloadAction<boolean>) {
       state.validateMode = action.payload;
+    },
+    setRegion(state, action: PayloadAction<string>) {
+      state.region = action.payload;
     },
   },
 });

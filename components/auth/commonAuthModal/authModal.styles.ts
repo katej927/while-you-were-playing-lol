@@ -1,5 +1,5 @@
 import { css } from '@emotion/react';
-import { colors, font, sizes, font_weight, modal } from 'styles/constants';
+import { colors, font, sizes, modal } from 'styles/constants';
 
 export const wrapper = css`
   position: relative;
@@ -23,16 +23,7 @@ export const inputWrapper = css`
 `;
 
 export const submitBtn = css`
-  width: 100%;
-  height: 48px;
-  border: 0;
-  border-radius: ${sizes.borderRadius};
-  background-color: ${colors.theme};
-  color: ${colors.white001};
-  font-size: ${font.regular};
-  font-weight: 800;
-  outline: none;
-  cursor: pointer;
+  ${modal.button};
 `;
 
 export const inputIcon = css`

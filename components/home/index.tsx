@@ -3,20 +3,20 @@ import { useRouter } from 'next/router';
 import dynamic from 'next/dynamic';
 import useTranslation from 'next-translate/useTranslation';
 
+import { useSelector } from 'store';
 import { useModal } from 'hooks';
 
-import { SearchIcon, MainIcon } from '../../public/static/svg';
+import { SearchIcon, MainIcon, ArrowDownIcon } from 'public/static/svg';
 import * as S from './home.styles';
 
-const DynamicRegionModal = dynamic(() => import('./regionModal'));
+const DynamicRegionModal = dynamic(() => import('./regionModal'), { ssr: false });
 
 const Home = () => {
   const [name, setName] = useState<string>('');
-  const [region, setRegion] = useState<string>('KR');
 
+  const region = useSelector((state) => state.common.region);
   const router = useRouter();
   let { t } = useTranslation('home');
-
   const { openModal, closeModal, ModalPortal } = useModal();
 
   const onChange = ({ currentTarget }: FormEvent<HTMLInputElement>) => {
@@ -38,8 +38,6 @@ const Home = () => {
     openModal();
   };
 
-  console.log('region', region);
-
   return (
     <main css={S.homeWrapper}>
       <div css={S.header}>
@@ -48,18 +46,29 @@ const Home = () => {
         <h1>{t('title2')}</h1>
       </div>
       <form css={S.homeForm} onSubmit={onSubmit}>
-        <button type='button' css={S.region} onClick={onClickRegionBtn}>
-          {region}
+        <button type='button' css={S.regionBtnContainer} onClick={onClickRegionBtn}>
+          <small>Region</small>
+          <span>{region}</span>
+          <ArrowDownIcon css={S.arrowDownIcon} />
         </button>
         <div css={S.searchWrapper}>
-          <input css={S.searchInput} placeholder={t('placeholder')} value={name} onChange={onChange} />
+          <label css={S.searchLabel} htmlFor='searchSummoner'>
+            Search
+          </label>
+          <input
+            id='searchSummoner'
+            css={S.searchInput}
+            placeholder={t('placeholder')}
+            value={name}
+            onChange={onChange}
+          />
           <button type='submit'>
             <SearchIcon css={S.searchIcon} />
           </button>
         </div>
       </form>
       <ModalPortal>
-        <DynamicRegionModal closeModal={closeModal} setRegion={setRegion} />
+        <DynamicRegionModal closeModal={closeModal} />
       </ModalPortal>
     </main>
   );

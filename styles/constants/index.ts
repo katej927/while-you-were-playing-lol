@@ -9,6 +9,7 @@ export const colors = {
   charcoal001: '#484848',
   lightgray100: 'rgb(195, 195, 211)',
   lightgray101: 'rgba(220, 219, 224, 1)',
+  lightgray102: '#9AA4AF',
   white001: 'rgb(255, 255, 255)',
   theme: 'rgb(124, 71, 233)',
   lightPurple: 'rgb(192, 165, 255)',
@@ -52,4 +53,14 @@ export const modal = {
   font-weight: ${font_weight.medium};
   text-align: center;
 	`,
+  button: `width: 100%;
+  height: 48px;
+  border: 0;
+  border-radius: ${sizes.borderRadius};
+  background-color: ${colors.theme};
+  color: ${colors.white001};
+  font-size: ${font.regular};
+  font-weight: 800;
+  outline: none;
+  cursor: pointer;`,
 };

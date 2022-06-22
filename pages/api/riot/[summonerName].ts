@@ -15,7 +15,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     const { summonerName, region } = req.query;
 
     const selectedRegionAPI = setRoutingRegion[`${region}`];
-    const selectedContinentAPI = setRoutingContinent(`${region}`);
+    const selectedContinentAPI = setRoutingContinent[`${region}`];
 
     if (!summonerName) {
       res.statusCode = 400;
