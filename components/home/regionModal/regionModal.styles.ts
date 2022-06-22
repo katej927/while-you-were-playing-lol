@@ -27,7 +27,7 @@ export const mapContainer = css`
   background-color: green;
 `;
 
-export const Marker = styled.div<IMarkerProps>`
+export const Marker = styled.button<IMarkerProps>`
   background-color: ${({ isSelected }) => (isSelected ? colors.theme : colors.white001)};
   height: fit-content;
   width: max-content;

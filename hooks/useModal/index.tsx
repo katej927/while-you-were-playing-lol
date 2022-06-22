@@ -1,4 +1,4 @@
-import { useRef, useEffect, useState, ReactNode } from 'react';
+import { useRef, useEffect, useState, ReactNode, useCallback } from 'react';
 import { createPortal } from 'react-dom';
 
 import * as S from './useModal.styles';
@@ -16,30 +16,33 @@ const useModal = () => {
     children: ReactNode;
   }
 
-  const ModalPortal = ({ children }: IProps) => {
-    const ref = useRef<Element | null>();
-    const [mounted, SetMounted] = useState(false);
+  const ModalPortal = useCallback(
+    ({ children }: IProps) => {
+      const ref = useRef<Element | null>();
+      const [mounted, SetMounted] = useState(false);
 
-    useEffect(() => {
-      SetMounted(true);
-      if (document) {
-        const dom = document.querySelector('#root-modal');
-        ref.current = dom;
+      useEffect(() => {
+        SetMounted(true);
+        if (document) {
+          const dom = document.querySelector('#root-modal');
+          ref.current = dom;
+        }
+      }, []);
+
+      if (ref.current && mounted && modalOpened) {
+        return createPortal(
+          <div css={S.wrapper}>
+            <div css={S.background} role='presentation' onClick={closeModal} />
+            {children}
+          </div>,
+          ref.current
+        );
       }
-    }, []);
 
-    if (ref.current && mounted && modalOpened) {
-      return createPortal(
-        <div css={S.wrapper}>
-          <div css={S.background} role='presentation' onClick={closeModal} />
-          {children}
-        </div>,
-        ref.current
-      );
-    }
-
-    return null;
-  };
+      return null;
+    },
+    [modalOpened]
+  );
 
   return { openModal, closeModal, ModalPortal };
 };

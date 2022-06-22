@@ -1,4 +1,4 @@
-import { useState, Dispatch, SetStateAction } from 'react';
+import { useState, Dispatch, SetStateAction, useEffect } from 'react';
 import GoogleMapReact from 'google-map-react';
 
 import { REGION_OPTIONS, IRegion, ILocation } from './_shared';
@@ -18,17 +18,19 @@ const RegionModal = ({ closeModal, setRegion }: IProps) => {
     lng: REGION_OPTIONS[0].lng,
   });
 
+  useEffect(() => {
+    return () => console.log('unmount');
+  }, []);
+
   const onClickCloseBtn = () => closeModal();
 
   const onClickOption = (region: IRegion) => {
     const { abbreviation, lat, lng, continent } = region;
-    console.log('onClickOption lat, lng', lat, lng, abbreviation);
+    console.log('onClickOption lat, lng', { abbreviation, lat, lng });
 
-    setLocation({ lat, lng, abbreviation });
+    setLocation({ abbreviation, lat, lng });
     setRegion(abbreviation);
   };
-
-  console.log('location', location);
 
   return (
     <section css={S.container}>
@@ -39,13 +41,20 @@ const RegionModal = ({ closeModal, setRegion }: IProps) => {
       <section css={S.mapContainer}>
         <GoogleMapReact
           bootstrapURLKeys={{ key: process.env.MY_GOOGLE_MAP_API! }}
-          defaultCenter={location}
+          defaultCenter={{ lat: location.lat, lng: location.lng }}
           defaultZoom={0}
+          center={{ lat: location.lat, lng: location.lng }}
         >
           {REGION_OPTIONS.map((region) => {
             const { abbreviation, continent, lat, lng } = region;
             return (
-              <S.Marker key={abbreviation} lat={lat} lng={lng} isSelected={abbreviation === location.abbreviation}>
+              <S.Marker
+                key={abbreviation}
+                lat={lat}
+                lng={lng}
+                isSelected={abbreviation === location.abbreviation}
+                onClick={() => onClickOption(region)}
+              >
                 {continent}
               </S.Marker>
             );
@@ -57,7 +66,11 @@ const RegionModal = ({ closeModal, setRegion }: IProps) => {
           const { abbreviation, continent } = region;
           return (
             <li key={abbreviation}>
-              <S.ContinentBtn onClick={() => onClickOption(region)} isSelected={abbreviation === location.abbreviation}>
+              <S.ContinentBtn
+                onClick={() => onClickOption(region)}
+                data-region={region}
+                isSelected={abbreviation === location.abbreviation}
+              >
                 <div />
                 {continent}
               </S.ContinentBtn>
