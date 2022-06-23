@@ -1,5 +1,5 @@
 import { css } from '@emotion/react';
-import { colors } from './../../styles/constants';
+import { colors } from 'styles/constants';
 
 export const wrapper = css`
   background-color: ${colors.black001};

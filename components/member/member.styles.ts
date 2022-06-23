@@ -1,6 +1,6 @@
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
-import { colors, sizes, font } from '../../styles/constants';
+import { colors, sizes, font } from 'styles/constants';
 
 export const header = css`
   background-color: ${colors.gray101};

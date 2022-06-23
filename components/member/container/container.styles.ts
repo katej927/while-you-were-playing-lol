@@ -1,5 +1,5 @@
 import { css } from '@emotion/react';
-import { sizes, colors, font } from '../../../styles/constants';
+import { sizes, colors, font } from 'styles/constants';
 
 export const wrapper = css`
   margin: auto;

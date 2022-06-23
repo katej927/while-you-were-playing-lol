@@ -1,6 +1,6 @@
 import useTranslation from 'next-translate/useTranslation';
 
-import { MainIcon } from '../../../public/static/svg';
+import { MainIcon } from 'public/static/svg';
 import * as S from './loading.styles';
 
 const Loading = () => {

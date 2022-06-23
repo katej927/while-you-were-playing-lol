@@ -1,4 +1,4 @@
-import { convertAllMatch } from '../components/member/_shared/utils';
+import { convertAllMatch } from 'components/member/_shared/utils';
 
 // test('convertAllMatch 함수의 결과 값 test', () => {
 //   const testArr = [

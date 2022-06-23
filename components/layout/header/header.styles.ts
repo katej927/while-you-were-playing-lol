@@ -1,6 +1,6 @@
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
-import { colors, sizes } from '../../../styles/constants';
+import { colors, sizes } from 'styles/constants';
 import { flex } from 'styles/mixin';
 
 export const wrapper = css`
