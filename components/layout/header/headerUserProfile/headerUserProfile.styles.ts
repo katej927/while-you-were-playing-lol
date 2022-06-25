@@ -36,7 +36,7 @@ export const userMenuBtnContainer = css`
   background-color: ${colors.white001};
   z-index: 1;
 
-  li {
+  button {
     display: flex;
     align-items: center;
     width: 100%;
