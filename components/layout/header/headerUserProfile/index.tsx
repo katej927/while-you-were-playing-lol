@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import { signOut, useSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
 import { useState, useRef } from 'react';
@@ -23,7 +22,10 @@ const HeaderUserProfile = () => {
 
   const onClickUserProfileBtn = () => setIsUserMenuOPen(!isUserMenuOpen);
 
-  const onClickSearchMyRecord = () => router.push({ pathname: `/summoners/${data?.user?.name}`, query: { region } });
+  const onClickSearchMyRecord = () => {
+    router.push({ pathname: `/summoners/${data?.user?.name}`, query: { region } });
+    setIsUserMenuOPen(!isUserMenuOpen);
+  };
 
   const onClickLogout = () => signOut();
 
@@ -35,17 +37,12 @@ const HeaderUserProfile = () => {
       </button>
       {isUserMenuOpen && (
         <ul css={S.userMenuBtnContainer}>
-          {/* <Link href={`/summoners/${data?.user?.name}`}>
-            <a role='presentation' onClick={onClickUserProfileBtn}>
-              <li>내 기록 보기</li>
-            </a>
-          </Link> */}
           <li>
             <button type='button' onClick={onClickSearchMyRecord}>
               내 기록 보기
             </button>
           </li>
-          <li role='presentation'>
+          <li>
             <button type='button' onClick={onClickLogout}>
               로그아웃
             </button>

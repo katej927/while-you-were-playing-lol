@@ -39,7 +39,6 @@
     "react-use": "^17.4.0",
     "redux": "^4.2.0",
     "slick-carousel": "^1.8.1",
-    "storejs": "^2.0.1",
     "victory": "^36.5.0"
   },
   "devDependencies": {
