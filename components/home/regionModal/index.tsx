@@ -18,6 +18,7 @@ const RegionModal = ({ closeModal }: IProps) => {
     lat: selectedLat,
     lng: selectedLng,
   } = useSelector((state) => state.common.region);
+
   const dispatch = useDispatch();
 
   const onClickCloseBtn = () => closeModal();

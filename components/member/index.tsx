@@ -1,9 +1,11 @@
 import { useMemo } from 'react';
+import dynamic from 'next/dynamic';
 import { useRouter } from 'next/router';
 import useTranslation from 'next-translate/useTranslation';
 import { useSelector } from 'store';
 
 import { convertAllMatch, convertTime, CONVERT_ICON_URL } from './_shared';
+import { BACKGROUND_IMG_URL } from 'components/member/_shared';
 import { NoRecord } from 'components/common/errors';
 import Carousel from './carousel';
 import Container from './container';
@@ -11,10 +13,12 @@ import Graph from './graph';
 
 import * as S from './member.styles';
 
+const DynamicQnb = dynamic(() => import('./qnb'), { ssr: false });
+
 const Member = () => {
   const { allMatchData, profileIconId } = useSelector((state) => state.riot.riot);
   const {
-    query: { name },
+    query: { name, region },
   } = useRouter();
 
   if (!allMatchData.length) return <NoRecord />;
@@ -34,9 +38,13 @@ const Member = () => {
           ) : (
             <div />
           )}
-          <h2 css={S.summonerName}>{name}</h2>
+          <div>
+            <h2 css={S.summonerName}>{name}</h2>
+            <div css={S.region}>{region}</div>
+          </div>
         </div>
       </header>
+      <DynamicQnb profileImg={BACKGROUND_IMG_URL(allMatchData[0].matchData.championName)} />
       <article css={S.contentsWrapper}>
         <Container title={t('boxheader1')}>
           <div css={S.timeBlockWrapper}>

@@ -27,6 +27,12 @@ export const summonerName = css`
   font-weight: bold;
 `;
 
+export const region = css`
+  font-size: ${font.small};
+  color: ${colors.lightgray100};
+  line-height: 18px;
+`;
+
 export const contentsWrapper = css`
   padding: ${sizes.padding};
 `;

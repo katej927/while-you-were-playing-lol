@@ -1,6 +1,7 @@
 import useTranslation from 'next-translate/useTranslation';
 
-import { BACKGROUND_IMG_URL, ITEM_IMG_URL, convertData, IResult } from './_shared';
+import { ITEM_IMG_URL, convertData, IResult } from './_shared';
+import { BACKGROUND_IMG_URL } from 'components/member/_shared';
 import { IEachMatchInfo } from 'types';
 
 import { CloseIcon } from 'public/static/svg';
