@@ -10,8 +10,6 @@ import ArrowUpIcon from './arrow-up-icon.svg';
 import CheckIcon from './check-icon.svg';
 import MenuIcon from './menu-icon.svg';
 import EarthIcon from './earth-icon.svg';
-import ArrowDownEmptyIcon from './arrow-down-empty-icon.svg';
-import ArrowUpEmptyIcon from './arrow-up-empty-icon.svg';
 
 export {
   MainIcon,
@@ -26,6 +24,4 @@ export {
   CheckIcon,
   MenuIcon,
   EarthIcon,
-  ArrowDownEmptyIcon,
-  ArrowUpEmptyIcon,
 };

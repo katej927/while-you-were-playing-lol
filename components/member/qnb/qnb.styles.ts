@@ -1,13 +1,16 @@
 import { css } from '@emotion/react';
-import { colors, font, sizes } from 'styles/constants';
+import { colors, font } from 'styles/constants';
 import { flex } from 'styles/mixin';
 
 export const container = css`
-  background-color: red;
   margin: 166px 0 0 16px;
   position: absolute;
   height: 88vh;
   width: 150px;
+
+  @media only screen and (max-width: 1250px) {
+    display: none;
+  } ;
 `;
 
 export const contentContainer = css`
