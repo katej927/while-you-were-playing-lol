@@ -1,2 +1,3 @@
 export type { IRecentSearches } from './types';
-export { filterExpired } from './utils';
+export { filterExpired, findRegionLocation } from './utils';
+export { SETTINGS } from './slideOptions';

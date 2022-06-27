@@ -1,4 +1,5 @@
 import { css, keyframes } from '@emotion/react';
+import facepaint from 'facepaint';
 
 export const flex = (direction = 'row', align = 'center', justify = 'center') => css`
   display: flex !important;
@@ -24,3 +25,6 @@ export const bounce = keyframes`
     transform: translate3d(0,-4px,0);
   }
 `;
+
+const breakpoints = [375, 600, 768, 1000, 1200, 1300, 1800, 2400];
+export const responsive = facepaint(breakpoints.map((bp) => `@media only screen and (max-width: ${bp}px)`));

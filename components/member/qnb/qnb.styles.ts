@@ -10,7 +10,7 @@ export const container = css`
 
   @media only screen and (max-width: 1250px) {
     display: none;
-  } ;
+  }
 `;
 
 export const contentContainer = css`
@@ -35,6 +35,7 @@ export const eachSlide = css`
   display: flex !important;
   justify-content: space-between;
   background: linear-gradient(to left, rgba(169, 208, 113, 0), rgba(0, 0, 0, 1));
+  cursor: pointer;
 
   img {
     z-index: -1;

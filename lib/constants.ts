@@ -1,4 +1,11 @@
-export const REGION_OPTIONS = [
+export interface IRegionOptions {
+  continent: string;
+  lat: number;
+  lng: number;
+  abbreviation: string;
+}
+
+export const REGION_OPTIONS: IRegionOptions[] = [
   {
     continent: 'Korea',
     lat: 37.5326,

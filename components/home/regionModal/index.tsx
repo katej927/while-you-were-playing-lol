@@ -3,7 +3,8 @@ import { useDispatch } from 'react-redux';
 
 import { useSelector } from 'store';
 import { commonActions } from 'store/common';
-import { REGION_OPTIONS, IRegion } from './_shared';
+import { IRegion } from './_shared';
+import { REGION_OPTIONS } from 'lib/constants';
 
 import { CloseIcon } from 'public/static/svg';
 import * as S from './regionModal.styles';
