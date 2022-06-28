@@ -7,6 +7,7 @@ export interface IRegionState {
 export interface CommonState {
   validateMode: boolean;
   region: IRegionState;
+  scrollPosition: number;
 }
 
 export interface IEachMatchTime {

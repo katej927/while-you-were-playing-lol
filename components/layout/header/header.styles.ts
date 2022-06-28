@@ -3,10 +3,15 @@ import styled from '@emotion/styled';
 import { colors, sizes } from 'styles/constants';
 import { flex } from 'styles/mixin';
 
-export const wrapper = css`
-  padding: 16px;
+export const Container = styled.nav<{ isMinHeight: boolean }>`
+  position: fixed;
+  width: -webkit-fill-available;
   height: initial;
+  /* padding: 16px; */
+  padding: ${({ isMinHeight }) => (isMinHeight ? '16px' : '36px')};
+
   background-color: ${colors.gray100};
+  transition: 0.4s;
 `;
 
 export const contentWrapper = css`

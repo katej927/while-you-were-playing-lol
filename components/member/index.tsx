@@ -30,7 +30,7 @@ const Member = () => {
   const { timeBlock, opportunityCost } = useMemo(() => convertTime(time), [time]);
 
   return (
-    <main>
+    <main css={S.container}>
       <header css={S.header}>
         <div css={S.headerContentWrapper}>
           {profileIconId && profileIconId <= 4530 ? (

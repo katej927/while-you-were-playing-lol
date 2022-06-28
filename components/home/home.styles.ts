@@ -7,17 +7,6 @@ export const homeWrapper = css`
   color: ${colors.white001};
 `;
 
-export const header = css`
-  ${flex('column')}
-  margin: 50px auto 50px;
-
-  span {
-    font-size: 160px;
-    font-weight: 900;
-    line-height: initial;
-  }
-`;
-
 export const divisionText = css`
   text-align: center;
   letter-spacing: 0.2rem;
@@ -35,6 +24,10 @@ export const searchDescHighlight = css`
     font-size: 64px;
     font-weight: ${font_weight.bold};
   }
+`;
+
+export const desc = css`
+  text-align: center;
 `;
 
 export const mainIcon = css`

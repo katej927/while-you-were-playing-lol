@@ -1,7 +1,10 @@
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import useTranslation from 'next-translate/useTranslation';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 
+import { commonActions } from 'store/common';
 import Header from './header';
 import { OG_IMAGE_URL } from './_shared';
 
@@ -16,6 +19,17 @@ const Layout = ({ children }: IProps) => {
   const {
     query: { name },
   } = useRouter();
+  const dispatch = useDispatch();
+
+  const onScroll = () => dispatch(commonActions.setScrollPosition(window.scrollY));
+
+  useEffect(() => {
+    window.addEventListener('scroll', onScroll);
+
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+    };
+  }, []);
 
   const titleSet = name ? `${t('common:abbreviationTitleOfApp')} | ${name}` : `${t('common:abbreviationTitleOfApp')}`;
   const ogTitleSet = name ? `${t('common:titleOfApp')} | ${name}` : `${t('common:titleOfApp')}`;

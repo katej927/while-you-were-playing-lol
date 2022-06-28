@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import { useSession } from 'next-auth/react';
 import { SyntheticEvent, useState } from 'react';
 
+import { useSelector } from 'store';
 import { convertLanguages } from './_shared';
 
 import { MainIcon, EarthIcon } from 'public/static/svg';
@@ -13,14 +14,14 @@ const DynamicHeaderUserProfile = dynamic(() => import('./headerUserProfile'));
 
 const Header = () => {
   const [isLocaleDropDownOpen, setIsLocaleDropDownOpen] = useState(false);
-  const { status } = useSession();
 
-  const router = useRouter();
-  const { pathname, asPath, query, locales, locale: curlocale } = router;
+  const scrollPosition = useSelector((state) => state.common.scrollPosition);
+  const { status } = useSession();
+  const { pathname, asPath, query, locales, locale: curlocale, push } = useRouter();
 
   const translatedLanguages = convertLanguages(locales);
 
-  const onClickIcon = () => router.push('/');
+  const onClickIcon = () => push('/');
 
   const onClickLocaleBtn = () => setIsLocaleDropDownOpen(!isLocaleDropDownOpen);
 
@@ -29,12 +30,13 @@ const Header = () => {
       dataset: { type },
     },
   }: SyntheticEvent<HTMLButtonElement>) => {
-    router.push({ pathname, query }, asPath, { locale: type });
+    push({ pathname, query }, asPath, { locale: type });
     setIsLocaleDropDownOpen(false);
   };
+  const navHeightBreakPoint = scrollPosition > 60;
 
   return (
-    <nav css={S.wrapper}>
+    <S.Container isMinHeight={navHeightBreakPoint}>
       <div css={S.contentWrapper}>
         <MainIcon onClick={onClickIcon} css={S.mainIcon} />
         <div css={S.rightBtnWrapper}>
@@ -63,7 +65,7 @@ const Header = () => {
           </div>
         </div>
       </div>
-    </nav>
+    </S.Container>
   );
 };
 

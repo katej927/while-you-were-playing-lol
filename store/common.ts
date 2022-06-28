@@ -4,6 +4,7 @@ import { CommonState, IRegionState } from 'types';
 const initialState: CommonState = {
   validateMode: false,
   region: { abbreviation: 'KR', lat: 37.5326, lng: 127.024612 },
+  scrollPosition: 0,
 };
 
 const common = createSlice({
@@ -15,6 +16,9 @@ const common = createSlice({
     },
     setRegion(state, action: PayloadAction<IRegionState>) {
       state.region = action.payload;
+    },
+    setScrollPosition(state, action: PayloadAction<number>) {
+      state.scrollPosition = action.payload;
     },
   },
 });
