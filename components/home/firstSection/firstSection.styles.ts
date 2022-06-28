@@ -17,14 +17,8 @@ export const Titles = styled.span<{ coloringTitleIdx: number; isSelected: boolea
   line-height: initial;
 
   &:nth-of-type(${({ coloringTitleIdx }) => coloringTitleIdx}) {
-    background-clip: border-box;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
     ${({ coloringTitleIdx }) =>
-      `background-image: linear-gradient(90deg, ${startColor[coloringTitleIdx - 1]}, ${endColor[coloringTitleIdx - 1]});
-			`};
-    /* ${({ coloringTitleIdx }) =>
-      `${textLinearGradient('90deg', startColor[coloringTitleIdx - 1], endColor[coloringTitleIdx - 1])}`} */
+      textLinearGradient('90deg', startColor[coloringTitleIdx - 1], endColor[coloringTitleIdx - 1])}
   }
 `;
 
@@ -33,7 +27,7 @@ export const titleDesc = css`
   text-align: center;
   span {
     letter-spacing: 0.2rem;
-    color: ${colors.lightgray103};
+    color: ${colors.lightgray102};
     line-height: 1.6em;
   }
 `;

@@ -30,7 +30,7 @@ const FirstSection = () => {
         ))}
       </h1>
       <h2 css={S.titleDesc}>
-        <span>내 시간은 어디로 와서 어디로 가는가. 이대로 페이커가 될 수 있는가.</span>
+        <span>내 시간은 어디로 와서 어디로 가는가. 내 꿈이 프로게이머 였던가.</span>
         <br />
         <span>잃어버린 나와 당신의 시간을 찾아서.</span>
       </h2>

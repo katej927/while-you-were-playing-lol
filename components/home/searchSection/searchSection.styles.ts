@@ -76,6 +76,7 @@ export const Desc = styled.p<IIsOpacityOn>`
   line-height: 1.6;
   text-align: center;
   ${({ isOpacityOn }) => slowlyAppear(isOpacityOn, 0.2)}
+  color: ${colors.lightgray102};
 `;
 
 export const Form = styled.form<IIsOpacityOn>`
