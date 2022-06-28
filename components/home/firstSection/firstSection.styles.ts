@@ -5,7 +5,7 @@ import { flex, textLinearGradient } from 'styles/mixin';
 
 export const header = css`
   ${flex('column')}
-  margin: 180px auto 80px;
+  margin: 180px auto 60px;
 `;
 
 const startColor = [colors.deepBlue, colors.theme, colors.deepOrange];
@@ -31,7 +31,9 @@ export const Titles = styled.span<{ coloringTitleIdx: number; isSelected: boolea
 export const titleDesc = css`
   margin-bottom: 100px;
   text-align: center;
-  letter-spacing: 0.2rem;
-  color: ${colors.lightgray103};
-  line-height: 1.6em;
+  span {
+    letter-spacing: 0.2rem;
+    color: ${colors.lightgray103};
+    line-height: 1.6em;
+  }
 `;

@@ -1,13 +1,15 @@
-import FirstSection from './firstSection';
-import SearchSection from './searchSection';
+import dynamic from 'next/dynamic';
 
 import * as S from './home.styles';
+
+const DynamicSearchFirstSection = dynamic(() => import('./firstSection'));
+const DynamicSearchSection = dynamic(() => import('./searchSection'));
 
 const Home = () => {
   return (
     <main css={S.homeWrapper}>
-      <FirstSection />
-      <SearchSection />
+      <DynamicSearchFirstSection />
+      <DynamicSearchSection />
     </main>
   );
 };

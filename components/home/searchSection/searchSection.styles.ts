@@ -1,14 +1,27 @@
 import { css } from '@emotion/react';
+import styled from '@emotion/styled';
 import { sizes, colors, font, font_weight } from 'styles/constants';
-import { flex, textLinearGradient } from 'styles/mixin';
+import { flex, textLinearGradient, slowlyAppear } from 'styles/mixin';
 
-export const divisionText = css`
+interface IIsOpacityOn {
+  isOpacityOn: boolean;
+}
+
+export const divisionTextContainer = css`
   margin-bottom: 48px;
   text-align: center;
 
   small {
     letter-spacing: 0.2rem;
   }
+`;
+
+export const DivisionText = styled.small<IIsOpacityOn>`
+  ${({ isOpacityOn }) => slowlyAppear(isOpacityOn, 0.2)}
+`;
+
+export const DivisionFigure = styled.div<IIsOpacityOn>`
+  ${({ isOpacityOn }) => slowlyAppear(isOpacityOn, 0.2)}
 `;
 
 export const divisionLine = css`
@@ -31,17 +44,19 @@ export const divisionCircle = css`
   }
 `;
 
-export const searchTitle = css`
+export const SectionTitle = styled.h3<IIsOpacityOn>`
   margin-bottom: 35px;
   font-size: 26px;
   font-weight: 600;
   text-align: center;
   ${textLinearGradient('90deg', colors.deepBlue, colors.neonBlue)}
+  ${({ isOpacityOn }) => slowlyAppear(isOpacityOn, 0.2)}
 `;
 
-export const searchDescHighlight = css`
+export const Title = styled.h2<IIsOpacityOn>`
   ${flex('column')}
   margin-bottom: 25px;
+  ${({ isOpacityOn }) => slowlyAppear(isOpacityOn, 0.2)}
 
   span {
     font-size: ${font.large};
@@ -55,14 +70,15 @@ export const searchDescHighlight = css`
   }
 `;
 
-export const desc = css`
+export const Desc = styled.p<IIsOpacityOn>`
   margin-bottom: 64px;
   letter-spacing: 1px;
   line-height: 1.6;
   text-align: center;
+  ${({ isOpacityOn }) => slowlyAppear(isOpacityOn, 0.2)}
 `;
 
-export const homeForm = css`
+export const Form = styled.form<IIsOpacityOn>`
   display: flex;
   margin: auto;
   margin-top: 16px;
@@ -71,6 +87,7 @@ export const homeForm = css`
   background-color: ${colors.gray101};
   border-radius: 35px;
   font-size: ${font.regular};
+  ${({ isOpacityOn }) => slowlyAppear(isOpacityOn, 0.2)}
 `;
 
 export const regionBtnContainer = css`

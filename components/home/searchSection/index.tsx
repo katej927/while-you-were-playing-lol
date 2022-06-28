@@ -38,25 +38,28 @@ const SearchSection = () => {
   };
 
   const onClickRegionBtn = () => openModal();
+
   return (
     <section>
-      <div css={S.divisionText}>
-        <small>EXPLORE THE WPL WAY</small>
+      <div css={S.divisionTextContainer}>
+        <S.DivisionText isOpacityOn={scrollPosition >= 130}>EXPLORE THE WPL WAY</S.DivisionText>
       </div>
-      <div css={S.divisionLine} />
-      <div css={S.divisionCircle}>
-        <ArrowDownIcon />
-      </div>
-      <h3 css={S.searchTitle}>탐험하기</h3>
-      <h2 css={S.searchDescHighlight}>
+      <S.DivisionFigure isOpacityOn={scrollPosition >= 200}>
+        <div css={S.divisionLine} />
+        <div css={S.divisionCircle}>
+          <ArrowDownIcon />
+        </div>
+      </S.DivisionFigure>
+      <S.SectionTitle isOpacityOn={scrollPosition >= 242}>탐험하기</S.SectionTitle>
+      <S.Title isOpacityOn={scrollPosition >= 365}>
         <span>소환사명을</span>
         <strong>검색하세요</strong>
-      </h2>
-      <p css={S.desc}>
+      </S.Title>
+      <S.Desc isOpacityOn={scrollPosition >= 475}>
         최근 15회의 게임의 총 시간을 계산하고, 어떤 다른 기회 비용들이 있었을지 알려줍니다. <br />
         날짜별 게임 시간, 각 게임 정보 그리고 당신이 했을 이성과의 데이트 횟수까지.
-      </p>
-      <form css={S.homeForm} onSubmit={onSubmit}>
+      </S.Desc>
+      <S.Form onSubmit={onSubmit} isOpacityOn={scrollPosition >= 600}>
         <button type='button' css={S.regionBtnContainer} onClick={onClickRegionBtn}>
           <small>Region</small>
           <span>{region}</span>
@@ -77,7 +80,7 @@ const SearchSection = () => {
             <SearchIcon css={S.searchIcon} />
           </button>
         </div>
-      </form>
+      </S.Form>
       <ModalPortal>
         <DynamicRegionModal closeModal={closeModal} />
       </ModalPortal>

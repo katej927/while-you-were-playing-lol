@@ -35,3 +35,8 @@ export const textLinearGradient = (direction: string, firstColor: string, second
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 `;
+
+export const slowlyAppear = (isOpacityOn: boolean, delay = 0.2) => css`
+  opacity: ${isOpacityOn ? 1 : 0};
+  transition: opacity 1s ${delay}s ease;
+`;
