@@ -7,11 +7,11 @@ export const Container = styled.nav<{ isMinHeight: boolean }>`
   position: fixed;
   width: -webkit-fill-available;
   height: initial;
-  /* padding: 16px; */
   padding: ${({ isMinHeight }) => (isMinHeight ? '16px' : '36px')};
 
   background-color: ${colors.gray100};
   transition: 0.4s;
+  z-index: 1;
 `;
 
 export const contentWrapper = css`
@@ -28,11 +28,11 @@ export const contentWrapper = css`
   background-color: transparent;
 `;
 
-export const mainIcon = css`
-  path {
-    fill: ${colors.theme};
-  }
-  cursor: pointer;
+export const logoBtn = css`
+  font-size: 32px;
+  color: ${colors.white001};
+  @import url('https://fonts.googleapis.com/css2?family=Goldman:wght@400;700&display=swap');
+  font-family: 'Libre Baskerville', serif;
 `;
 
 export const rightBtnWrapper = css`

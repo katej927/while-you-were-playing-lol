@@ -1,5 +1,5 @@
 export const colors = {
-  black001: 'rgb(28, 28, 31)',
+  black001: '#111',
   black002: 'black',
   gray100: 'rgb(36, 36, 42)',
   gray101: 'rgb(49, 49, 60)',
@@ -10,17 +10,22 @@ export const colors = {
   lightgray100: 'rgb(195, 195, 211)',
   lightgray101: 'rgba(220, 219, 224, 1)',
   lightgray102: '#9AA4AF',
+  lightgray103: '#888',
   white001: 'rgb(255, 255, 255)',
   theme: 'rgb(124, 71, 233)',
   lightPurple: 'rgb(192, 165, 255)',
   blue: 'rgb(30, 161, 247)',
   lightBlue: 'rgb(34, 184, 207)',
+  deepBlue: '#007CF0',
+  neonBlue: '#00DFD8',
   turquoise: 'rgb(0, 187, 163)',
   lightGreen: 'rgb(127, 208, 71)',
   yellow: 'rgb(255, 193, 31)',
   orange: 'rgb(255, 121, 5)',
+  deepOrange: '#FF4D4D',
   red: 'rgb(240, 101, 149)',
   error: '#E84057',
+  hotPink: '#FF0080',
 };
 
 export const sizes = {

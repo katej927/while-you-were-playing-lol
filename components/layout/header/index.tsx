@@ -38,7 +38,9 @@ const Header = () => {
   return (
     <S.Container isMinHeight={navHeightBreakPoint}>
       <div css={S.contentWrapper}>
-        <MainIcon onClick={onClickIcon} css={S.mainIcon} />
+        <button css={S.logoBtn} onClick={onClickIcon}>
+          WPL
+        </button>
         <div css={S.rightBtnWrapper}>
           <div css={S.switchLanguageContainer}>
             <button css={S.switchLanguageBtn} type='button' onClick={onClickLocaleBtn}>
