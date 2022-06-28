@@ -4,15 +4,36 @@ import { flex, bounce } from 'styles/mixin';
 
 export const homeWrapper = css`
   padding: ${sizes.padding};
+  color: ${colors.white001};
 `;
 
 export const header = css`
   ${flex('column')}
-  margin: 20px auto 50px;
-  h1 {
-    font-size: 40px;
+  margin: 50px auto 50px;
+
+  span {
+    font-size: 160px;
     font-weight: 900;
-    color: ${colors.lightgray100};
+    line-height: initial;
+  }
+`;
+
+export const divisionText = css`
+  text-align: center;
+  letter-spacing: 0.2rem;
+`;
+
+export const searchDescHighlight = css`
+  ${flex('column')}
+  margin-bottom: 10px;
+
+  span {
+    font-size: ${font.large};
+  }
+
+  strong {
+    font-size: 64px;
+    font-weight: ${font_weight.bold};
   }
 `;
 
@@ -38,13 +59,12 @@ export const regionBtnContainer = css`
   position: relative;
   padding: 10px 8px 10px 32px;
   width: 194px;
-  color: ${colors.white001};
 
   small {
     margin-bottom: 10px;
+    color: ${colors.white001};
     font-size: ${font.small};
     font-weight: ${font_weight.bold};
-    color: ${colors.white001};
   }
 
   span {
@@ -84,7 +104,6 @@ export const searchLabel = css`
   top: 12px;
   font-size: ${font.small};
   font-weight: ${font_weight.bold};
-  color: ${colors.white001};
 `;
 
 export const searchInput = css`

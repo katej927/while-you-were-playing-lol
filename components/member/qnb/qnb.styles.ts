@@ -24,6 +24,11 @@ export const slideContainer = css`
   margin: 8px 0 0 8px;
 `;
 
+export const arrowBtn = css`
+  width: 100%;
+  height: 20px;
+`;
+
 export const arrows = css`
   fill: ${colors.white001};
   width: 20px;

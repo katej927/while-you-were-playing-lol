@@ -7,8 +7,7 @@ import { getTime, endOfDay } from 'date-fns';
 import Slider from 'react-slick';
 
 import Container from '../container';
-import { filterExpired, IRecentSearches, SETTINGS } from './_shared';
-import { findRegionLocation } from './_shared';
+import { filterExpired, IRecentSearches, SETTINGS, findRegionLocation } from './_shared';
 
 import { ArrowUpIcon, ArrowDownIcon } from 'public/static/svg';
 import * as S from './qnb.styles';
@@ -52,7 +51,6 @@ const Qnb = ({ profileImg }: IProps) => {
   }: SyntheticEvent<HTMLLIElement>) => {
     const { abbreviation, lat, lng } = findRegionLocation(region!)[0];
     dispatch(commonActions.setRegion({ abbreviation, lat, lng }));
-
     push({ pathname: `/summoners/${name}`, query: { region } });
   };
 
@@ -61,7 +59,7 @@ const Qnb = ({ profileImg }: IProps) => {
       <aside css={S.contentContainer}>
         <Container title='최근 검색한 소환사'>
           <ol css={S.slideContainer}>
-            <button onClick={onClickPrevBtn}>
+            <button css={S.arrowBtn} onClick={onClickPrevBtn}>
               <ArrowUpIcon css={S.arrows} />
             </button>
             <Slider {...SETTINGS} ref={customSlider}>
@@ -84,7 +82,7 @@ const Qnb = ({ profileImg }: IProps) => {
                 );
               })}
             </Slider>
-            <button onClick={onClickNextBtn}>
+            <button css={S.arrowBtn} onClick={onClickNextBtn}>
               <ArrowDownIcon css={S.arrows} />
             </button>
           </ol>
