@@ -16,16 +16,9 @@ export const contentContainer = css`
   ${flex('row')}
   max-width: ${sizes.maxWidth};
 
-  li:after {
-    content: '';
-    display: block;
-    position: absolute;
-    right: 0px;
-    top: 50%;
-    margin-top: -7px;
-    width: 1px;
-    height: 14px;
-    background: red;
+  svg {
+    width: 25px;
+    fill: ${colors.lightgray100};
   }
 `;
 
@@ -33,9 +26,4 @@ export const IconBtn = styled.button<{ idx: number }>`
   ${flex('row')}
   padding: 10px;
   border-radius: 50%;
-
-  svg {
-    width: 25px;
-    fill: ${colors.lightgray100};
-  }
 `;
