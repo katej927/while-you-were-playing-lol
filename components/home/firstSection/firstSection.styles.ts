@@ -27,7 +27,7 @@ export const titleDesc = css`
   text-align: center;
   span {
     letter-spacing: 0.2rem;
-    color: ${colors.lightgray102};
+    color: ${colors.lightgray100};
     line-height: 1.6em;
   }
 `;

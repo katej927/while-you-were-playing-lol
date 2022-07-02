@@ -10,6 +10,11 @@ import ArrowUpIcon from './arrow-up-icon.svg';
 import CheckIcon from './check-icon.svg';
 import MenuIcon from './menu-icon.svg';
 import EarthIcon from './earth-icon.svg';
+import CopyLinkIcon from './share-copy-link-icon.svg';
+import KakaoTalkIcon from './kakaotalk-icon.svg';
+import TwitterIcon from './twitter-icon.svg';
+import FacebookIcon from './facebook-icon.svg';
+import GithubIcon from './github-icon.svg';
 
 export {
   MainIcon,
@@ -24,4 +29,9 @@ export {
   CheckIcon,
   MenuIcon,
   EarthIcon,
+  CopyLinkIcon,
+  KakaoTalkIcon,
+  TwitterIcon,
+  FacebookIcon,
+  GithubIcon,
 };

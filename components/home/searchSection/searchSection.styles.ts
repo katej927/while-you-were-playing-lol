@@ -76,7 +76,7 @@ export const Desc = styled.p<IIsOpacityOn>`
   line-height: 1.6;
   text-align: center;
   ${({ isOpacityOn }) => slowlyAppear(isOpacityOn, 0.2)}
-  color: ${colors.lightgray102};
+  color: ${colors.lightgray100};
 `;
 
 export const Form = styled.form<IIsOpacityOn>`
@@ -106,7 +106,7 @@ export const regionBtnContainer = css`
 
   span {
     font-size: ${font.regular};
-    color: ${colors.lightgray102};
+    color: ${colors.lightgray100};
   }
 
   &::after {
@@ -127,7 +127,7 @@ export const arrowDownIcon = css`
   width: 20px;
   right: 8px;
   bottom: 11px;
-  fill: ${colors.lightgray102};
+  fill: ${colors.lightgray100};
 `;
 
 export const searchWrapper = css`
@@ -147,11 +147,11 @@ export const searchInput = css`
   width: inherit;
   padding-top: 25px;
   line-height: 1.6;
-  color: ${colors.lightgray102};
+  color: ${colors.lightgray100};
 `;
 
 export const searchIcon = css`
   path {
-    fill: ${colors.lightgray102};
+    fill: ${colors.lightgray100};
   }
 `;

@@ -6,10 +6,10 @@ export const colors = {
   gray102: 'rgb(40, 40, 48)',
   gray103: 'rgb(103, 102, 118)',
   gray104: 'rgb(81, 81, 99)',
+  gray105: '#333',
   charcoal001: '#484848',
   lightgray100: 'rgb(195, 195, 211)',
   lightgray101: 'rgba(220, 219, 224, 1)',
-  lightgray102: '#9AA4AF',
   white001: 'rgb(255, 255, 255)',
   theme: 'rgb(124, 71, 233)',
   lightPurple: 'rgb(192, 165, 255)',
@@ -25,6 +25,9 @@ export const colors = {
   red: 'rgb(240, 101, 149)',
   error: '#E84057',
   hotPink: '#FF0080',
+  kakao: '#FEE500',
+  facebook: '#1877F2',
+  twitter: '#1D9BF0',
 };
 
 export const sizes = {

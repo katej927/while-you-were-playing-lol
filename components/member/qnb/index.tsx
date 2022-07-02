@@ -58,7 +58,7 @@ const Qnb = ({ profileImg }: IProps) => {
     <div css={S.container}>
       <aside css={S.contentContainer}>
         <Container title='최근 검색한 소환사'>
-          <ol css={S.slideContainer}>
+          <ul css={S.slideContainer}>
             <button css={S.arrowBtn} onClick={onClickPrevBtn}>
               <ArrowUpIcon css={S.arrows} />
             </button>
@@ -85,7 +85,7 @@ const Qnb = ({ profileImg }: IProps) => {
             <button css={S.arrowBtn} onClick={onClickNextBtn}>
               <ArrowDownIcon css={S.arrows} />
             </button>
-          </ol>
+          </ul>
         </Container>
       </aside>
     </div>

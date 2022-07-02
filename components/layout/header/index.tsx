@@ -33,10 +33,9 @@ const Header = () => {
     push({ pathname, query }, asPath, { locale: type });
     setIsLocaleDropDownOpen(false);
   };
-  const navHeightBreakPoint = scrollPosition > 60;
 
   return (
-    <S.Container isMinHeight={navHeightBreakPoint}>
+    <S.Container isMinHeight={scrollPosition > 60}>
       <div css={S.contentWrapper}>
         <button css={S.logoBtn} onClick={onClickIcon}>
           WPL

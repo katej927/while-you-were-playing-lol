@@ -1,3 +1,4 @@
+import dynamic from 'next/dynamic';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import useTranslation from 'next-translate/useTranslation';
@@ -6,9 +7,12 @@ import { useDispatch } from 'react-redux';
 
 import { commonActions } from 'store/common';
 import Header from './header';
+import Footer from './footer';
 import { OG_IMAGE_URL } from './_shared';
 
 import * as S from './layout.styles';
+
+const DynamicFooter = dynamic(() => import('./footer'), { ssr: false });
 
 interface IProps {
   children: React.ReactNode;
@@ -41,7 +45,7 @@ const Layout = ({ children }: IProps) => {
         <meta property='og:type' content='website' />
         <meta property='og:title' content={ogTitleSet} />
         <meta property='og:site_name' content={`${t('common:titleOfApp')}`} />
-        <meta property='og:description' content={'최근 게임 내역을 검색하여 어떤 기회비용이 있었는지 알려주는 웹앱'} />
+        <meta property='og:description' content={`${t('common:descOfApp')}`} />
         <meta property='og:image' content={OG_IMAGE_URL} />
         <meta property='og:image:width' content='1200' />
         <meta property='og:image:height' content='630' />
@@ -51,6 +55,7 @@ const Layout = ({ children }: IProps) => {
       <div css={S.wrapper}>
         <Header />
         {children}
+        <DynamicFooter />
       </div>
     </>
   );
