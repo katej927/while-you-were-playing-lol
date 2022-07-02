@@ -15,17 +15,27 @@ export const Container = css`
 export const contentContainer = css`
   ${flex('row')}
   max-width: ${sizes.maxWidth};
+
+  li:after {
+    content: '';
+    display: block;
+    position: absolute;
+    right: 0px;
+    top: 50%;
+    margin-top: -7px;
+    width: 1px;
+    height: 14px;
+    background: red;
+  }
 `;
 
 export const IconBtn = styled.button<{ idx: number }>`
   ${flex('row')}
-  background-color: ${({ idx }) => [colors.orange, colors.white001, colors.kakao, colors.facebook][idx]};
-
   padding: 10px;
   border-radius: 50%;
 
   svg {
     width: 25px;
-    fill: ${({ idx }) => [colors.white001, colors.twitter, 'black', colors.white001][idx]};
+    fill: ${colors.lightgray100};
   }
 `;

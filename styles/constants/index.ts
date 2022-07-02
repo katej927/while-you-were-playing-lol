@@ -25,9 +25,6 @@ export const colors = {
   red: 'rgb(240, 101, 149)',
   error: '#E84057',
   hotPink: '#FF0080',
-  kakao: '#FEE500',
-  facebook: '#1877F2',
-  twitter: '#1D9BF0',
 };
 
 export const sizes = {
