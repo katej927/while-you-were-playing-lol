@@ -1,4 +1,5 @@
 import dynamic from 'next/dynamic';
+import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useSession } from 'next-auth/react';
 import { SyntheticEvent, useState } from 'react';
@@ -6,7 +7,7 @@ import { SyntheticEvent, useState } from 'react';
 import { useSelector } from 'store';
 import { convertLanguages } from './_shared';
 
-import { MainIcon, EarthIcon } from 'public/static/svg';
+import { EarthIcon } from 'public/static/svg';
 import * as S from './header.styles';
 
 const DynamicHeaderAuth = dynamic(() => import('./headerAuth'));
@@ -20,8 +21,6 @@ const Header = () => {
   const { pathname, asPath, query, locales, locale: curlocale, push } = useRouter();
 
   const translatedLanguages = convertLanguages(locales);
-
-  const onClickIcon = () => push('/');
 
   const onClickLocaleBtn = () => setIsLocaleDropDownOpen(!isLocaleDropDownOpen);
 
@@ -37,9 +36,9 @@ const Header = () => {
   return (
     <S.Container isMinHeight={scrollPosition > 60}>
       <div css={S.contentWrapper}>
-        <button css={S.logoBtn} onClick={onClickIcon}>
-          WPL
-        </button>
+        <Link href={'/'}>
+          <a css={S.logoBtn}>WPL</a>
+        </Link>
         <div css={S.rightBtnWrapper}>
           <div css={S.switchLanguageContainer}>
             <button css={S.switchLanguageBtn} type='button' onClick={onClickLocaleBtn}>

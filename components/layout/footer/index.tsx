@@ -22,7 +22,7 @@ const Footer = () => {
     if (!kakao.isInitialized()) kakao.init(String(process.env.NEXT_PUBLIC_KAKAO_API_KEY).trim());
   }
 
-  const onClickIconBtn = ({
+  const onClickiconBtn = ({
     currentTarget: {
       dataset: { type },
     },
@@ -48,15 +48,26 @@ const Footer = () => {
         {ICONS.map(({ icon, type, url }, idx) => {
           return url ? (
             <Link key={type} href={url} passHref>
-              <a>{icon}</a>
+              <a css={S.iconBtn}>{icon}</a>
             </Link>
           ) : (
-            <S.IconBtn type='button' onClick={onClickIconBtn} data-type={type} idx={idx}>
+            <button css={S.iconBtn} type='button' onClick={onClickiconBtn} data-type={type}>
               {icon}
-            </S.IconBtn>
+            </button>
           );
         })}
       </div>
+      <Link href={'/'}>
+        <a css={S.logoBtn}>
+          <h2>WPL</h2>
+        </a>
+      </Link>
+      <p css={S.policyExplain}>
+        WPL isn’t endorsed by Riot Games and doesn’t reflect the views or opinions of Riot Games or anyone officially
+        involved in producing or managing League of Legends.
+        <br /> League of Legends and Riot Games are trademarks or registered trademarks of Riot Games, Inc. League of
+        Legends © Riot Games, Inc.
+      </p>
     </footer>
   );
 };

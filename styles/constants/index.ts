@@ -1,3 +1,5 @@
+import { css } from '@emotion/react';
+
 export const colors = {
   black001: '#111',
   black002: 'black',
@@ -45,6 +47,12 @@ export const font_weight = {
   medium: 500,
   bold: 600,
 };
+
+export const logo = css`
+  @import url('https://fonts.googleapis.com/css2?family=Goldman:wght@400;700&display=swap');
+  font-family: 'Libre Baskerville', serif;
+  color: ${colors.white001};
+`;
 
 export const modal = {
   padding: '40px',

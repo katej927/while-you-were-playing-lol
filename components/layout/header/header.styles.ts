@@ -1,6 +1,6 @@
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
-import { colors, sizes } from 'styles/constants';
+import { colors, sizes, logo } from 'styles/constants';
 import { flex } from 'styles/mixin';
 
 export const Container = styled.nav<{ isMinHeight: boolean }>`
@@ -29,9 +29,8 @@ export const contentWrapper = css`
 
 export const logoBtn = css`
   font-size: 32px;
-  color: ${colors.white001};
-  @import url('https://fonts.googleapis.com/css2?family=Goldman:wght@400;700&display=swap');
-  font-family: 'Libre Baskerville', serif;
+  ${logo}
+  cursor: pointer;
 `;
 
 export const rightBtnWrapper = css`
