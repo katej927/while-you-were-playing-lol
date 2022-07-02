@@ -2,13 +2,12 @@ import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { colors, sizes, font } from 'styles/constants';
 
-export const container = css`
-  padding-top: 150px;
-`;
+export const container = css``;
 
 export const header = css`
   background-color: ${colors.gray101};
   padding: 24px;
+  padding-top: 130px;
 `;
 
 export const headerContentWrapper = css`

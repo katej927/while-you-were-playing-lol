@@ -3,6 +3,9 @@ import { useRouter } from 'next/router';
 import Link from 'next/link';
 import useTranslation from 'next-translate/useTranslation';
 
+import { useDispatch } from 'react-redux';
+import { commonActions } from 'store/common';
+
 import { FACEBOOK_URL, TWITTER_URL, THIS_REPO_URL, convertShareKakao } from './_shared';
 
 import { CopyLinkIcon, KakaoTalkIcon, TwitterIcon, FacebookIcon, GithubIcon } from 'public/static/svg';
@@ -14,6 +17,7 @@ const Footer = () => {
     asPath,
   } = useRouter();
   const { t } = useTranslation('common');
+  const dispatch = useDispatch();
 
   const CURRENT_URL = `${process.env.NEXT_PUBLIC_API_URL}${asPath}`;
 
@@ -27,7 +31,14 @@ const Footer = () => {
       dataset: { type },
     },
   }: SyntheticEvent<HTMLButtonElement>) => {
-    if (type === 'copyLink') navigator.clipboard.writeText(CURRENT_URL);
+    if (type === 'copyLink') {
+      navigator.clipboard.writeText(CURRENT_URL);
+      dispatch(commonActions.setPopupMsg({ status: 'Success', text: 'Copied!', isShow: true }));
+      setTimeout(() => {
+        dispatch(commonActions.setPopupMsg({ isShow: false }));
+      }, 5000);
+    }
+
     if (type === 'kakaotalk') {
       const title = name ? `${t('titleOfApp')} | ${name}` : `${t('titleOfApp')}`;
       window.Kakao.Link.sendDefault(convertShareKakao(title, t('descOfApp'), t('btnTitleOfKakaoTalk'), CURRENT_URL));
@@ -45,7 +56,7 @@ const Footer = () => {
   return (
     <footer css={S.Container}>
       <div css={S.contentContainer}>
-        {ICONS.map(({ icon, type, url }, idx) => {
+        {ICONS.map(({ icon, type, url }) => {
           return url ? (
             <Link key={type} href={url} passHref>
               <a css={S.iconBtn}>{icon}</a>

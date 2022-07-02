@@ -15,6 +15,7 @@ import KakaoTalkIcon from './kakaotalk-icon.svg';
 import TwitterIcon from './twitter-icon.svg';
 import FacebookIcon from './facebook-icon.svg';
 import GithubIcon from './github-icon.svg';
+import CheckCircleIcon from './check-circle-icon.svg';
 
 export {
   MainIcon,
@@ -34,4 +35,5 @@ export {
   TwitterIcon,
   FacebookIcon,
   GithubIcon,
+  CheckCircleIcon,
 };

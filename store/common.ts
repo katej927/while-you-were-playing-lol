@@ -1,10 +1,13 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { CommonState, IRegionState } from 'types';
+import { CommonState, IRegionState, IPopupMsg } from 'types';
 
 const initialState: CommonState = {
   validateMode: false,
   region: { abbreviation: 'KR', lat: 37.5326, lng: 127.024612 },
   scrollPosition: 0,
+  popupMsg: {
+    isShow: false,
+  },
 };
 
 const common = createSlice({
@@ -19,6 +22,9 @@ const common = createSlice({
     },
     setScrollPosition(state, action: PayloadAction<number>) {
       state.scrollPosition = action.payload;
+    },
+    setPopupMsg(state, action: PayloadAction<IPopupMsg>) {
+      state.popupMsg = action.payload;
     },
   },
 });

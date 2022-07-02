@@ -4,10 +4,17 @@ export interface IRegionState {
   lng: number;
 }
 
+export interface IPopupMsg {
+  status?: 'Success';
+  text?: string;
+  isShow: boolean;
+}
+
 export interface CommonState {
   validateMode: boolean;
   region: IRegionState;
   scrollPosition: number;
+  popupMsg: IPopupMsg;
 }
 
 export interface IEachMatchTime {

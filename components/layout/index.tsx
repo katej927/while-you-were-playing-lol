@@ -1,17 +1,18 @@
 import dynamic from 'next/dynamic';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import useTranslation from 'next-translate/useTranslation';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+import { useSelector } from 'store';
+import useTranslation from 'next-translate/useTranslation';
 
 import { commonActions } from 'store/common';
 import Header from './header';
-import Footer from './footer';
 import { OG_IMAGE_URL } from './_shared';
 
 import * as S from './layout.styles';
 
+const DynamicAlert = dynamic(() => import('./alert'), { ssr: false });
 const DynamicFooter = dynamic(() => import('./footer'), { ssr: false });
 
 interface IProps {
@@ -24,6 +25,7 @@ const Layout = ({ children }: IProps) => {
     query: { name },
   } = useRouter();
   const dispatch = useDispatch();
+  const isAlertShow = useSelector((state) => state.common.popupMsg.isShow);
 
   const onScroll = () => dispatch(commonActions.setScrollPosition(window.scrollY));
 
@@ -54,6 +56,7 @@ const Layout = ({ children }: IProps) => {
       </Head>
       <div css={S.wrapper}>
         <Header />
+        {isAlertShow && <DynamicAlert />}
         {children}
         <DynamicFooter />
       </div>
