@@ -1,13 +1,14 @@
-import { flex } from 'styles/mixin';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { colors, modal, font, sizes, font_weight } from 'styles/constants';
+import { flex, responsive } from 'styles/mixin';
 
 import { IMarkerProps } from './_shared';
 
 export const container = css`
   position: relative;
   width: ${sizes.maxWidth};
+  height: 'fit-content';
   padding: ${modal.padding};
   background-color: ${colors.white001};
   z-index: 11;
@@ -23,7 +24,9 @@ export const title = css`
 
 export const mapContainer = css`
   width: 100%;
-  height: 400px;
+  ${responsive({
+    height: ['200px', , '400px'],
+  })}
 `;
 
 export const Marker = styled.button<IMarkerProps>`
@@ -47,8 +50,10 @@ export const optionContainer = css`
 
 export const ContinentBtn = styled.button<{ isSelected: boolean }>`
   ${flex('row', 'center', 'start')}
-  font-size: ${font.medium};
-  width: 160px;
+  ${responsive({
+    fontSize: ['13px', , font.medium],
+    width: ['145px', , '160px'],
+  })}
   padding: 5px;
   color: ${({ isSelected }) => (isSelected ? colors.theme : colors.gray103)};
 
