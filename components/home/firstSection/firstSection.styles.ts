@@ -1,6 +1,6 @@
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
-import { colors, font } from 'styles/constants';
+import { colors, responsive_text } from 'styles/constants';
 import { flex, textLinearGradient, responsive } from 'styles/mixin';
 
 export const container = css`
@@ -30,7 +30,7 @@ export const Titles = styled.span<{ coloringTitleIdx: number; isSelected: boolea
 `;
 
 export const titleDesc = css`
-  font-size: ${font.regular};
+  ${responsive_text.regular}
   margin-bottom: 100px;
   text-align: center;
 
