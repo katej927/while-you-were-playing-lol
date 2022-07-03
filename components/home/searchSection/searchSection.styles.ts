@@ -85,14 +85,11 @@ export const Desc = styled.p<IIsOpacityOn>`
 
 export const Form = styled.form<IIsOpacityOn>`
   display: flex;
-  margin: auto;
-  margin-top: 16px;
-  margin-bottom: 250px;
+  margin: 16px auto 250px;
   max-width: ${sizes.maxWidth};
   background-color: ${colors.gray101};
   border-radius: 35px;
   ${responsive_text.regular}
-  /* font-size: ${font.regular}; */
   ${({ isOpacityOn }) => slowlyAppear(isOpacityOn, 0.2)}
 `;
 
@@ -110,9 +107,8 @@ export const regionBtnContainer = css`
   }
 
   span {
-    ${responsive_text.regular};
+    font-size: 16px;
     text-align: start;
-    /* font-size: ${font.regular}; */
     color: ${colors.lightgray100};
   }
 
@@ -145,9 +141,9 @@ export const searchWrapper = css`
 `;
 
 export const searchLabel = css`
+  ${responsive_text.small};
   position: absolute;
   top: 12px;
-  ${responsive_text.small};
   font-weight: ${font_weight.bold};
 `;
 
@@ -155,7 +151,6 @@ export const searchInput = css`
   width: inherit;
   padding-top: 25px;
   line-height: 1.6;
-  ${responsive_text.regular};
   color: ${colors.lightgray100};
 `;
 

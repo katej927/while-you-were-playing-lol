@@ -83,12 +83,12 @@ export const modal = {
 export const responsive_text = {
   small: css`
     ${responsive({
-      fontSize: ['1vw', , , font.small],
+      fontSize: ['11px', , , font.small],
     })}
   `,
   regular: css`
     ${responsive({
-      fontSize: ['3vw', , font.regular],
+      fontSize: ['13px', , font.regular],
     })}
   `,
   large: css`
