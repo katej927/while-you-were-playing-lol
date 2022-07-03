@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux';
 
 import { useSelector } from 'store';
-import { commonActions } from 'store/common';
+import { commonActions } from 'store';
 
 export default () => {
   const dispatch = useDispatch();

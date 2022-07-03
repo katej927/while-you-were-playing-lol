@@ -1,7 +1,11 @@
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
-import { colors } from 'styles/constants';
-import { flex, textLinearGradient } from 'styles/mixin';
+import { colors, responsive_text } from 'styles/constants';
+import { flex, textLinearGradient, responsive } from 'styles/mixin';
+
+export const container = css`
+  ${flex('column')}
+`;
 
 export const header = css`
   ${flex('column')}
@@ -12,7 +16,10 @@ const startColor = [colors.deepBlue, colors.theme, colors.deepOrange];
 const endColor = [colors.neonBlue, colors.hotPink, colors.yellow];
 
 export const Titles = styled.span<{ coloringTitleIdx: number; isSelected: boolean }>`
-  font-size: 160px;
+  ${responsive({
+    fontSize: ['20vw', '20vw', '128px', '128px', '160px'],
+  })}
+  text-align: center;
   font-weight: 900;
   line-height: initial;
 
@@ -23,8 +30,10 @@ export const Titles = styled.span<{ coloringTitleIdx: number; isSelected: boolea
 `;
 
 export const titleDesc = css`
+  ${responsive_text.regular}
   margin-bottom: 100px;
   text-align: center;
+
   span {
     letter-spacing: 0.2rem;
     color: ${colors.lightgray100};

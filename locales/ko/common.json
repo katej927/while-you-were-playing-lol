@@ -39,5 +39,9 @@
   "victory": "승리",
   "defeat": "패배",
   "login": "로그인",
-  "signup": "회원가입"
+  "signup": "회원가입",
+  "popup": {
+    "status": { "success": "성공" },
+    "text": { "copied": "복사되었습니다.", "completedSignup": "회원 가입이 완료되었습니다." }
+  }
 }

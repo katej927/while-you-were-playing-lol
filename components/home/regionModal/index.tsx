@@ -2,7 +2,7 @@ import GoogleMapReact from 'google-map-react';
 import { useDispatch } from 'react-redux';
 
 import { useSelector } from 'store';
-import { commonActions } from 'store/common';
+import { commonActions } from 'store';
 import { IRegion } from './_shared';
 import { REGION_OPTIONS } from 'lib/constants';
 

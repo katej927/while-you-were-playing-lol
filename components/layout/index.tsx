@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux';
 import { useSelector } from 'store';
 import useTranslation from 'next-translate/useTranslation';
 
-import { commonActions } from 'store/common';
+import { commonActions } from 'store';
 import Header from './header';
 import { OG_IMAGE_URL } from './_shared';
 

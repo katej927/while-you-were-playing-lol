@@ -1,7 +1,7 @@
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
-import { sizes, colors, font, font_weight } from 'styles/constants';
-import { flex, textLinearGradient, slowlyAppear } from 'styles/mixin';
+import { sizes, colors, font, font_weight, responsive_text } from 'styles/constants';
+import { flex, textLinearGradient, slowlyAppear, responsive } from 'styles/mixin';
 
 interface IIsOpacityOn {
   isOpacityOn: boolean;
@@ -18,6 +18,7 @@ export const divisionTextContainer = css`
 
 export const DivisionText = styled.small<IIsOpacityOn>`
   ${({ isOpacityOn }) => slowlyAppear(isOpacityOn, 0.2)}
+  ${responsive_text.regular}
 `;
 
 export const DivisionFigure = styled.div<IIsOpacityOn>`
@@ -59,19 +60,22 @@ export const Title = styled.h2<IIsOpacityOn>`
   ${({ isOpacityOn }) => slowlyAppear(isOpacityOn, 0.2)}
 
   span {
-    font-size: ${font.large};
+    ${responsive_text.large}
     line-height: 2;
   }
 
   strong {
-    font-size: 64px;
+    ${responsive({
+      fontSize: ['calc(37.09px + 1.82vw)', , '64px'],
+    })}
     font-weight: ${font_weight.bold};
     line-height: 1.1;
   }
 `;
 
 export const Desc = styled.p<IIsOpacityOn>`
-  margin-bottom: 64px;
+  ${responsive_text.regular}
+  margin: 0px auto 64px;
   letter-spacing: 1px;
   line-height: 1.6;
   text-align: center;
@@ -87,7 +91,8 @@ export const Form = styled.form<IIsOpacityOn>`
   max-width: ${sizes.maxWidth};
   background-color: ${colors.gray101};
   border-radius: 35px;
-  font-size: ${font.regular};
+  ${responsive_text.regular}
+  /* font-size: ${font.regular}; */
   ${({ isOpacityOn }) => slowlyAppear(isOpacityOn, 0.2)}
 `;
 
@@ -100,12 +105,14 @@ export const regionBtnContainer = css`
   small {
     margin-bottom: 10px;
     color: ${colors.white001};
-    font-size: ${font.small};
+    ${responsive_text.small}
     font-weight: ${font_weight.bold};
   }
 
   span {
-    font-size: ${font.regular};
+    ${responsive_text.regular};
+    text-align: start;
+    /* font-size: ${font.regular}; */
     color: ${colors.lightgray100};
   }
 
@@ -136,10 +143,11 @@ export const searchWrapper = css`
   padding: 7px 24px;
   width: 100%;
 `;
+
 export const searchLabel = css`
   position: absolute;
   top: 12px;
-  font-size: ${font.small};
+  ${responsive_text.small};
   font-weight: ${font_weight.bold};
 `;
 
@@ -147,6 +155,7 @@ export const searchInput = css`
   width: inherit;
   padding-top: 25px;
   line-height: 1.6;
+  ${responsive_text.regular};
   color: ${colors.lightgray100};
 `;
 

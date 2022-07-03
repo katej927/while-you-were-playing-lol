@@ -11,7 +11,7 @@ import { filterExpired, IRecentSearches, SETTINGS, findRegionLocation } from './
 
 import { ArrowUpIcon, ArrowDownIcon } from 'public/static/svg';
 import * as S from './qnb.styles';
-import { commonActions } from 'store/common';
+import { commonActions } from 'store';
 
 interface IProps {
   profileImg: string;

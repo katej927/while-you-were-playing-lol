@@ -21,7 +21,7 @@ const FirstSection = () => {
   }, []);
 
   return (
-    <section>
+    <section css={S.container}>
       <h1 css={S.header}>
         {titleList.map((title, idx) => (
           <S.Titles key={title} coloringTitleIdx={coloringTitleIdx} isSelected={idx + 1 === coloringTitleIdx}>

@@ -2,7 +2,7 @@ import { SyntheticEvent } from 'react';
 import { useDispatch } from 'react-redux';
 
 import { useSelector } from 'store';
-import { authActions } from 'store/auth';
+import { authActions } from 'store';
 
 import { useModal } from 'hooks';
 import { SignUpModal, LoginModal } from 'components';

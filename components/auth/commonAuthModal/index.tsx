@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import { authActions } from 'store/auth';
+import { authActions } from 'store';
 import { useSelector } from 'store';
 import useTranslation from 'next-translate/useTranslation';
 

@@ -4,10 +4,10 @@ import { colors, sizes, font_weight, font } from 'styles/constants';
 import { flex } from 'styles/mixin';
 
 const covertColor = {
-  Success: colors.lightGreen,
+  success: colors.lightGreen,
 };
 
-export const Container = styled.aside<{ status: 'Success' }>`
+export const Container = styled.aside<{ status: 'success' }>`
   ${flex('row', 'center', 'space-between')}
   position: fixed;
   width: 300px;
@@ -17,10 +17,10 @@ export const Container = styled.aside<{ status: 'Success' }>`
   padding: 16px;
   right: 10px;
   top: 10px;
-  z-index: 1;
+  z-index: 12;
 `;
 
-export const LeftContainer = styled.div<{ status: 'Success' }>`
+export const LeftContainer = styled.div<{ status: 'success' }>`
   ${flex('row')}
 
   svg:first-of-type {
@@ -31,6 +31,7 @@ export const LeftContainer = styled.div<{ status: 'Success' }>`
 
 export const textContainer = css`
   ${flex('column', 'start')};
+  width: 200px;
   font-size: ${font.medium};
   color: ${colors.lightgray102};
 

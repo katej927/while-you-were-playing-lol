@@ -7,7 +7,7 @@ export const Container = styled.nav<{ isMinHeight: boolean }>`
   position: fixed;
   width: -webkit-fill-available;
   height: initial;
-  padding: ${({ isMinHeight }) => (isMinHeight ? '16px' : '36px')};
+  padding: ${({ isMinHeight }) => (isMinHeight ? '16px' : '36px 16px;')};
   background-color: ${colors.gray100};
   transition: 0.4s;
   z-index: 1;

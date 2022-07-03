@@ -4,7 +4,7 @@ import Link from 'next/link';
 import useTranslation from 'next-translate/useTranslation';
 
 import { useDispatch } from 'react-redux';
-import { commonActions } from 'store/common';
+import { commonActions } from 'store';
 
 import { FACEBOOK_URL, TWITTER_URL, THIS_REPO_URL, convertShareKakao } from './_shared';
 
@@ -33,7 +33,14 @@ const Footer = () => {
   }: SyntheticEvent<HTMLButtonElement>) => {
     if (type === 'copyLink') {
       navigator.clipboard.writeText(CURRENT_URL);
-      dispatch(commonActions.setPopupMsg({ status: 'Success', text: 'Copied!', isShow: true }));
+
+      dispatch(
+        commonActions.setPopupMsg({
+          status: 'success',
+          text: 'copied',
+          isShow: true,
+        })
+      );
       setTimeout(() => {
         dispatch(commonActions.setPopupMsg({ isShow: false }));
       }, 5000);
@@ -54,7 +61,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer css={S.Container}>
+    <footer css={S.container}>
       <div css={S.contentContainer}>
         {ICONS.map(({ icon, type, url }) => {
           return url ? (

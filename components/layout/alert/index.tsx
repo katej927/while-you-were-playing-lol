@@ -1,7 +1,8 @@
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'store';
+import useTranslation from 'next-translate/useTranslation';
 
-import { commonActions } from 'store/common';
+import { commonActions } from 'store';
 
 import { CloseIcon, CheckCircleIcon } from 'public/static/svg';
 import * as S from './alert.styles';
@@ -9,9 +10,10 @@ import * as S from './alert.styles';
 const Alert = () => {
   const { text, status } = useSelector((state) => state.common.popupMsg);
   const dispatch = useDispatch();
+  const { t } = useTranslation('common');
 
   const Icon = {
-    Success: <CheckCircleIcon />,
+    success: <CheckCircleIcon />,
   }[status!];
 
   const onClickCloseBtn = () => dispatch(commonActions.setPopupMsg({ isShow: false }));
@@ -21,8 +23,8 @@ const Alert = () => {
       <S.LeftContainer status={status!}>
         {Icon}
         <div css={S.textContainer}>
-          <span>{status}</span>
-          <span>{text}</span>
+          <span>{t(`popup.status.${status}`, { returnObjects: true })}</span>
+          <span>{t(`popup.text.${text}`, { returnObjects: true })}</span>
         </div>
       </S.LeftContainer>
       <button type='button' onClick={onClickCloseBtn}>

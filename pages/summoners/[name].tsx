@@ -4,7 +4,7 @@ import { Suspense } from 'react';
 import { useDispatch } from 'react-redux';
 
 import { getSummonerDataAPI } from 'lib/api';
-import { riotActions } from 'store/riot';
+import { riotActions } from 'store';
 
 import { Loading } from 'components/common';
 import { IEachMatch } from 'types';

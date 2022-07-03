@@ -3,6 +3,10 @@ import { HYDRATE, createWrapper, MakeStore } from 'next-redux-wrapper';
 import { configureStore, combineReducers } from '@reduxjs/toolkit';
 import { TypedUseSelectorHook, useSelector as useReduxSelector } from 'react-redux';
 
+import { commonActions } from './common';
+import { authActions } from './auth';
+import { riotActions } from './riot';
+
 import riot from './riot';
 import common from './common';
 import auth from './auth';
@@ -12,6 +16,8 @@ const rootReducer = combineReducers({
   common: common.reducer,
   auth: auth.reducer,
 });
+
+export { commonActions, authActions, riotActions };
 
 export type RootState = ReturnType<typeof rootReducer>;
 

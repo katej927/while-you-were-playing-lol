@@ -5,7 +5,7 @@ export interface IRegionState {
 }
 
 export interface IPopupMsg {
-  status?: 'Success';
+  status?: 'success';
   text?: string;
   isShow: boolean;
 }

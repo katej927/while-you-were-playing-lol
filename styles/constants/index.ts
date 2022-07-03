@@ -1,4 +1,5 @@
 import { css } from '@emotion/react';
+import { responsive } from 'styles/mixin';
 
 export const colors = {
   black001: '#111',
@@ -77,4 +78,22 @@ export const modal = {
   font-weight: 800;
   outline: none;
   cursor: pointer;`,
+};
+
+export const responsive_text = {
+  small: css`
+    ${responsive({
+      fontSize: ['1vw', , , font.small],
+    })}
+  `,
+  regular: css`
+    ${responsive({
+      fontSize: ['3vw', , font.regular],
+    })}
+  `,
+  large: css`
+    ${responsive({
+      fontSize: ['4vw', , font.large],
+    })}
+  `,
 };

@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 
 import { useValidateMode } from 'hooks';
 import { createUser } from 'lib/api';
-import { authActions } from 'store/auth';
+import { authActions, commonActions } from 'store';
 
 import { DAYS, MONTHS, YEARS, convertBDaySelectors, checkPasswordValidation, convertInputList } from './_shared';
 import { IInputList } from '../_shared';
@@ -78,6 +78,16 @@ const SignUpModal = ({ closeModal }: IProps) => {
       };
       await createUser(sigupBody);
       dispatch(authActions.setAuthMode('login'));
+      dispatch(
+        commonActions.setPopupMsg({
+          text: 'completedSignup',
+          status: 'success',
+          isShow: true,
+        })
+      );
+      setTimeout(() => {
+        dispatch(commonActions.setPopupMsg({ isShow: false }));
+      }, 5000);
     } catch (e) {
       console.log(e);
     }

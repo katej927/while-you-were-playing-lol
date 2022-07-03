@@ -38,5 +38,9 @@
   "victory": "Victory",
   "defeat": "Defeat",
   "login": "Login",
-  "signup": "Sign up"
+  "signup": "Sign up",
+  "popup": {
+    "status": { "success": "Success" },
+    "text": { "copied": "Copied!", "completedSignup": "Your account has been successfully created." }
+  }
 }

@@ -2,10 +2,10 @@ import { css } from '@emotion/react';
 import { colors, sizes, logo, font } from 'styles/constants';
 import { flex } from 'styles/mixin';
 
-export const Container = css`
+export const container = css`
   ${flex('column')}
   margin-top: 100px;
-  padding: 36px 0px 48px;
+  padding: 36px 16px;
   border-top: 1px solid ${colors.gray101};
   background-color: ${colors.gray100};
   color: ${colors.lightgray100};
