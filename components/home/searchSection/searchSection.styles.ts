@@ -65,7 +65,7 @@ export const Title = styled.h2<IIsOpacityOn>`
   }
 
   strong {
-    ${responsive({
+    ${responsive.onlyScreen({
       fontSize: ['calc(37.09px + 1.82vw)', , '64px'],
     })}
     font-weight: ${font_weight.bold};

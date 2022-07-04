@@ -19,8 +19,12 @@ const carouselModal = ({ modalData, closeModal }: IProps) => {
   return (
     <section css={S.wrapper}>
       <picture>
-        <source media='(max-width: 375px)' srcSet={BACKGROUND_IMG_URL('loading', `${convertedData['championName']}`)} />
+        <source
+          media='(orientation: portrait)'
+          srcSet={BACKGROUND_IMG_URL('loading', `${convertedData['championName']}`)}
+        />
         <img
+          css={S.bgImg}
           src={BACKGROUND_IMG_URL('splash', `${convertedData['championName']}`)}
           alt={`champion(${modalData.matchData.championName})'s image`}
         />

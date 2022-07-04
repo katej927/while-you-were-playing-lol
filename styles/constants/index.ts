@@ -82,17 +82,17 @@ export const modal = {
 
 export const responsive_text = {
   small: css`
-    ${responsive({
+    ${responsive.onlyScreen({
       fontSize: ['11px', , , font.small],
     })}
   `,
   regular: css`
-    ${responsive({
+    ${responsive.onlyScreen({
       fontSize: ['13px', , font.regular],
     })}
   `,
   large: css`
-    ${responsive({
+    ${responsive.onlyScreen({
       fontSize: ['4vw', , font.large],
     })}
   `,

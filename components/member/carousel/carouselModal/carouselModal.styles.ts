@@ -8,9 +8,15 @@ export const wrapper = css`
   z-index: 11;
 `;
 
+export const bgImg = css`
+  ${responsive.isPortraitOrLandscape({
+    height: ['80vh', '100%'],
+  })}/* height: 80vh; */
+`;
+
 export const descWrapper = css`
   ${flex('column', 'baseline')}
-  ${responsive({
+  ${responsive.isPortraitOrLandscape({
     width: ['100%', '40%'],
     color: [colors.lightgray100, colors.black001],
     background: [
@@ -18,7 +24,7 @@ export const descWrapper = css`
       'linear-gradient(to left, rgba(169, 208, 113, 0), rgba(136, 173, 215, 1))',
     ],
     height: ['fit-content', '100%'],
-    padding: ['20px 0px 0px 0px', '30px'],
+    padding: ['20px', '30px'],
     flexDirection: ['row', 'column'],
     flex: ['1 1 auto'], // 크기 커진 부분 추가
     flexWrap: ['wrap'], // 크기 커진 부분 추가
@@ -30,29 +36,29 @@ export const descWrapper = css`
 `;
 
 export const categoriesContainer = css`
-  ${responsive({
-    width: ['134px', 'fit-content'],
+  ${responsive.isPortraitOrLandscape({
+    width: ['50%', 'fit-content'],
     marginBottom: ['14px', '0px'],
   })}
   height: fit-content;
 `;
 
 export const subject = css`
-  ${responsive({
+  ${responsive.isPortraitOrLandscape({
     fontSize: ['15px', '30px'],
   })}
   font-weight: ${font_weight.bold};
 `;
 
 export const content = css`
-  ${responsive({
+  ${responsive.isPortraitOrLandscape({
     fontSize: ['13px', '20px'],
     margin: ['5px 0px 0px 0px', '10px 0px 15px'],
   })}
 `;
 
 export const itemImg = css`
-  ${responsive({
+  ${responsive.isPortraitOrLandscape({
     width: ['29px', '40px'],
   })}
   border-radius: ${sizes.borderRadius};

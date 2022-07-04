@@ -24,7 +24,7 @@ export const title = css`
 
 export const mapContainer = css`
   width: 100%;
-  ${responsive({
+  ${responsive.onlyScreen({
     height: ['200px', , '400px'],
   })}
 `;
@@ -50,7 +50,7 @@ export const optionContainer = css`
 
 export const ContinentBtn = styled.button<{ isSelected: boolean }>`
   ${flex('row', 'center', 'start')}
-  ${responsive({
+  ${responsive.onlyScreen({
     fontSize: ['13px', , font.medium],
     width: ['145px', , '160px'],
   })}

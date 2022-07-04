@@ -27,7 +27,13 @@ export const bounce = keyframes`
 `;
 
 const breakpoints = [376, 600, 768, 1000, 1200, 1300, 1800, 2400];
-export const responsive = facepaint(breakpoints.map((bp) => `@media only screen and (min-width: ${bp}px)`));
+const screenMode = ['landscape', 'portrait'];
+export const responsive = {
+  onlyScreen: facepaint(breakpoints.map((bp) => `@media only screen and (min-width: ${bp}px)`)),
+  isPortraitOrLandscape: facepaint(
+    screenMode.map((screenMode) => `@media only screen and (orientation: ${screenMode})`)
+  ),
+};
 
 export const textLinearGradient = (direction: string, firstColor: string, secondColor: string) => css`
   background-image: linear-gradient(${direction}, ${firstColor}, ${secondColor});

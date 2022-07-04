@@ -16,7 +16,7 @@ const startColor = [colors.deepBlue, colors.theme, colors.deepOrange];
 const endColor = [colors.neonBlue, colors.hotPink, colors.yellow];
 
 export const Titles = styled.span<{ coloringTitleIdx: number; isSelected: boolean }>`
-  ${responsive({
+  ${responsive.onlyScreen({
     fontSize: ['20vw', '20vw', '128px', '128px', '160px'],
   })}
   text-align: center;
