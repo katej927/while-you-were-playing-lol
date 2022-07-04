@@ -36,7 +36,7 @@ const Header = () => {
   return (
     <S.Container isMinHeight={scrollPosition > 60}>
       <div css={S.contentWrapper}>
-        <Link href={'/'}>
+        <Link href={'/'} passHref>
           <a css={S.logoBtn}>WPL</a>
         </Link>
         <div css={S.rightBtnWrapper}>

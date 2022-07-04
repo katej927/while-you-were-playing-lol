@@ -1,7 +1,8 @@
 import { css } from '@emotion/react';
 
 const GlobalStyle = css`
-  @import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css);
+  @import url('//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css');
+  @import url('https://fonts.googleapis.com/css2?family=Goldman:wght@400;700&display=swap');
 
   // reset
   html,

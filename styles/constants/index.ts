@@ -52,7 +52,6 @@ export const font_weight = {
 };
 
 export const logo = css`
-  @import url('https://fonts.googleapis.com/css2?family=Goldman:wght@400;700&display=swap');
   font-family: 'Libre Baskerville', serif;
   color: ${colors.white001};
 `;

@@ -69,13 +69,13 @@ const Footer = () => {
               <a css={S.iconBtn}>{icon}</a>
             </Link>
           ) : (
-            <button css={S.iconBtn} type='button' onClick={onClickiconBtn} data-type={type}>
+            <button key={type} css={S.iconBtn} type='button' onClick={onClickiconBtn} data-type={type}>
               {icon}
             </button>
           );
         })}
       </div>
-      <Link href={'/'}>
+      <Link href={'/'} passHref>
         <a css={S.logoBtn}>
           <h2>WPL</h2>
         </a>

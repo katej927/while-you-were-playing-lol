@@ -1,5 +1,5 @@
 import { css } from '@emotion/react';
-import { flex, bounce } from 'styles/mixin';
+import { flex } from 'styles/mixin';
 import { font, colors } from 'styles/constants';
 
 export const wrapper = css`
@@ -10,9 +10,6 @@ export const wrapper = css`
   line-height: 1.5;
 `;
 
-export const mainIcon = css`
-  path {
-    fill: ${colors.theme};
-  }
-  animation: ${bounce} 1s ease infinite;
+export const text = css`
+  margin-top: 40px;
 `;

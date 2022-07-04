@@ -35,7 +35,9 @@ const carouselModal = ({ modalData, closeModal }: IProps) => {
             <dt css={S.subject}>{t(key)}</dt>
             <dd css={S.content}>
               {key === 'itemList'
-                ? convertedData[key].map((item) => (item ? <img css={S.itemImg} src={ITEM_IMG_URL(item)} /> : null))
+                ? convertedData[key].map((item) =>
+                    item ? <img key={item} css={S.itemImg} src={ITEM_IMG_URL(item)} /> : null
+                  )
                 : convertedData[key]}
             </dd>
           </div>

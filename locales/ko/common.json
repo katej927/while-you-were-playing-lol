@@ -21,7 +21,6 @@
   "walkUnit": "cal",
   "trip": "서울에서 뉴욕까지",
   "tripUnit": "번 왕복",
-  "loading": "로딩 중...",
   "500errorMsg1": "에러가 발생했습니다.",
   "500errorMsg2": "상단의 홈 버튼을 눌러 새로 고침을 해주세요.",
   "noRecord": "게임 기록이 없습니다.",
