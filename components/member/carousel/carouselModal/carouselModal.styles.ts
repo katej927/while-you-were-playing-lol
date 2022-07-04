@@ -10,8 +10,9 @@ export const wrapper = css`
 
 export const bgImg = css`
   ${responsive.isPortraitOrLandscape({
-    height: ['80vh', '100%'],
-  })}/* height: 80vh; */
+    height: ['80vh', 'auto'],
+  })}
+  width: 100%;
 `;
 
 export const descWrapper = css`
@@ -24,11 +25,11 @@ export const descWrapper = css`
       'linear-gradient(to left, rgba(169, 208, 113, 0), rgba(136, 173, 215, 1))',
     ],
     height: ['fit-content', '100%'],
-    padding: ['20px', '30px'],
+    padding: ['20px', '2%'],
     flexDirection: ['row', 'column'],
-    flex: ['1 1 auto'], // 크기 커진 부분 추가
-    flexWrap: ['wrap'], // 크기 커진 부분 추가
-    bottom: ['0'], // 크기 커진 부분 추가
+    flex: ['1 1 auto'],
+    flexWrap: ['wrap'],
+    bottom: ['0'],
   })}
 
   position: absolute;
@@ -40,29 +41,44 @@ export const categoriesContainer = css`
     width: ['50%', 'fit-content'],
     marginBottom: ['14px', '0px'],
   })}
+
+  @media only screen and (orientation: portrait) and (min-width: 768px) {
+    margin-bottom: 20px;
+  }
   height: fit-content;
 `;
 
 export const subject = css`
   ${responsive.isPortraitOrLandscape({
-    fontSize: ['15px', '30px'],
+    fontSize: ['15px', 'calc(3.09px + 1.82vw)'],
   })}
+
+  @media only screen and (orientation: portrait) and (min-width: 768px) {
+    font-size: calc(1px + 3vw);
+  }
+
   font-weight: ${font_weight.bold};
 `;
 
 export const content = css`
   ${responsive.isPortraitOrLandscape({
-    fontSize: ['13px', '20px'],
+    fontSize: ['13px', 'calc(9px + 1vw)'],
     margin: ['5px 0px 0px 0px', '10px 0px 15px'],
   })}
+
+  @media only screen and (orientation: portrait) and (min-width: 768px) {
+    font-size: calc(1px + 2.5vw);
+    margin-top: 10px;
+  }
 `;
 
 export const itemImg = css`
   ${responsive.isPortraitOrLandscape({
-    width: ['29px', '40px'],
+    width: ['16%', '10%'],
   })}
   border-radius: ${sizes.borderRadius};
   margin-right: 3px;
+  height: auto;
 `;
 
 export const closeBtn = css`
