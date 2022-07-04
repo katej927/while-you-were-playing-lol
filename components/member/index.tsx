@@ -44,7 +44,7 @@ const Member = () => {
           </div>
         </div>
       </header>
-      <DynamicQnb profileImg={BACKGROUND_IMG_URL(allMatchData[0].matchData.championName)} />
+      <DynamicQnb profileImg={BACKGROUND_IMG_URL('splash', allMatchData[0].matchData.championName)} />
       <article css={S.contentsWrapper}>
         <Container title={t('boxheader1')}>
           <div css={S.timeBlockWrapper}>

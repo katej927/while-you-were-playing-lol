@@ -18,10 +18,16 @@ const carouselModal = ({ modalData, closeModal }: IProps) => {
 
   return (
     <section css={S.wrapper}>
-      <img css={S.img} src={BACKGROUND_IMG_URL(`${convertedData['championName']}`)} />
+      <picture>
+        <source media='(max-width: 375px)' srcSet={BACKGROUND_IMG_URL('loading', `${convertedData['championName']}`)} />
+        <img
+          src={BACKGROUND_IMG_URL('splash', `${convertedData['championName']}`)}
+          alt={`champion(${modalData.matchData.championName})'s image`}
+        />
+      </picture>
       <dl css={S.descWrapper}>
         {Object.keys(convertedData).map((key) => (
-          <div key={key}>
+          <div key={key} css={S.categoriesContainer}>
             <dt css={S.subject}>{t(key)}</dt>
             <dd css={S.content}>
               {key === 'itemList'

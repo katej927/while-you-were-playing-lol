@@ -26,7 +26,7 @@ export const bounce = keyframes`
   }
 `;
 
-const breakpoints = [375, 600, 768, 1000, 1200, 1300, 1800, 2400];
+const breakpoints = [376, 600, 768, 1000, 1200, 1300, 1800, 2400];
 export const responsive = facepaint(breakpoints.map((bp) => `@media only screen and (min-width: ${bp}px)`));
 
 export const textLinearGradient = (direction: string, firstColor: string, secondColor: string) => css`

@@ -1,6 +1,6 @@
 import { css } from '@emotion/react';
 import { colors, sizes, font_weight } from 'styles/constants';
-import { flex } from 'styles/mixin';
+import { flex, responsive } from 'styles/mixin';
 
 export const wrapper = css`
   ${flex('row')}
@@ -8,29 +8,53 @@ export const wrapper = css`
   z-index: 11;
 `;
 
-export const img = css``;
-
 export const descWrapper = css`
   ${flex('column', 'baseline')}
+  ${responsive({
+    width: ['100%', '40%'],
+    color: [colors.lightgray100, colors.black001],
+    background: [
+      'linear-gradient(to bottom, rgba(169, 208, 113, 0), 25%, rgba(0, 0, 0, 1))',
+      'linear-gradient(to left, rgba(169, 208, 113, 0), rgba(136, 173, 215, 1))',
+    ],
+    height: ['fit-content', '100%'],
+    padding: ['20px 0px 0px 0px', '30px'],
+    flexDirection: ['row', 'column'],
+    flex: ['1 1 auto'], // 크기 커진 부분 추가
+    flexWrap: ['wrap'], // 크기 커진 부분 추가
+    bottom: ['0'], // 크기 커진 부분 추가
+  })}
+
   position: absolute;
   left: 0;
-  background: linear-gradient(to left, rgba(169, 208, 113, 0), rgba(136, 173, 215, 1));
-  width: 40%;
-  height: 100%;
-  padding: 30px;
+`;
+
+export const categoriesContainer = css`
+  ${responsive({
+    width: ['134px', 'fit-content'],
+    marginBottom: ['14px', '0px'],
+  })}
+  height: fit-content;
 `;
 
 export const subject = css`
-  font-size: 30px;
+  ${responsive({
+    fontSize: ['15px', '30px'],
+  })}
   font-weight: ${font_weight.bold};
 `;
+
 export const content = css`
-  margin: 10px 0px 15px;
-  font-size: 20px;
+  ${responsive({
+    fontSize: ['13px', '20px'],
+    margin: ['5px 0px 0px 0px', '10px 0px 15px'],
+  })}
 `;
 
 export const itemImg = css`
-  width: 40px;
+  ${responsive({
+    width: ['29px', '40px'],
+  })}
   border-radius: ${sizes.borderRadius};
   margin-right: 3px;
 `;
