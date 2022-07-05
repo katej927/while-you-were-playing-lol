@@ -6,12 +6,12 @@ import { uniqBy } from 'lodash';
 import { getTime, endOfDay } from 'date-fns';
 import Slider from 'react-slick';
 
+import { commonActions } from 'store';
 import Container from '../container';
 import { filterExpired, IRecentSearches, SETTINGS, findRegionLocation } from './_shared';
 
 import { ArrowUpIcon, ArrowDownIcon } from 'public/static/svg';
 import * as S from './qnb.styles';
-import { commonActions } from 'store';
 
 interface IProps {
   profileImg: string;
@@ -54,6 +54,8 @@ const Qnb = ({ profileImg }: IProps) => {
     push({ pathname: `/summoners/${name}`, query: { region } });
   };
 
+  console.log('recentSearches', recentSearches);
+
   return (
     <div css={S.container}>
       <aside css={S.contentContainer}>
@@ -65,6 +67,7 @@ const Qnb = ({ profileImg }: IProps) => {
             <Slider {...SETTINGS} ref={customSlider}>
               {recentSearches.map((search) => {
                 const { searchedName, region, profileImg } = search;
+                console.log('searchedName, region, profileImg', searchedName, region, profileImg);
                 return (
                   <li
                     key={searchedName}

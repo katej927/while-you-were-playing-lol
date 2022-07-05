@@ -54,7 +54,7 @@ export const subject = css`
   })}
 
   @media only screen and (orientation: portrait) and (min-width: 768px) {
-    font-size: calc(1px + 3vw);
+    font-size: calc(1px + 2vw);
   }
 
   font-weight: ${font_weight.bold};
@@ -67,7 +67,7 @@ export const content = css`
   })}
 
   @media only screen and (orientation: portrait) and (min-width: 768px) {
-    font-size: calc(1px + 2.5vw);
+    font-size: calc(3px + 1.5vw);
     margin-top: 10px;
   }
 `;

@@ -22,6 +22,14 @@ export const contentContainer = css`
 export const slideContainer = css`
   ${flex('column', 'center')}
   margin: 8px 0 0 8px;
+
+  .slick-track {
+    height: fit-content !important;
+  }
+
+  .slick-slide.slick-active.slick-current {
+    width: fit-content !important;
+  }
 `;
 
 export const arrowBtn = css`
@@ -39,6 +47,7 @@ export const eachSlide = css`
   position: relative;
   display: flex !important;
   justify-content: space-between;
+  width: fit-content;
   background: linear-gradient(to left, rgba(169, 208, 113, 0), rgba(0, 0, 0, 1));
   cursor: pointer;
 
