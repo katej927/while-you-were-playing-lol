@@ -42,7 +42,7 @@ const SearchSection = () => {
   return (
     <section>
       <div css={S.divisionTextContainer}>
-        <S.DivisionText isOpacityOn={scrollPosition >= 130}>EXPLORE THE WPL WAY</S.DivisionText>
+        <S.DivisionText isOpacityOn={scrollPosition >= 130}>{t('searchSection.division')}</S.DivisionText>
       </div>
       <S.DivisionFigure isOpacityOn={scrollPosition >= 200}>
         <div css={S.divisionLine} />
@@ -50,14 +50,14 @@ const SearchSection = () => {
           <ArrowDownIcon />
         </div>
       </S.DivisionFigure>
-      <S.SectionTitle isOpacityOn={scrollPosition >= 242}>탐험하기</S.SectionTitle>
+      <S.SectionTitle isOpacityOn={scrollPosition >= 242}>{t('searchSection.sectionTitle')}</S.SectionTitle>
       <S.Title isOpacityOn={scrollPosition >= 365}>
-        <span>소환사명을</span>
-        <strong>검색하세요</strong>
+        <span>{t('searchSection.title.1')}</span>
+        <strong>{t('searchSection.title.2')}</strong>
       </S.Title>
       <S.Desc isOpacityOn={scrollPosition >= 475}>
-        최근 15회의 게임의 총 시간을 계산하고, 어떤 다른 기회 비용들이 있었을지 알려줍니다. <br />
-        날짜별 게임 시간, 각 게임 정보 그리고 당신이 했을 이성과의 데이트 횟수까지.
+        {t('searchSection.desc.1')} <br />
+        {t('searchSection.desc.2')}
       </S.Desc>
       <S.Form onSubmit={onSubmit} isOpacityOn={scrollPosition >= 600}>
         <button type='button' css={S.regionBtnContainer} onClick={onClickRegionBtn}>
@@ -72,7 +72,7 @@ const SearchSection = () => {
           <input
             id='searchSummoner'
             css={S.searchInput}
-            placeholder={t('placeholder')}
+            placeholder={t('searchSection.placeholder')}
             value={name}
             onChange={onChange}
           />

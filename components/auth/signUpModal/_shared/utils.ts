@@ -15,30 +15,24 @@ export const convertInputList = (
 ) => {
   return [
     {
-      placeholder: '이메일 주소',
       type: 'email',
       icon: emailIcon,
       name: 'email',
       value: email,
       dataset: 'email',
-      errorMsg: '이메일이 필요합니다.',
       isValid: !!email,
     },
     {
-      placeholder: '롤 소환사명',
       icon: personIcon,
       value: name,
       dataset: 'name',
-      errorMsg: '소환사명을 입력하세요.',
       isValid: !!name,
     },
     {
-      placeholder: '비밀번호 설정하기',
       type: hidePassword ? 'password' : 'text',
       icon: passwordIcon,
       value: password,
       dataset: 'password',
-      errorMsg: '비밀번호를 입력하세요.',
       isvalid: isPasswordValid,
       onFocus: onFocusPassword,
     },
@@ -47,15 +41,15 @@ export const convertInputList = (
 
 interface IBDaySelectorsProps {
   options: string[][];
+  convertBdayUnit: (unit: string) => string;
   value: (string | undefined)[];
 }
 
-export const convertBDaySelectors = (data: IBDaySelectorsProps) => {
-  const { options, value } = data;
+export const convertBDaySelectors = ({ options, convertBdayUnit, value }: IBDaySelectorsProps) => {
   return [
-    { options: options[0], defaultValue: '월', dataset: 'bDay-month', value: value[0] },
-    { options: options[1], defaultValue: '일', dataset: 'bDay-day', value: value[1] },
-    { options: options[2], defaultValue: '년', dataset: 'bDay-year', value: value[2] },
+    { options: options[0], defaultValue: convertBdayUnit('month'), dataset: 'bDay-month', value: value[0] },
+    { options: options[1], defaultValue: convertBdayUnit('day'), dataset: 'bDay-day', value: value[1] },
+    { options: options[2], defaultValue: convertBdayUnit('year'), dataset: 'bDay-year', value: value[2] },
   ];
 };
 

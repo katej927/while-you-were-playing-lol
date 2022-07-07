@@ -1,7 +1,21 @@
 {
-  "region": "KR",
-  "title1": "While",
-  "title2": "You Were",
-  "title3": "Playing LoL",
-  "placeholder": "search summoner's name"
+  "firstSection": {
+    "title1": "While",
+    "title2": "You Were",
+    "title3": "Playing LoL",
+    "desc": {
+      "1": "Where does my time come from and where does it go? Was my dream to be a progamer?",
+      "2": "In search of lost me and your time."
+    }
+  },
+  "searchSection": {
+    "division": "EXPLORE THE WPL WAY",
+    "sectionTitle": "EXPLORE",
+    "title": { "1": "SEARCH", "2": "SUMMONER'S NAME" },
+    "desc": {
+      "1": "Calculates the total time of your last 15 games and shows you what other opportunity costs might have been.",
+      "2": "Game time by date, information on each game, and the number of dates you've had."
+    },
+    "placeholder": "summoner's name"
+  }
 }

@@ -3,6 +3,32 @@
   "descOfApp": "What could I have done if I hadn't played LoL?",
   "btnTitleOfKakaoTalk": "Look in detail",
   "abbreviationTitleOfApp": "WPL",
+  "header": { "login": "Login", "signUp": "Sign Up" },
+  "authentication": {
+    "signUp": {
+      "birthday": {
+        "title": "Birthday",
+        "desc": "Your birthday is not disclosed to other users.",
+        "month": "Month",
+        "day": "Day",
+        "year": "Year"
+      },
+      "submit": "Sign Up",
+      "hasAccount": { "ask": "Already have an account?", "btn": "Login" }
+    },
+    "login": {
+      "submit": "Login",
+      "hasAccount": { "ask": "Don't have an account yet?", "btn": "Sign Up" }
+    },
+    "common": {
+      "placeholder": { "email": "Email", "name": "summoner name of LoL", "password": "Password" },
+      "errorMsg": {
+        "email": "Please enter a email.",
+        "name": "Please enter your summoner name of LoL.",
+        "password": "Please enter a password."
+      }
+    }
+  },
   "boxheader1": "I can't believe I played LoL like this long...",
   "boxheader2": "If I hadn't played the game...",
   "graphTitle": "Recent playtime by date",
@@ -10,7 +36,7 @@
   "day": "day",
   "hours": "hours",
   "minutes": "minutes",
-  "slide": "recent games",
+  "slide": "Recent games",
   "wage": "Minimum hourly wage in 2022",
   "moneyUnit": "₩",
   "sleep": "Sleeping hours",
@@ -18,6 +44,7 @@
   "love": "Watch movies with the opposite gender",
   "movieUnit": "times",
   "walk": "Calories burned by walking",
+  "walkUnit": "cal",
   "trip": "Seoul to New York",
   "tripUnit": "round trips",
   "500errorMsg1": "An error has occurred.",
@@ -41,5 +68,6 @@
   "popup": {
     "status": { "success": "Success" },
     "text": { "copied": "Copied!", "completedSignup": "Your account has been successfully created." }
-  }
+  },
+  "qnb": "Recent Searches"
 }

@@ -7,7 +7,9 @@ const FirstSection = () => {
   const [coloringTitleIdx, setColoringTitleIdx] = useState(1);
 
   let { t } = useTranslation('home');
-  const titleList = [t('title1'), t('title2'), t('title3')];
+  const titleList = Array.apply(null, Array(3)).map((el, idx) => {
+    return t(`firstSection.title${idx + 1}`, { returnObjects: true });
+  });
 
   useEffect(() => {
     const coloringTimer = setInterval(() => {
@@ -30,9 +32,9 @@ const FirstSection = () => {
         ))}
       </h1>
       <h2 css={S.titleDesc}>
-        <span>내 시간은 어디로 와서 어디로 가는가. 내 꿈이 프로게이머 였던가.</span>
+        <span>{t('firstSection.desc.1')}</span>
         <br />
-        <span>잃어버린 나와 당신의 시간을 찾아서.</span>
+        <span>{t('firstSection.desc.2')}</span>
       </h2>
     </section>
   );

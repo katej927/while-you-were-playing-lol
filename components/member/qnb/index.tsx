@@ -5,6 +5,7 @@ import store from 'storejs';
 import { uniqBy } from 'lodash';
 import { getTime, endOfDay } from 'date-fns';
 import Slider from 'react-slick';
+import useTranslation from 'next-translate/useTranslation';
 
 import { commonActions } from 'store';
 import Container from '../container';
@@ -25,6 +26,9 @@ const Qnb = ({ profileImg }: IProps) => {
     push,
   } = useRouter();
   const dispatch = useDispatch();
+  const { t } = useTranslation('common');
+
+  console.log('test', t('boxheader1'));
 
   useEffect(() => {
     const newSearchedList = [
@@ -54,36 +58,30 @@ const Qnb = ({ profileImg }: IProps) => {
     push({ pathname: `/summoners/${name}`, query: { region } });
   };
 
-  console.log('recentSearches', recentSearches);
-
   return (
     <div css={S.container}>
       <aside css={S.contentContainer}>
-        <Container title='최근 검색한 소환사'>
+        <Container title={t('qnb')}>
           <ul css={S.slideContainer}>
             <button css={S.arrowBtn} onClick={onClickPrevBtn}>
               <ArrowUpIcon css={S.arrows} />
             </button>
             <Slider {...SETTINGS} ref={customSlider}>
-              {recentSearches.map((search) => {
-                const { searchedName, region, profileImg } = search;
-                console.log('searchedName, region, profileImg', searchedName, region, profileImg);
-                return (
-                  <li
-                    key={searchedName}
-                    css={S.eachSlide}
-                    onClick={onClickSlide}
-                    data-name={searchedName}
-                    data-region={region}
-                  >
-                    <div css={S.txtContainer}>
-                      <span>{searchedName}</span>
-                      <span css={S.region}>{region}</span>
-                    </div>
-                    <img src={profileImg} />
-                  </li>
-                );
-              })}
+              {recentSearches.map(({ searchedName, region, profileImg }) => (
+                <li
+                  key={searchedName}
+                  css={S.eachSlide}
+                  onClick={onClickSlide}
+                  data-name={searchedName}
+                  data-region={region}
+                >
+                  <div css={S.txtContainer}>
+                    <span>{searchedName}</span>
+                    <span css={S.region}>{region}</span>
+                  </div>
+                  <img src={profileImg} />
+                </li>
+              ))}
             </Slider>
             <button css={S.arrowBtn} onClick={onClickNextBtn}>
               <ArrowDownIcon css={S.arrows} />

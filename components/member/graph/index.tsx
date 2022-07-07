@@ -1,4 +1,5 @@
 import { VictoryChart, VictoryBar, VictoryAxis, VictoryLabel } from 'victory';
+import useTranslation from 'next-translate/useTranslation';
 
 import { convertLeftAxisTickValues, convertRightAxisTickValues, convertData } from './_shared';
 import { IEachMatchTime } from 'types';
@@ -11,8 +12,10 @@ interface IProps {
 }
 
 const Graph = ({ playinDate }: IProps) => {
+  const { t } = useTranslation('common');
+
   const convertedLeftAxisTickValues = convertLeftAxisTickValues(playinDate);
-  const convertedRightAxisTickValues = convertRightAxisTickValues(playinDate);
+  const convertedRightAxisTickValues = convertRightAxisTickValues(playinDate, t('graphTimeUnit'));
   const convertedData = convertData(playinDate);
 
   return (

@@ -71,8 +71,7 @@ const Member = () => {
                 <div key={kind} css={S.opportunityCostBox}>
                   <span css={S.opportunityKind}>{t(kind)}</span>
                   <S.Opportunity idx={idx}>
-                    {opportunityCost[kind][0]}&nbsp;
-                    {t(opportunityCost[kind][1])}
+                    {`${opportunityCost[kind][0]} ${t(opportunityCost[kind][1])}`}
                   </S.Opportunity>
                 </div>
               );

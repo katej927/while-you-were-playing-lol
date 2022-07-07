@@ -1,6 +1,7 @@
 import dynamic from 'next/dynamic';
 import { useState, SyntheticEvent, FormEvent, useMemo, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+import useTranslation from 'next-translate/useTranslation';
 
 import { useValidateMode } from 'hooks';
 import { createUser } from 'lib/api';
@@ -34,6 +35,10 @@ const SignUpModal = ({ closeModal }: IProps) => {
 
   const { setValidateMode } = useValidateMode();
   const dispatch = useDispatch();
+
+  const { t } = useTranslation('common');
+  const translateBdayPath = 'authentication.signUp.birthday';
+  const convertBdayUnit = (unit: string) => t(`${translateBdayPath}.${unit}`);
 
   useEffect(() => {
     return () => {
@@ -74,7 +79,7 @@ const SignUpModal = ({ closeModal }: IProps) => {
         email,
         name,
         password,
-        birthday: new Date(`${birthYear}-${birthMonth!.replace('월', '')}-${birthDay}`).toISOString(),
+        birthday: new Date(`${birthYear}-${birthMonth!}-${birthDay}`).toISOString(),
       };
       await createUser(sigupBody);
       dispatch(authActions.setAuthMode('login'));
@@ -117,14 +122,12 @@ const SignUpModal = ({ closeModal }: IProps) => {
 
   const bDaySelectors = convertBDaySelectors({
     options: [MONTHS, DAYS, YEARS],
+    convertBdayUnit,
     value: [birthMonth, birthDay, birthYear],
   });
 
   return (
     <CommonAuthModal
-      textToCheckSwitchModal='이미 계정이 있나요?'
-      switchModalText='로그인'
-      submitBtnText='가입하기'
       onChangeInputs={onChangeInputs}
       onSubmitForm={onSubmitSignup}
       closeModal={closeModal}
@@ -134,11 +137,10 @@ const SignUpModal = ({ closeModal }: IProps) => {
         passwordWarnings.map((warning) => {
           return <DynamicPasswordWarning key={warning.text} isValid={warning.isValid} text={warning.text} />;
         })}
-      <p css={S.title}>생일</p>
-      <p css={S.titleInfo}>생일은 다른 이용자에게 공개되지 않습니다.</p>
+      <p css={S.title}>{t(`${translateBdayPath}.title`, { returnObjects: true })}</p>
+      <p css={S.titleInfo}>{t(`${translateBdayPath}.desc`, { returnObjects: true })}</p>
       <div css={S.bDaySelectorWrapper}>
-        {bDaySelectors.map((selector) => {
-          const { options, defaultValue, dataset, value } = selector;
+        {bDaySelectors.map(({ options, defaultValue, dataset, value }) => {
           return (
             <div css={S.bDaySelector} key={dataset}>
               <Selector

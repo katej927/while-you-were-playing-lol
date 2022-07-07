@@ -11,7 +11,4 @@ export interface IProps {
     },
   }: SyntheticEvent<HTMLInputElement | HTMLSelectElement>) => void;
   children?: React.ReactNode;
-  submitBtnText: string;
-  switchModalText: string;
-  textToCheckSwitchModal: string;
 }

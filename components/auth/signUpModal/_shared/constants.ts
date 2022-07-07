@@ -2,7 +2,7 @@ import format from 'date-fns/format';
 
 export const DAYS = Array.from(Array(31), (_, i) => String(i + 1));
 
-export const MONTHS = ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'];
+export const MONTHS = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'];
 
 let currentYear = Number(format(new Date(), 'yyyy'));
 let lengthOfYears = currentYear - 1900 + 1;

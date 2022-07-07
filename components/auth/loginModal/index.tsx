@@ -1,5 +1,6 @@
 import { signIn } from 'next-auth/react';
 import { FormEvent, SyntheticEvent, useEffect, useState } from 'react';
+import useTranslation from 'next-translate/useTranslation';
 
 import { useValidateMode } from 'hooks';
 import { convertInputList } from './_shared';
@@ -17,6 +18,8 @@ const LoginModal = ({ closeModal }: IProps) => {
   const [password, setPassword] = useState('');
   const [hidePassword, setHidePassword] = useState(true);
 
+  const { t } = useTranslation();
+
   const { setValidateMode } = useValidateMode();
 
   useEffect(() => {
@@ -27,14 +30,27 @@ const LoginModal = ({ closeModal }: IProps) => {
 
   const toggleHidePassword = () => setHidePassword(!hidePassword);
 
-  const inputList = convertInputList(email, password, hidePassword, {
-    emailIcon: <EmailIcon css={S.inputIcon} />,
-    eyeIcon: hidePassword ? (
-      <ClosedEyeIcon css={S.eyeIcons} onClick={toggleHidePassword} />
-    ) : (
-      <OpenedEyeIcon css={S.eyeIcons} onClick={toggleHidePassword} />
-    ),
-  });
+  const inputList = convertInputList(
+    email,
+    password,
+    hidePassword,
+    {
+      emailPlaceholder: t(`authentication.login.placeholder.email`, {
+        returnObjects: true,
+      }),
+      passwordPlaceholder: t(`authentication.login.placeholder.password`, {
+        returnObjects: true,
+      }),
+    },
+    {
+      emailIcon: <EmailIcon css={S.inputIcon} />,
+      eyeIcon: hidePassword ? (
+        <ClosedEyeIcon css={S.eyeIcons} onClick={toggleHidePassword} />
+      ) : (
+        <OpenedEyeIcon css={S.eyeIcons} onClick={toggleHidePassword} />
+      ),
+    }
+  );
 
   const onChangeInputs = ({
     currentTarget: {
@@ -70,9 +86,6 @@ const LoginModal = ({ closeModal }: IProps) => {
       closeModal={closeModal}
       inputList={inputList}
       onChangeInputs={onChangeInputs}
-      submitBtnText='로그인'
-      switchModalText='회원가입'
-      textToCheckSwitchModal='아직 계정이 없으신가요?'
     />
   );
 };

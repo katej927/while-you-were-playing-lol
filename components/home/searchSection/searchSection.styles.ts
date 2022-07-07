@@ -1,6 +1,6 @@
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
-import { sizes, colors, font, font_weight, responsive_text } from 'styles/constants';
+import { sizes, colors, font_weight, responsive_text } from 'styles/constants';
 import { flex, textLinearGradient, slowlyAppear, responsive } from 'styles/mixin';
 
 interface IIsOpacityOn {
@@ -68,6 +68,7 @@ export const Title = styled.h2<IIsOpacityOn>`
     ${responsive.onlyScreen({
       fontSize: ['calc(37.09px + 1.82vw)', , '64px'],
     })}
+    text-align: center;
     font-weight: ${font_weight.bold};
     line-height: 1.1;
   }

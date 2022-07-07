@@ -3,7 +3,7 @@ import { addCommas } from 'lib/utils';
 import { IEachMatchInfo } from 'types';
 import { IResult } from '.';
 
-export const convertData = (data: IEachMatchInfo) => {
+export const convertData = (data: IEachMatchInfo, min: string) => {
   const {
     time: { gameCreation, gameDuration },
     matchData: {
@@ -25,7 +25,7 @@ export const convertData = (data: IEachMatchInfo) => {
   } = data;
 
   const playDate = format(new Date(gameCreation), 'yyyy/MM/dd');
-  const playDuration = `${secondsToMinutes(gameDuration)}분`;
+  const playDuration = `${secondsToMinutes(gameDuration)} ${min}`;
   const kda = `${kills} / ${deaths} / ${assists}`;
   const itemList = [item0, item1, item2, item3, item4, item5, item6];
 

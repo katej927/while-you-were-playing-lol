@@ -1,11 +1,21 @@
+interface IPlaceholder {
+  [type: string]: string;
+}
+
 interface IIconProps {
   [key: string]: JSX.Element;
 }
 
-export const convertInputList = (email: string, password: string, hidePassword: boolean, icons: IIconProps) => {
+export const convertInputList = (
+  email: string,
+  password: string,
+  hidePassword: boolean,
+  placeholder: IPlaceholder,
+  icons: IIconProps
+) => {
   return [
     {
-      placeholder: '이메일 주소',
+      placeholder: placeholder.emailPlaceholder,
       name: 'email',
       type: 'email',
       icon: icons.emailIcon,
@@ -15,7 +25,7 @@ export const convertInputList = (email: string, password: string, hidePassword: 
       errorMsg: '이메일을 입력해주세요.',
     },
     {
-      placeholder: '비밀번호 설정하기',
+      placeholder: placeholder.passwordPlaceholder,
       type: hidePassword ? 'password' : 'text',
       icon: icons.eyeIcon,
       value: password,

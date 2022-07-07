@@ -9,20 +9,12 @@ import { IProps } from './_shared';
 import { CloseIcon } from 'public/static/svg';
 import * as S from './authModal.styles';
 
-const AuthModal = ({
-  onSubmitForm,
-  closeModal,
-  inputList,
-  onChangeInputs,
-  children,
-  submitBtnText,
-  switchModalText,
-  textToCheckSwitchModal,
-}: IProps) => {
+const AuthModal = ({ onSubmitForm, closeModal, inputList, onChangeInputs, children }: IProps) => {
   const currentAuthMode = useSelector((state) => state.auth.authMode);
   const dispatch = useDispatch();
 
   const { t } = useTranslation('common');
+  const translateCurrentMode = `authentication.${currentAuthMode === 'login' ? 'login' : 'signUp'}`;
 
   const onClickSwitchAuthMode = () =>
     dispatch(authActions.setAuthMode(currentAuthMode === 'login' ? 'signup' : 'login'));
@@ -33,34 +25,41 @@ const AuthModal = ({
       <button css={S.closeIconBtn} onClick={closeModal}>
         <CloseIcon />
       </button>
-      {inputList.map((input) => {
-        const { placeholder, type, icon, name, value, dataset, errorMsg, isValid, onFocus } = input;
-        return (
-          <div css={S.inputWrapper} key={dataset}>
-            <Input
-              placeholder={placeholder}
-              type={type}
-              icon={icon}
-              name={name}
-              value={value}
-              dataset={dataset}
-              onChange={onChangeInputs}
-              isCheckValidation
-              isvalid={isValid}
-              errorMsg={errorMsg}
-              onFocus={onFocus}
-            />
-          </div>
-        );
-      })}
+      {inputList.map(({ placeholder, type, icon, name, value, dataset, errorMsg, isValid, onFocus }) => (
+        <div css={S.inputWrapper} key={dataset}>
+          <Input
+            placeholder={t(`authentication.common.placeholder.${dataset}`, {
+              returnObjects: true,
+            })}
+            type={type}
+            icon={icon}
+            name={name}
+            value={value}
+            dataset={dataset}
+            onChange={onChangeInputs}
+            isCheckValidation
+            isvalid={isValid}
+            errorMsg={t(`authentication.common.errorMsg.${dataset}`, {
+              returnObjects: true,
+            })}
+            onFocus={onFocus}
+          />
+        </div>
+      ))}
       {children}
       <button type='submit' css={S.submitBtn}>
-        {submitBtnText}
+        {t(`${translateCurrentMode}.submit`, {
+          returnObjects: true,
+        })}
       </button>
       <p css={S.checkAccount}>
-        {textToCheckSwitchModal}
+        {t(`${translateCurrentMode}.hasAccount.ask`, {
+          returnObjects: true,
+        })}
         <span role='presentation' onClick={onClickSwitchAuthMode}>
-          {switchModalText}
+          {t(`${translateCurrentMode}.hasAccount.btn`, {
+            returnObjects: true,
+          })}
         </span>
       </p>
     </form>

@@ -8,8 +8,8 @@ import { colors } from 'styles/constants';
 export const convertLeftAxisTickValues = (data: IEachMatchTime[]) =>
   data.map((play) => format(new Date(play.gameCreation), 'yyyy/MM/dd')).reverse();
 
-export const convertRightAxisTickValues = (data: IEachMatchTime[]) =>
-  data.map((play) => addCommas(secondsToMinutes(play.gameDuration)) + ' 분').reverse();
+export const convertRightAxisTickValues = (data: IEachMatchTime[], timeUnit: string) =>
+  data.map((play) => addCommas(secondsToMinutes(play.gameDuration)) + ` ${timeUnit}`).reverse();
 
 const repeatColors = (colors: string[], time: number) => [].concat(...Array(time).fill(colors));
 
