@@ -14,7 +14,7 @@ interface IProps {
 
 const carouselModal = ({ modalData, closeModal }: IProps) => {
   let { t } = useTranslation('common');
-  const convertedData: IResult = convertData(modalData, t(''));
+  const convertedData: IResult = convertData(modalData, t('graphTimeUnit'));
 
   return (
     <section css={S.wrapper}>

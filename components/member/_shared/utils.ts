@@ -58,7 +58,7 @@ export const convertTime = (time: number) => {
   const toSleep = addCommas(toHoursNum);
   const paidPCroom = addCommas(new BigNumber(toHoursNum).multipliedBy(1300).toNumber());
   const toWalkCalories = addCommas(new BigNumber(toHoursNum).multipliedBy(350).toNumber());
-  const seoulToNewYorkShuttle = addCommas(new BigNumber(toHoursNum).div(30).toNumber());
+  const study1WordPer1Min = addCommas(new BigNumber(toMinutes).div(1).toNumber());
   const love = 0;
 
   const timeBlock: IPropsTime = { day: toDays, hours: toHours, minutes: toMinutes };
@@ -69,7 +69,7 @@ export const convertTime = (time: number) => {
     PCroom: [paidPCroom, `moneyUnit`],
     love: [`${love}`, `movieUnit`],
     walk: [toWalkCalories, `walkUnit`],
-    trip: [seoulToNewYorkShuttle, `tripUnit`],
+    study: [study1WordPer1Min, `studyUnit`],
   };
 
   const result = { timeBlock, opportunityCost };
