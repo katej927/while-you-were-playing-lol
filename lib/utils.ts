@@ -1,4 +1,8 @@
+import BigNumber from 'bignumber.js';
+
 export const addCommas = (num: number) =>
-  Math.round(num)
+  new BigNumber(num)
+    .integerValue()
+    .toNumber()
     .toString()
     .replace(/\B(?=(\d{3})+(?!\d))/g, ',');

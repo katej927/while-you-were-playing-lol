@@ -1,4 +1,4 @@
 export interface IResult {
-  [prop: string]: number[] | string;
-  itemList: number[];
+  itemList: (number | undefined)[];
+  [prop: string]: string | (number | undefined)[];
 }

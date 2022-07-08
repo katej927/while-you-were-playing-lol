@@ -25,7 +25,7 @@ export const convertAllMatch = (allMatchData: IEachMatchInfo[]) => {
 
     const isSameDate = isSameDay(curDate, compDate);
 
-    if (isSameDate) compareDate = { gameCreation: compDate, gameDuration: curDur + compDur };
+    if (isSameDate) compareDate = { gameCreation: compDate, gameDuration: BigNumber.sum(curDur, compDur).toNumber() };
     if (!isSameDate) {
       playinDate.push(compareDate);
       compareDate = match.time;
@@ -52,13 +52,13 @@ export const convertTime = (time: number) => {
 
   const toMinutes = addCommas(millisecondsToMinutes(time));
   const toHours = addCommas(toHoursNum);
-  const toDays = addCommas(toHoursNum / 24);
+  const toDays = addCommas(new BigNumber(toHoursNum).div(24).toNumber());
 
-  const toWage = addCommas(toHoursNum * wageThisYear);
+  const toWage = addCommas(new BigNumber(toHoursNum).multipliedBy(wageThisYear).toNumber());
   const toSleep = addCommas(toHoursNum);
-  const paidPCroom = addCommas(toHoursNum * 1300);
-  const toWalkCalories = addCommas(toHoursNum * 350);
-  const seoulToNewYorkShuttle = addCommas(toHoursNum / 30);
+  const paidPCroom = addCommas(new BigNumber(toHoursNum).multipliedBy(1300).toNumber());
+  const toWalkCalories = addCommas(new BigNumber(toHoursNum).multipliedBy(350).toNumber());
+  const seoulToNewYorkShuttle = addCommas(new BigNumber(toHoursNum).div(30).toNumber());
   const love = 0;
 
   const timeBlock: IPropsTime = { day: toDays, hours: toHours, minutes: toMinutes };

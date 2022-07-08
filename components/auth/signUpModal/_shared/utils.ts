@@ -1,3 +1,4 @@
+import BigNumber from 'bignumber.js';
 import { PASSWORD_MIN_LENGTH, SPECIAL_CHARACTER_REGEX, NUMBER_REGEX } from '.';
 
 interface IInputListIconProps {
@@ -55,7 +56,7 @@ export const convertBDaySelectors = ({ options, convertBdayUnit, value }: IBDayS
 
 export const checkPasswordValidation = (password: string, name: string, email: string) => {
   const isPasswordHasNameOrEmail = !password.includes(name) && !password.includes(email.split('@')[0]);
-  const isPasswordOverMinLength = password.length >= PASSWORD_MIN_LENGTH;
+  const isPasswordOverMinLength = new BigNumber(password.length).isGreaterThanOrEqualTo(PASSWORD_MIN_LENGTH);
   const isPasswordHasNumOrSymbol = SPECIAL_CHARACTER_REGEX.test(password) || NUMBER_REGEX.test(password);
 
   const passwordWarnings = [
