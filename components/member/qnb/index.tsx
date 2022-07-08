@@ -28,8 +28,6 @@ const Qnb = ({ profileImg }: IProps) => {
   const dispatch = useDispatch();
   const { t } = useTranslation('common');
 
-  console.log('test', t('boxheader1'));
-
   useEffect(() => {
     const newSearchedList = [
       { searchedName, region, profileImg, expiredAt: getTime(endOfDay(new Date())) },
