@@ -25,7 +25,7 @@ const AuthModal = ({ onSubmitForm, closeModal, inputList, onChangeInputs, childr
       <button css={S.closeIconBtn} onClick={closeModal}>
         <CloseIcon />
       </button>
-      {inputList.map(({ placeholder, type, icon, name, value, dataset, errorMsg, isValid, onFocus }) => (
+      {inputList.map(({ type, icon, name, value, dataset, isValid, onFocus }) => (
         <div css={S.inputWrapper} key={dataset}>
           <Input
             placeholder={t(`authentication.common.placeholder.${dataset}`, {
