@@ -4,7 +4,7 @@ function Document() {
   return (
     <Html>
       <Head>
-        <meta httpEquiv='Content-Security-Policy' content='upgrade-insecure-requests'></meta>
+        <meta httpEquiv='Content-Security-Policy' name='description' content='upgrade-insecure-requests'></meta>
         <script src={`https://maps.googleapis.com/maps/api/js?key=${process.env.MY_GOOGLE_MAP_API}`} />
         <script src='https://developers.kakao.com/sdk/js/kakao.js'></script>
       </Head>

@@ -41,7 +41,12 @@ const Header = () => {
         </Link>
         <div css={S.rightBtnWrapper}>
           <div css={S.switchLanguageContainer}>
-            <button css={S.switchLanguageBtn} type='button' onClick={onClickLocaleBtn}>
+            <button
+              css={S.switchLanguageBtn}
+              type='button'
+              onClick={onClickLocaleBtn}
+              aria-label='languages-switch-button'
+            >
               <EarthIcon />
             </button>
             {translatedLanguages && isLocaleDropDownOpen && (

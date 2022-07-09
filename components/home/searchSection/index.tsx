@@ -76,7 +76,7 @@ const SearchSection = () => {
             value={name}
             onChange={onChange}
           />
-          <button type='submit'>
+          <button type='submit' aria-label='search-submit-button'>
             <SearchIcon css={S.searchIcon} />
           </button>
         </div>

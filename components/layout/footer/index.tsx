@@ -69,7 +69,14 @@ const Footer = () => {
               <a css={S.iconBtn}>{icon}</a>
             </Link>
           ) : (
-            <button key={type} css={S.iconBtn} type='button' onClick={onClickiconBtn} data-type={type}>
+            <button
+              key={type}
+              aria-label={`${type}-url-button`}
+              css={S.iconBtn}
+              type='button'
+              onClick={onClickiconBtn}
+              data-type={type}
+            >
               {icon}
             </button>
           );
