@@ -27,8 +27,6 @@ const RegionModal = ({ closeModal }: IProps) => {
   const onClickOption = ({ abbreviation, lat, lng }: IRegion) =>
     dispatch(commonActions.setRegion({ abbreviation, lat, lng }));
 
-  const onClickSaveBtn = () => closeModal();
-
   return (
     <section css={S.container}>
       <button css={S.closeIcon} onClick={onClickCloseBtn}>
@@ -71,7 +69,7 @@ const RegionModal = ({ closeModal }: IProps) => {
           );
         })}
       </ul>
-      <button css={S.saveBtn} type='button' onClick={onClickSaveBtn}>
+      <button css={S.saveBtn} type='button' onClick={onClickCloseBtn}>
         저장하기
       </button>
     </section>

@@ -61,6 +61,72 @@
 
   실제 Riot API를 이용해서 user의 최근 15~20회의 League of Legends 게임 이용 시간을 확인하고 얼만큼의 다른 기회 비용이 있었는지를 알려준다
 
+### Authentication
+
+> 회원가입, 로그인, 로그인 유지, 로그아웃, Validation check 구현
+
+![Kapture 2022-07-10 at 23 17 17](https://user-images.githubusercontent.com/69146527/178149731-fd3ad0b0-528d-4247-9a20-ecb1b8f6e5d0.gif)
+
+<details>
+<summary>자세히 보기</summary>
+
+- 메인 라이브러리: NextAuth
+
+- DB구축:
+  PostgreSQL + Docker + Prisma + Heroku
+- 비밀번호 암호화
+  bcryptjs
+- 로그인 유지
+
+  - 로그아웃 할 때까지 로그인 유지
+
+  - 자신의 게임 기록으로 바로 이동 가능
+
+- `./pages/api/auth/signup.ts`
+
+  ```tsx
+  import { NextApiRequest, NextApiResponse } from 'next';
+  import { PrismaClient } from 'prisma/prisma-client';
+  import { hashSync } from 'bcryptjs';
+
+  async function handler(req: NextApiRequest, res: NextApiResponse) {
+    if (req.method !== 'POST') return;
+
+    let prisma = new PrismaClient();
+
+    const data = req.body;
+
+    const isExistedUser = await prisma.user.findUnique({
+      where: {
+        email: data.email,
+      },
+      select: {
+        email: true,
+        name: true,
+      },
+    });
+
+    if (isExistedUser) {
+      res.status(422).json({ message: 'User Email already exists!', error: true });
+      return;
+    }
+
+    const result = await prisma.user.create({
+      data: { ...data, password: hashSync(data.password, 12) },
+    });
+
+    if (result) {
+      res.status(201).json({ message: 'Created user!', error: false });
+    } else {
+      res.status(402).json({ message: 'Prisma error occured', error: true });
+    }
+  }
+
+  export default handler;
+  ```
+
+  </details>
+
 - API 호출 최적화 (by `promise.all`)
 
   다량의(20개) API 호출을 동시에 해서 대기 시간을 감소 시키고 필요한 정보만 추출하고 정리하여 한 번에 client state로 주기 위함.
