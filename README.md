@@ -30,28 +30,32 @@
 
 # 📌 Techs<a name="main3"></a>
 
-|    Category    |           Library            |               Content               |
-| :------------: | :--------------------------: | :---------------------------------: |
-|      Base      |           Next.js            |           React Framework           |
-|       -        |        Redux Toolkit         |           State Container           |
-|       -        |   emotion (react, styled)    |             css styles              |
-|       -        |          TypeScript          |        Programming Language         |
-|       -        |        Riot Games API        |              Open API               |
-| Authentication |         NextAuth.js          |     Authentication for Next.js      |
-|       -        |   Prisma (+@prisma/client)   |      Node.js / TypeScript ORM       |
-|       -        |    PostgreSQL (← SQLite)     |  object-relational database system  |
-|       -        |            Docker            |          software platform          |
-|       -        |           bcryptjs           |          password-hashing           |
-|       -        |            Heroku            |     Cloud Application Platform      |
-|       -        |            vercel            |         Deployment Platform         |
-|      i18n      |        next-translate        |    translations in a Next.js env    |
-|       -        |           Next SEO           |             SEO Plugin              |
-|      Test      |             Jest             |        JS testing Framework         |
-|     Slide      | react-slick + slick-carousel |         Carousel component          |
-|      Etc       |         bignumber.js         |   arbitrary-precision arithmetic    |
-|       -        |           date-fns           |           JS date utility           |
-|       -        |          react-use           | Collection of essential React Hooks |
-|       -        |            axios             |      Promise based HTTP client      |
+|    Category    |           Library            |                 Content                  |
+| :------------: | :--------------------------: | :--------------------------------------: |
+|      Base      |           Next.js            |             React Framework              |
+|       -        |        Redux Toolkit         |             State Container              |
+|       -        |   emotion (react, styled)    |                css styles                |
+|       -        |          TypeScript          |           Programming Language           |
+|       -        |        Riot Games API        |                 Open API                 |
+| Authentication |         NextAuth.js          |        Authentication for Next.js        |
+|       -        |   Prisma (+@prisma/client)   |         Node.js / TypeScript ORM         |
+|       -        |    PostgreSQL (← SQLite)     |    object-relational database system     |
+|       -        |            Docker            |            software platform             |
+|       -        |           bcryptjs           |             password-hashing             |
+|       -        |            Heroku            |        Cloud Application Platform        |
+|       -        |            vercel            |           Deployment Platform            |
+|      i18n      |        next-translate        |      translations in a Next.js env       |
+|      Test      |             Jest             |           JS testing Framework           |
+|      Map       |       google-map-react       |        set of the Google Maps API        |
+|  localStorage  |           storejs            | JS API for handling browser localStorage |
+|     Graph      |           victory            | modular charting and data visualization  |
+|     Slide      | react-slick + slick-carousel |            Carousel component            |
+|      Etc       |         bignumber.js         |      arbitrary-precision arithmetic      |
+|       -        |           date-fns           |             JS date utility              |
+|       -        |          react-use           |   Collection of essential React Hooks    |
+|       -        |            axios             |        Promise based HTTP client         |
+|       -        |          facepaint           |  Responsive style values for css-in-js   |
+|       -        |            lodash            |      modern JavaScript utility lib       |
 
 <br/>
 
@@ -72,10 +76,8 @@
 
 - 메인 라이브러리: NextAuth
 
-- DB구축:
-  PostgreSQL + Docker + Prisma + Heroku
-- 비밀번호 암호화
-  bcryptjs
+- DB구축: PostgreSQL + Docker + Prisma + Heroku
+- 비밀번호 암호화 bcryptjs
 - 로그인 유지
 
   - 로그아웃 할 때까지 로그인 유지
