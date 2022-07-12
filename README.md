@@ -603,47 +603,8 @@ GA를 적용하여 유입된 방문자들의 사이트 이용을 분석
 - Copy URL, Kakao talk, facebook, twitter에 사이트 공유 가능
 
 - Meta Tag , OG 활용
-- 코드 (`./components/layout/index.tsx`)
-      ```tsx
-      <Head>
-      	<title>{titleSet}</title>
-      	<meta property='og:type' content='website' />
-      	<meta property='og:title' content={ogTitleSet} />
-      	<meta property='og:site_name' content={`${t('common:titleOfApp')}`} />
-      	<meta property='og:description' content={`${t('common:descOfApp')}`} />
-      	<meta property='og:image' content={OG_IMAGE_URL} />
-      	<meta property='og:image:width' content='1200' />
-      	<meta property='og:image:height' content='630' />
-      	<meta property='og:image:alt' content={`${t('common:titleOfApp')} image`} />
-      	<meta property='og:url' content='https://while-you-were-playing-lol.vercel.app' />
-      </Head>
-      ```
-  </details>
-
-### SNS Share
-
-<details>
-	<summary> 자세히 보기</summary>
-
-- Copy URL, Kakao talk, facebook, twitter에 사이트 공유 가능
-
-- Meta Tag , OG 활용
 - UI ![](https://velog.velcdn.com/images/katej927/post/537629d4-1dba-4416-b8eb-995a873c6d2c/image.gif)
-- 코드 (`./components/layout/index.tsx`)
-      ```tsx
-      <Head>
-      	<title>{titleSet}</title>
-      	<meta property='og:type' content='website' />
-      	<meta property='og:title' content={ogTitleSet} />
-      	<meta property='og:site_name' content={`${t('common:titleOfApp')}`} />
-      	<meta property='og:description' content={`${t('common:descOfApp')}`} />
-      	<meta property='og:image' content={OG_IMAGE_URL} />
-      	<meta property='og:image:width' content='1200' />
-      	<meta property='og:image:height' content='630' />
-      	<meta property='og:image:alt' content={`${t('common:titleOfApp')} image`} />
-      	<meta property='og:url' content='https://while-you-were-playing-lol.vercel.app' />
-      </Head>
-      ```
+- 코드 (`./components/layout/index.tsx`) `` tsx <Head> <title>{titleSet}</title> <meta property='og:type' content='website' /> <meta property='og:title' content={ogTitleSet} /> <meta property='og:site_name' content={`${t('common:titleOfApp')}`} /> <meta property='og:description' content={`${t('common:descOfApp')}`} /> <meta property='og:image' content={OG_IMAGE_URL} /> <meta property='og:image:width' content='1200' /> <meta property='og:image:height' content='630' /> <meta property='og:image:alt' content={`${t('common:titleOfApp')} image`} /> <meta property='og:url' content='https://while-you-were-playing-lol.vercel.app' /> </Head>  ``
   </details>
 
 ### Parallax Scrolling + Shrink Navigation
@@ -656,6 +617,7 @@ GA를 적용하여 유입된 방문자들의 사이트 이용을 분석
 - UI ![](https://velog.velcdn.com/images/katej927/post/0997edc1-20cf-46d5-b84e-af7698738212/image.gif)
 
 - `./components/layout/index.tsx`
+
   ```tsx
   const onScroll = () => dispatch(commonActions.setScrollPosition(window.scrollY));
 
@@ -667,8 +629,8 @@ GA를 적용하여 유입된 방문자들의 사이트 이용을 분석
     };
   }, []);
   ```
-- `./components/home/searchSection/index.tsx`
-      ```tsx
+
+- `./components/home/searchSection/index.tsx` ```tsx
 
       <S.DivisionText isOpacityOn={scrollPosition >= 130}>(...)</S.DivisionText>
       <S.DivisionFigure isOpacityOn={scrollPosition >= 200}>
@@ -685,6 +647,7 @@ GA를 적용하여 유입된 방문자들의 사이트 이용을 분석
       	(...)
       </S.Form>
       ```
+
   </details>
 
 ### Modal
