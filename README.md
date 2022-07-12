@@ -78,8 +78,7 @@
   - `useCallback`, `useMemo`, `memo` 등 활용
   - 사용에 따라 컴포넌트 분리하여 렌더링 최소화
 
-- 확인
-  React Developer Tools, Profiler / Lighthouse 탭 등을 통해 리렌더링 파악 및 성능 최적화 도모
+- 확인 React Developer Tools, Profiler / Lighthouse 탭 등을 통해 리렌더링 파악 및 성능 최적화 도모
   </details>
 
 ### 3. Test (by `Jest`)
@@ -89,9 +88,9 @@
 
 함수로 계산된 값들이 정확한지 (기댓값과 일치하는지) 확인
 
-- 결과
-  ![](https://velog.velcdn.com/images/katej927/post/6aa80285-1609-4539-99e9-de93c82dc03c/image.png)
+- 결과 ![](https://velog.velcdn.com/images/katej927/post/6aa80285-1609-4539-99e9-de93c82dc03c/image.png)
 - `./.jest/fn.test.ts`
+
   ```tsx
   import { convertAllMatch, convertTime } from 'components/member/_shared';
   import { addCommas } from 'lib/utils';
@@ -190,8 +189,8 @@
     });
   });
   ```
-  </details>
 
+  </details>
 
 ### 4. Google Analytics
 
@@ -212,6 +211,7 @@ GA를 적용하여 유입된 방문자들의 사이트 이용을 분석
 `bignumber.js`를 통해 정밀한 산수 계산
 
 - `./components/member/_shared/utils.ts`
+
   ```tsx
   const toDays = addCommas(new BigNumber(toHoursNum).div(24).toNumber());
 
@@ -287,6 +287,58 @@ GA를 적용하여 유입된 방문자들의 사이트 이용을 분석
   ```
 
   </details>
+
+### Responsive Web & Mobile
+
+<details>
+	<summary> 자세히 보기</summary>
+
+> screen의 width길이나 세로와 가로비율에 따라 적절한 UI를 보여줌
+
+- 구현 방법
+
+  - HTML
+
+    `picture` / `source` 의 `media`, `srcSet` 속성 / `img` tags
+
+  - CSS(`flex` , `media query`)
+  - `facepaint` 라이브러리
+  - 코드 (`./styles/mixin/index.ts`)
+    ```tsx
+    const breakpoints = [376, 600, 768, 1000, 1200, 1300, 1800, 2400];
+    const screenMode = ['landscape', 'portrait'];
+    export const responsive = {
+      onlyScreen: facepaint(breakpoints.map((bp) => `@media only screen and (min-width: ${bp}px)`)),
+      isPortraitOrLandscape: facepaint(
+        screenMode.map((screenMode) => `@media only screen and (orientation: ${screenMode})`)
+      ),
+    };
+    ```
+
+- UI 확인
+
+  - Home Page ![responisve_main](https://user-images.githubusercontent.com/69146527/178425109-235d4475-f1a7-4bee-a211-af509811cbe9.gif)
+
+          - 글자 크기의 변화
+
+          - 지역 선택 모달창
+
+              지도 크기 변화
+
+  - Member Page ![](https://velog.velcdn.com/images/katej927/post/97204d4e-7e9a-406c-86e8-f8437c224227/image.gif) ![](https://velog.velcdn.com/images/katej927/post/a6740b35-c984-4059-a707-86e92ee832b9/image.gif)
+
+    - Quick Nav Bar
+      일정 width 이하가 되면 사라짐
+    - 박스의 위치 변화
+      flex 활용
+    - Carousel
+
+      화면 너비에 비례하여 보여지는 카드의 갯수가 정해짐
+
+    - 모달창
+      screen이 세로/가로형인지에 따라 다른 이미지를, width에 따라 다른 크기의 글자를 보여줌
+
+</details>
 
 - API 호출 최적화 (by `promise.all`)
 
