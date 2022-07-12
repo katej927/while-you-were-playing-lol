@@ -327,58 +327,239 @@ GA를 적용하여 유입된 방문자들의 사이트 이용을 분석
 
   - Member Page ![](https://velog.velcdn.com/images/katej927/post/97204d4e-7e9a-406c-86e8-f8437c224227/image.gif) ![](https://velog.velcdn.com/images/katej927/post/a6740b35-c984-4059-a707-86e92ee832b9/image.gif)
 
-    - Quick Nav Bar
-      일정 width 이하가 되면 사라짐
-    - 박스의 위치 변화
-      flex 활용
+    - Quick Nav Bar 일정 width 이하가 되면 사라짐
+    - 박스의 위치 변화 flex 활용
     - Carousel
 
       화면 너비에 비례하여 보여지는 카드의 갯수가 정해짐
 
-    - 모달창
-      screen이 세로/가로형인지에 따라 다른 이미지를, width에 따라 다른 크기의 글자를 보여줌
+    - 모달창 screen이 세로/가로형인지에 따라 다른 이미지를, width에 따라 다른 크기의 글자를 보여줌
 
 </details>
 
-- API 호출 최적화 (by `promise.all`)
+### API 호출 최적화
 
-  다량의(20개) API 호출을 동시에 해서 대기 시간을 감소 시키고 필요한 정보만 추출하고 정리하여 한 번에 client state로 주기 위함.
+<details>
+	<summary> 자세히 보기</summary>
 
-- 한영 지원 (by `next-translate (i18n)`)
+> `promise.all` 활용
 
-- 테스트 (by `Jest`)
+- 다량의(15개) API 호출을 동시에 해서 대기 시간을 감소 시킨 뒤, 필요한 정보만 추출하고 정리하여 한 번에 client state에 내려줌.
 
-  함수로 계산된 값들이 정확한지 (기댓값과 일치하는지) 확인
+  (주어진 API 데이터에서 원하는 정보를 얻기 위한 최선의 방법)
 
-- 반응형 (일부)
+- `./pages/api/riot/[summonerName].ts`
+  ```tsx
+  export default async (req: NextApiRequest, res: NextApiResponse) => {
+    if (req.method === 'GET') {
+      const { summonerName, region } = req.query;
 
-  flex 활용하여 크롬으로 확인할 수 있는 모든 사이즈 (iPhone SE ~ Nest Hub Max)에서 컴포넌트의 위치가 동적으로 변한다. (진행 중)
+      const selectedRegionAPI = setRoutingRegion[`${region}`];
+      const selectedContinentAPI = setRoutingContinent[`${region}`];
 
-- Responsive Carousel
+      if (!summonerName) {
+        res.statusCode = 400;
+        return res.send('소환사명이 없습니다.');
+      }
 
-  화면 너비에 비례하여 보여지는 카드의 갯수가 정해짐
+      try {
+        const {
+          data: { puuid, profileIconId },
+        } = await axios.get(encodeURI(findBasicInfoOfSummonerAPI(`${summonerName}`, `${selectedRegionAPI}`)));
 
-- SSR 지원을 위해 `Next.js`, `emotion` 사용
+        const { data: matchIdLists } = await axios.get(findMatchListsAPI(`${puuid}`, `${selectedContinentAPI}`));
 
-- Modal
+        const allMatchData = await Promise.all(
+          matchIdLists.map(async (matchId: string[]) => {
+            const eachMatchResult = await axios.get(findAllMatchDataAPI(`${matchId}`, `${selectedContinentAPI}`));
+            const { gameCreation, gameDuration, participants } = eachMatchResult.data.info;
 
-  `createPortal` 활용 (React 공식 문서 참고)
+            const {
+              win,
+              championName,
+              totalDamageDealtToChampions,
+              totalMinionsKilled,
+              deaths,
+              kills,
+              assists,
+              item0,
+              item1,
+              item2,
+              item3,
+              item4,
+              item5,
+              item6,
+              item7,
+            } = participants.filter((participant: IParticipant) => participant.summonerName === summonerName)[0];
 
-- Authentication
+            return {
+              time: { gameCreation, gameDuration },
+              matchData: {
+                win,
+                championName,
+                totalDamageDealtToChampions,
+                totalMinionsKilled,
+                deaths,
+                kills,
+                assists,
+                item0,
+                item1,
+                item2,
+                item3,
+                item4,
+                item5,
+                item6,
+                item7,
+              },
+            };
+          })
+        );
 
-  > 회원가입, 로그인, 로그인 유지, 로그아웃, Validation check 구현
+        const result = {
+          profileIconId,
+          allMatchData,
+        };
 
-  - 메인 라이브러리: NextAuth
+        res.statusCode = 200;
+        return res.send(result);
+      } catch (e) {
+        res.statusCode = 404;
+        if (axios.isAxiosError(e) && e.response) {
+          console.log(e.response);
+        }
+        return res.end();
+      }
+    }
 
-  - DB구축: PostgreSQL + Docker + Prisma + Heroku
-  - 비밀번호 암호화: bcryptjs
+    res.statusCode = 405;
+    return res.end();
+  };
+  ```
 
-- 성능 최적화
+</details>
 
-  - 방법
+### 전 세계의 소환사 검색을 위한 google map
 
-    - 컴포넌트 분리
-    - memo, useMemo 등
-    - 코드 스플리팅 (by `next/dynamic`)
+<details>
+	<summary> 자세히 보기</summary>
 
-  - 확인: React Developer Tools, Profiler Tab 등 활용
+> radio 버튼이나 지도에서 국가 선택 가능
+
+![](https://velog.velcdn.com/images/katej927/post/fe1da4e6-90a7-4417-8209-b4776ea9bbd3/image.gif)
+
+- `./components/home/regionModal/index.tsx`
+  ```tsx
+  interface IProps {
+    closeModal: () => void;
+  }
+
+  const RegionModal = ({ closeModal }: IProps) => {
+    const {
+      abbreviation: selectedAbbreviation,
+      lat: selectedLat,
+      lng: selectedLng,
+    } = useSelector((state) => state.common.region);
+
+    const dispatch = useDispatch();
+
+    const onClickCloseBtn = () => closeModal();
+
+    const onClickOption = ({ abbreviation, lat, lng }: IRegion) =>
+      dispatch(commonActions.setRegion({ abbreviation, lat, lng }));
+
+    return (
+      <section css={S.container}>
+        <button css={S.closeIcon} onClick={onClickCloseBtn}>
+          <CloseIcon />
+        </button>
+        <h5 css={S.title}>지역 선택</h5>
+        <section css={S.mapContainer}>
+          <GoogleMapReact
+            bootstrapURLKeys={{ key: process.env.MY_GOOGLE_MAP_API! }}
+            defaultCenter={{ lat: REGION_OPTIONS[0].lat, lng: REGION_OPTIONS[0].lng }}
+            defaultZoom={0}
+            center={{ lat: selectedLat, lng: selectedLng }}
+          >
+            {REGION_OPTIONS.map((region) => {
+              const { abbreviation, continent, lat, lng } = region;
+              return (
+                <S.Marker
+                  key={abbreviation}
+                  lat={lat}
+                  lng={lng}
+                  isSelected={abbreviation === selectedAbbreviation}
+                  onClick={() => onClickOption(region)}
+                >
+                  {continent}
+                </S.Marker>
+              );
+            })}
+          </GoogleMapReact>
+        </section>
+        <ul css={S.optionContainer}>
+          {REGION_OPTIONS.map((region) => {
+            const { abbreviation, continent } = region;
+            return (
+              <li key={abbreviation}>
+                <S.ContinentBtn
+                  onClick={() => onClickOption(region)}
+                  isSelected={abbreviation === selectedAbbreviation}
+                >
+                  <div />
+                  {continent}
+                </S.ContinentBtn>
+              </li>
+            );
+          })}
+        </ul>
+        <button css={S.saveBtn} type='button' onClick={onClickCloseBtn}>
+          저장하기
+        </button>
+      </section>
+    );
+  };
+
+  export default RegionModal;
+  ```
+
+</details>
+
+### 다국어 지원
+
+<details>
+	<summary> 자세히 보기</summary>
+
+> `next-translate (i18n)` 활용
+
+![translation](https://user-images.githubusercontent.com/69146527/178471492-f4b12bfb-73a6-417b-8a04-d5a76d1347ed.gif)
+
+</details>
+
+### 최근 검색 내역
+
+<details>
+	<summary> 자세히 보기</summary>
+  
+- 하루 동안 검색한 내역을 local storage에 저장하여 보여주고 자정이 지난 뒤에 사이트를 이용하면 전 날의 local storage에 있던 내역은 지워진다.
+
+- Responsive
+
+  화면 줄어들면 사라짐 (코어 기능은 아니기 때문에)
+
+- 검색한 것을 다시 검색할 경우, 리스트 맨 위로 올라감
+- 최근 본 유저 리스트 옆에 stickey로 고정
+- 클릭 시, 검색됨.
+- `./components/member/qnb/index.tsx`
+  ```tsx
+  useEffect(() => {
+    const newSearchedList = [
+      { searchedName, region, profileImg, expiredAt: getTime(endOfDay(new Date())) },
+      ...(store.get('recent searches') ?? ''),
+    ];
+    const result = uniqBy(filterExpired(newSearchedList), 'searchedName');
+    store.set('recent searches', result);
+    setRecentSearches(result);
+  }, []);
+  ```
+- UI ![](https://velog.velcdn.com/images/katej927/post/4f81f9ac-fcd0-444e-b0ee-daa2ada33158/image.gif)
+</details>
