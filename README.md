@@ -349,6 +349,7 @@ GA를 적용하여 유입된 방문자들의 사이트 이용을 분석
   (주어진 API 데이터에서 원하는 정보를 얻기 위한 최선의 방법)
 
 - `./pages/api/riot/[summonerName].ts`
+
   ```tsx
   export default async (req: NextApiRequest, res: NextApiResponse) => {
     if (req.method === 'GET') {
@@ -448,6 +449,7 @@ GA를 적용하여 유입된 방문자들의 사이트 이용을 분석
 ![](https://velog.velcdn.com/images/katej927/post/fe1da4e6-90a7-4417-8209-b4776ea9bbd3/image.gif)
 
 - `./components/home/regionModal/index.tsx`
+
   ```tsx
   interface IProps {
     closeModal: () => void;
@@ -592,3 +594,54 @@ GA를 적용하여 유입된 방문자들의 사이트 이용을 분석
   ```
 
 </details>
+
+### SNS Share
+
+<details>
+	<summary> 자세히 보기</summary>
+
+- Copy URL, Kakao talk, facebook, twitter에 사이트 공유 가능
+
+- Meta Tag , OG 활용
+- 코드 (`./components/layout/index.tsx`)
+      ```tsx
+      <Head>
+      	<title>{titleSet}</title>
+      	<meta property='og:type' content='website' />
+      	<meta property='og:title' content={ogTitleSet} />
+      	<meta property='og:site_name' content={`${t('common:titleOfApp')}`} />
+      	<meta property='og:description' content={`${t('common:descOfApp')}`} />
+      	<meta property='og:image' content={OG_IMAGE_URL} />
+      	<meta property='og:image:width' content='1200' />
+      	<meta property='og:image:height' content='630' />
+      	<meta property='og:image:alt' content={`${t('common:titleOfApp')} image`} />
+      	<meta property='og:url' content='https://while-you-were-playing-lol.vercel.app' />
+      </Head>
+      ```
+  </details>
+
+### SNS Share
+
+<details>
+	<summary> 자세히 보기</summary>
+
+- Copy URL, Kakao talk, facebook, twitter에 사이트 공유 가능
+
+- Meta Tag , OG 활용
+- UI ![](https://velog.velcdn.com/images/katej927/post/537629d4-1dba-4416-b8eb-995a873c6d2c/image.gif)
+- 코드 (`./components/layout/index.tsx`)
+      ```tsx
+      <Head>
+      	<title>{titleSet}</title>
+      	<meta property='og:type' content='website' />
+      	<meta property='og:title' content={ogTitleSet} />
+      	<meta property='og:site_name' content={`${t('common:titleOfApp')}`} />
+      	<meta property='og:description' content={`${t('common:descOfApp')}`} />
+      	<meta property='og:image' content={OG_IMAGE_URL} />
+      	<meta property='og:image:width' content='1200' />
+      	<meta property='og:image:height' content='630' />
+      	<meta property='og:image:alt' content={`${t('common:titleOfApp')} image`} />
+      	<meta property='og:url' content='https://while-you-were-playing-lol.vercel.app' />
+      </Head>
+      ```
+  </details>
