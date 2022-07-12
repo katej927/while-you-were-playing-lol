@@ -226,12 +226,10 @@ GA를 적용하여 유입된 방문자들의 사이트 이용을 분석
 
 ### Authentication
 
-> 회원가입, 로그인, 로그인 유지, 로그아웃, Validation check 구현
-
-![Kapture 2022-07-10 at 23 17 17](https://user-images.githubusercontent.com/69146527/178149731-fd3ad0b0-528d-4247-9a20-ecb1b8f6e5d0.gif)
-
 <details>
 <summary>자세히 보기</summary>
+
+> 회원가입, 로그인, 로그인 유지, 로그아웃, Validation check 구현
 
 - 메인 라이브러리: NextAuth
 
@@ -242,6 +240,8 @@ GA를 적용하여 유입된 방문자들의 사이트 이용을 분석
   - 로그아웃 할 때까지 로그인 유지
 
   - 자신의 게임 기록으로 바로 이동 가능
+
+- UI ![](https://velog.velcdn.com/images/katej927/post/598ae055-a591-4d98-bad8-3eab98147945/image.gif)
 
 - `./pages/api/auth/signup.ts`
 
