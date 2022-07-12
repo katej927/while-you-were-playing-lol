@@ -563,3 +563,32 @@ GA를 적용하여 유입된 방문자들의 사이트 이용을 분석
   ```
 - UI ![](https://velog.velcdn.com/images/katej927/post/4f81f9ac-fcd0-444e-b0ee-daa2ada33158/image.gif)
 </details>
+
+### 그래프
+
+<details>
+	<summary> 자세히 보기</summary>
+
+날짜 별로 게임 시간을 산출하여 그래프로 시각화.
+
+- UI ![](https://velog.velcdn.com/images/katej927/post/e2fe14e1-fdcd-4e6c-a8d6-a6fa5b504b4a/image.gif)
+
+- `./components/member/graph/index.tsx`
+  ```tsx
+  <div css={S.container}>
+    <VictoryChart {...GRAPH_OPTIONS.chart}>
+      <VictoryAxis
+        tickValues={convertedLeftAxisTickValues}
+        tickLabelComponent={<VictoryLabel {...GRAPH_OPTIONS.leftAxisLabel} />}
+      />
+      <VictoryBar data={convertedData} style={{ data: { fill: ({ datum }) => datum.fill } }} {...GRAPH_OPTIONS.bar} />
+      <VictoryAxis
+        tickFormat={convertedRightAxisTickValues}
+        tickLabelComponent={<VictoryLabel {...GRAPH_OPTIONS.rightAxisLabel} />}
+        {...GRAPH_OPTIONS.rightAxis}
+      />
+    </VictoryChart>
+  </div>
+  ```
+
+</details>
