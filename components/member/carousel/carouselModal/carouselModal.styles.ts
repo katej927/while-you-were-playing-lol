@@ -50,7 +50,7 @@ export const categoriesContainer = css`
 
 export const subject = css`
   ${responsive.isPortraitOrLandscape({
-    fontSize: ['15px', 'calc(1.09px + 1.6vw)'],
+    fontSize: ['15px', 'calc(8px + 1vw)'],
   })}
 
   @media only screen and (orientation: portrait) and (min-width: 768px) {
