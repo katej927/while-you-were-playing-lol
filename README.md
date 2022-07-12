@@ -645,3 +645,62 @@ GA를 적용하여 유입된 방문자들의 사이트 이용을 분석
       </Head>
       ```
   </details>
+
+### Parallax Scrolling + Shrink Navigation
+
+<details>
+	<summary> 자세히 보기</summary>
+
+`window.scrollY` , `transition` 을 활용하여 적절한 위치에서 텍스트를 노출시키고, nav bar를 줄이고 늘리는 애니메이션 효과를 줌.
+
+- UI ![](https://velog.velcdn.com/images/katej927/post/0997edc1-20cf-46d5-b84e-af7698738212/image.gif)
+
+- `./components/layout/index.tsx`
+  ```tsx
+  const onScroll = () => dispatch(commonActions.setScrollPosition(window.scrollY));
+
+  useEffect(() => {
+    window.addEventListener('scroll', onScroll);
+
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+    };
+  }, []);
+  ```
+- `./components/home/searchSection/index.tsx`
+      ```tsx
+
+      <S.DivisionText isOpacityOn={scrollPosition >= 130}>(...)</S.DivisionText>
+      <S.DivisionFigure isOpacityOn={scrollPosition >= 200}>
+      	(...)
+      </S.DivisionFigure>
+      <S.SectionTitle isOpacityOn={scrollPosition >= 242}>(...)</S.SectionTitle>
+      <S.Title isOpacityOn={scrollPosition >= 365}>
+      	(...)
+      </S.Title>
+      <S.Desc isOpacityOn={scrollPosition >= 475}>
+      	(...)
+      </S.Desc>
+      <S.Form onSubmit={onSubmit} isOpacityOn={scrollPosition >= 600}>
+      	(...)
+      </S.Form>
+      ```
+  </details>
+
+### Modal
+
+<details>
+	<summary> 자세히 보기</summary>
+createPortal 활용 (React 공식 문서 참고)
+</details>
+
+### Toast Message
+
+<details>
+	<summary> 자세히 보기</summary>
+
+alert가 띄워지는 경우에 Toast msg를 띄워 보다 직관적으로 상태를 설명함.
+
+- UI ![](https://velog.velcdn.com/images/katej927/post/e480cc0f-58b9-43c7-8d0c-b00fcb8cc005/image.gif)
+
+</details>
