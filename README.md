@@ -23,9 +23,6 @@
 
 > League of Legends의 user를 검색하여 최근 게임 이용 시간의 기회 비용을 알아보는 앱
 
-- 개발자: 정선미
-- 기간: 9일 (Plan, Design, Development, Study)
-
 <br/>
 
 # 📌 Techs<a name="main3"></a>
