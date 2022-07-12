@@ -16,7 +16,7 @@ export const bgImg = css`
 `;
 
 export const descWrapper = css`
-  ${flex('column', 'baseline')}
+  ${flex('column', 'baseline', 'space-evenly')}
   ${responsive.isPortraitOrLandscape({
     width: ['100%', '40%'],
     color: [colors.lightgray100, colors.black001],
