@@ -1,7 +1,3 @@
-# ❗️진행중❗️
-
-<br/>
-
 # Table of Contents
 
 1. [Link](#main1)
