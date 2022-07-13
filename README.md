@@ -58,11 +58,11 @@
 
 # 📌 Functions<a name="main4"></a>
 
-- 주제
+## 👉 주제
 
-  실제 Riot API를 이용해서 user의 최근 15~20회의 League of Legends 게임 이용 시간을 확인하고 얼만큼의 다른 기회 비용이 있었는지를 알려준다
+실제 Riot API를 이용해서 user의 최근 15~20회의 League of Legends 게임 이용 시간을 확인하고 얼만큼의 다른 기회 비용이 있었는지를 알려준다
 
-## Overall
+## 🔸 Overall
 
 ### 1. SSR 지원을 위해 `Next.js`, `emotion` 사용
 
@@ -224,7 +224,9 @@ GA를 적용하여 유입된 방문자들의 사이트 이용을 분석
 
 </details>
 
-### Authentication
+## 🔸 Particular
+
+### 1. Authentication
 
 <details>
 <summary>자세히 보기</summary>
@@ -288,7 +290,7 @@ GA를 적용하여 유입된 방문자들의 사이트 이용을 분석
 
   </details>
 
-### Responsive Web & Mobile
+### 2. Responsive Web & Mobile
 
 <details>
 	<summary> 자세히 보기</summary>
@@ -337,7 +339,7 @@ GA를 적용하여 유입된 방문자들의 사이트 이용을 분석
 
 </details>
 
-### API 호출 최적화
+### 3. API 호출 최적화
 
 <details>
 	<summary> 자세히 보기</summary>
@@ -439,7 +441,7 @@ GA를 적용하여 유입된 방문자들의 사이트 이용을 분석
 
 </details>
 
-### 전 세계의 소환사 검색을 위한 google map
+### 4. 전 세계의 소환사 검색을 위한 google map
 
 <details>
 	<summary> 자세히 보기</summary>
@@ -526,7 +528,7 @@ GA를 적용하여 유입된 방문자들의 사이트 이용을 분석
 
 </details>
 
-### 다국어 지원
+### 5. 다국어 지원
 
 <details>
 	<summary> 자세히 보기</summary>
@@ -537,7 +539,7 @@ GA를 적용하여 유입된 방문자들의 사이트 이용을 분석
 
 </details>
 
-### 최근 검색 내역
+### 6. 최근 검색 내역
 
 <details>
 	<summary> 자세히 보기</summary>
@@ -566,7 +568,7 @@ GA를 적용하여 유입된 방문자들의 사이트 이용을 분석
 - UI ![](https://velog.velcdn.com/images/katej927/post/4f81f9ac-fcd0-444e-b0ee-daa2ada33158/image.gif)
 </details>
 
-### 그래프
+### 7. 그래프
 
 <details>
 	<summary> 자세히 보기</summary>
@@ -595,7 +597,7 @@ GA를 적용하여 유입된 방문자들의 사이트 이용을 분석
 
 </details>
 
-### SNS Share
+### 8. SNS Share
 
 <details>
 	<summary> 자세히 보기</summary>
@@ -607,7 +609,7 @@ GA를 적용하여 유입된 방문자들의 사이트 이용을 분석
 - 코드 (`./components/layout/index.tsx`) `` tsx <Head> <title>{titleSet}</title> <meta property='og:type' content='website' /> <meta property='og:title' content={ogTitleSet} /> <meta property='og:site_name' content={`${t('common:titleOfApp')}`} /> <meta property='og:description' content={`${t('common:descOfApp')}`} /> <meta property='og:image' content={OG_IMAGE_URL} /> <meta property='og:image:width' content='1200' /> <meta property='og:image:height' content='630' /> <meta property='og:image:alt' content={`${t('common:titleOfApp')} image`} /> <meta property='og:url' content='https://while-you-were-playing-lol.vercel.app' /> </Head>  ``
   </details>
 
-### Parallax Scrolling + Shrink Navigation
+### 9. Parallax Scrolling + Shrink Navigation
 
 <details>
 	<summary> 자세히 보기</summary>
@@ -650,14 +652,14 @@ GA를 적용하여 유입된 방문자들의 사이트 이용을 분석
 
   </details>
 
-### Modal
+### 10. Modal
 
 <details>
 	<summary> 자세히 보기</summary>
 createPortal 활용 (React 공식 문서 참고)
 </details>
 
-### Toast Message
+### 11. Toast Message
 
 <details>
 	<summary> 자세히 보기</summary>
