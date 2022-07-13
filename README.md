@@ -23,6 +23,8 @@
 
 > League of Legends의 user를 검색하여 최근 게임 이용 시간의 기회 비용을 알아보는 앱
 
+실제 Riot API를 이용해서 user의 최근 15~20회의 League of Legends 게임 이용 시간을 확인하고 얼만큼의 다른 기회 비용이 있었는지를 알려준다
+
 <br/>
 
 # 📌 Techs<a name="main3"></a>
@@ -57,10 +59,6 @@
 <br/>
 
 # 📌 Functions<a name="main4"></a>
-
-## 👉 주제
-
-실제 Riot API를 이용해서 user의 최근 15~20회의 League of Legends 게임 이용 시간을 확인하고 얼만큼의 다른 기회 비용이 있었는지를 알려준다
 
 ## 🔸 Overall
 
@@ -321,21 +319,29 @@ GA를 적용하여 유입된 방문자들의 사이트 이용을 분석
 
   - Home Page ![responisve_main](https://user-images.githubusercontent.com/69146527/178425109-235d4475-f1a7-4bee-a211-af509811cbe9.gif)
 
-          - 글자 크기의 변화
+    - 글자 크기의 변화
 
-          - 지역 선택 모달창
+    - 지역 선택 모달창
 
-              지도 크기 변화
+      지도 크기 변화
 
   - Member Page ![](https://velog.velcdn.com/images/katej927/post/97204d4e-7e9a-406c-86e8-f8437c224227/image.gif) ![](https://velog.velcdn.com/images/katej927/post/a6740b35-c984-4059-a707-86e92ee832b9/image.gif)
 
-    - Quick Nav Bar 일정 width 이하가 되면 사라짐
-    - 박스의 위치 변화 flex 활용
-    - Carousel
+    - Quick Nav Bar
 
-      화면 너비에 비례하여 보여지는 카드의 갯수가 정해짐
+      일정 width 이하가 되면 사라짐
 
-    - 모달창 screen이 세로/가로형인지에 따라 다른 이미지를, width에 따라 다른 크기의 글자를 보여줌
+    - 동적인 박스(div) 위치
+
+      flex 활용
+
+    - Slide (Carousel)
+
+      화면 너비에 비례하여 보여지는 카드의 갯수가 정해진다.
+
+    - 모달창
+
+      screen이 세로/가로형인지에 따라 적합한 이미지를(가로형/세로형), width 길이에 비례하는 글자 크기를 보여줌
 
 </details>
 
@@ -606,7 +612,21 @@ GA를 적용하여 유입된 방문자들의 사이트 이용을 분석
 
 - Meta Tag , OG 활용
 - UI ![](https://velog.velcdn.com/images/katej927/post/537629d4-1dba-4416-b8eb-995a873c6d2c/image.gif)
-- 코드 (`./components/layout/index.tsx`) `` tsx <Head> <title>{titleSet}</title> <meta property='og:type' content='website' /> <meta property='og:title' content={ogTitleSet} /> <meta property='og:site_name' content={`${t('common:titleOfApp')}`} /> <meta property='og:description' content={`${t('common:descOfApp')}`} /> <meta property='og:image' content={OG_IMAGE_URL} /> <meta property='og:image:width' content='1200' /> <meta property='og:image:height' content='630' /> <meta property='og:image:alt' content={`${t('common:titleOfApp')} image`} /> <meta property='og:url' content='https://while-you-were-playing-lol.vercel.app' /> </Head>  ``
+- 코드 (`./components/layout/index.tsx`)
+  ```tsx
+  <Head>
+    <title>{titleSet}</title>
+    <meta property='og:type' content='website' />
+    <meta property='og:title' content={ogTitleSet} />
+    <meta property='og:site_name' content={`${t('common:titleOfApp')}`} />
+    <meta property='og:description' content={`${t('common:descOfApp')}`} />
+    <meta property='og:image' content={OG_IMAGE_URL} />
+    <meta property='og:image:width' content='1200' />
+    <meta property='og:image:height' content='630' />
+    <meta property='og:image:alt' content={`${t('common:titleOfApp')} image`} />
+    <meta property='og:url' content='https://while-you-were-playing-lol.vercel.app' />
+  </Head>
+  ```
   </details>
 
 ### 9. Parallax Scrolling + Shrink Navigation
@@ -632,23 +652,25 @@ GA를 적용하여 유입된 방문자들의 사이트 이용을 분석
   }, []);
   ```
 
-- `./components/home/searchSection/index.tsx` ```tsx
+- `./components/home/searchSection/index.tsx`
 
-      <S.DivisionText isOpacityOn={scrollPosition >= 130}>(...)</S.DivisionText>
-      <S.DivisionFigure isOpacityOn={scrollPosition >= 200}>
-      	(...)
-      </S.DivisionFigure>
-      <S.SectionTitle isOpacityOn={scrollPosition >= 242}>(...)</S.SectionTitle>
-      <S.Title isOpacityOn={scrollPosition >= 365}>
-      	(...)
-      </S.Title>
-      <S.Desc isOpacityOn={scrollPosition >= 475}>
-      	(...)
-      </S.Desc>
-      <S.Form onSubmit={onSubmit} isOpacityOn={scrollPosition >= 600}>
-      	(...)
-      </S.Form>
-      ```
+  ```tsx
+
+  <S.DivisionText isOpacityOn={scrollPosition >= 130}>(...)</S.DivisionText>
+  <S.DivisionFigure isOpacityOn={scrollPosition >= 200}>
+  	(...)
+  </S.DivisionFigure>
+  <S.SectionTitle isOpacityOn={scrollPosition >= 242}>(...)</S.SectionTitle>
+  <S.Title isOpacityOn={scrollPosition >= 365}>
+  	(...)
+  </S.Title>
+  <S.Desc isOpacityOn={scrollPosition >= 475}>
+  	(...)
+  </S.Desc>
+  <S.Form onSubmit={onSubmit} isOpacityOn={scrollPosition >= 600}>
+  	(...)
+  </S.Form>
+  ```
 
   </details>
 
