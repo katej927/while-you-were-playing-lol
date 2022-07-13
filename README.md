@@ -9,6 +9,27 @@
 3. [Techs](#main3)
 4. [Functions](#main4)
 
+   - [Overall](#main4-1)
+
+     1. [SSR 지원을 위해 Next.js, emotion 사용](#main4-1-1)
+     2. [성능 최적화](#main4-1-2)
+     3. [Test (by Jest)](#main4-1-3)
+     4. [Google Analytics](#main4-1-4)
+     5. [JavaScript의 부정확한 계산을 방지](#main4-1-5)
+
+   - [Particular](#main4-2)
+     1. [Authentication](#main4-2-1)
+     2. [Responsive Web & Mobile](#main4-2-2)
+     3. [API 호출 최적화](#main4-2-3)
+     4. [전 세계의 소환사 검색을 위한 google map](#main4-2-4)
+     5. [다국어 지원](#main4-2-5)
+     6. [최근 검색 내역](#main4-2-6)
+     7. [그래프](#main4-2-7)
+     8. [SNS Share](#main4-2-8)
+     9. [Parallax Scrolling + Shrink Navigation](#main4-2-9)
+     10. [Modal](#main4-2-10)
+     11. [Toast Message](#main4-2-11)
+
 <br/>
 
 # 📌 Link<a name="main1"></a>
@@ -60,11 +81,11 @@
 
 # 📌 Functions<a name="main4"></a>
 
-## 🔸 Overall
+## 🔸 Overall<a name="main4-1"></a>
 
-### 1. SSR 지원을 위해 `Next.js`, `emotion` 사용
+### 1. SSR 지원을 위해 `Next.js`, `emotion` 사용<a name="main4-1-1"></a>
 
-### 2. 성능 최적화
+### 2. 성능 최적화<a name="main4-1-2"></a>
 
 <details>
 	<summary> 자세히 보기</summary>
@@ -79,7 +100,7 @@
 - 확인 React Developer Tools, Profiler / Lighthouse 탭 등을 통해 리렌더링 파악 및 성능 최적화 도모
   </details>
 
-### 3. Test (by `Jest`)
+### 3. Test (by `Jest`)<a name="main4-1-3"></a>
 
 <details>
 	<summary> 자세히 보기</summary>
@@ -190,7 +211,7 @@
 
   </details>
 
-### 4. Google Analytics
+### 4. Google Analytics<a name="main4-1-4"></a>
 
 <details>
 	<summary> 자세히 보기</summary>
@@ -201,7 +222,7 @@ GA를 적용하여 유입된 방문자들의 사이트 이용을 분석
 
 </details>
 
-### 5. JavaScript의 부정확한 계산 방지
+### 5. JavaScript의 부정확한 계산 방지<a name="main4-1-5"></a>
 
 <details>
 	<summary> 자세히 보기</summary>
@@ -222,9 +243,9 @@ GA를 적용하여 유입된 방문자들의 사이트 이용을 분석
 
 </details>
 
-## 🔸 Particular
+## 🔸 Particular<a name="main4-2"></a>
 
-### 1. Authentication
+### 1. Authentication<a name="main4-2-1"></a>
 
 <details>
 <summary>자세히 보기</summary>
@@ -288,7 +309,7 @@ GA를 적용하여 유입된 방문자들의 사이트 이용을 분석
 
   </details>
 
-### 2. Responsive Web & Mobile
+### 2. Responsive Web & Mobile<a name="main4-2-2"></a>
 
 <details>
 	<summary> 자세히 보기</summary>
@@ -345,7 +366,7 @@ GA를 적용하여 유입된 방문자들의 사이트 이용을 분석
 
 </details>
 
-### 3. API 호출 최적화
+### 3. API 호출 최적화<a name="main4-2-3"></a>
 
 <details>
 	<summary> 자세히 보기</summary>
@@ -447,7 +468,7 @@ GA를 적용하여 유입된 방문자들의 사이트 이용을 분석
 
 </details>
 
-### 4. 전 세계의 소환사 검색을 위한 google map
+### 4. 전 세계의 소환사 검색을 위한 google map<a name="main4-2-4"></a>
 
 <details>
 	<summary> 자세히 보기</summary>
@@ -534,7 +555,7 @@ GA를 적용하여 유입된 방문자들의 사이트 이용을 분석
 
 </details>
 
-### 5. 다국어 지원
+### 5. 다국어 지원<a name="main4-2-5"></a>
 
 <details>
 	<summary> 자세히 보기</summary>
@@ -545,7 +566,7 @@ GA를 적용하여 유입된 방문자들의 사이트 이용을 분석
 
 </details>
 
-### 6. 최근 검색 내역
+### 6. 최근 검색 내역<a name="main4-2-6"></a>
 
 <details>
 	<summary> 자세히 보기</summary>
@@ -574,7 +595,7 @@ GA를 적용하여 유입된 방문자들의 사이트 이용을 분석
 - UI ![](https://velog.velcdn.com/images/katej927/post/4f81f9ac-fcd0-444e-b0ee-daa2ada33158/image.gif)
 </details>
 
-### 7. 그래프
+### 7. 그래프<a name="main4-2-7"></a>
 
 <details>
 	<summary> 자세히 보기</summary>
@@ -603,7 +624,7 @@ GA를 적용하여 유입된 방문자들의 사이트 이용을 분석
 
 </details>
 
-### 8. SNS Share
+### 8. SNS Share<a name="main4-2-8"></a>
 
 <details>
 	<summary> 자세히 보기</summary>
@@ -629,7 +650,7 @@ GA를 적용하여 유입된 방문자들의 사이트 이용을 분석
   ```
   </details>
 
-### 9. Parallax Scrolling + Shrink Navigation
+### 9. Parallax Scrolling + Shrink Navigation<a name="main4-2-9"></a>
 
 <details>
 	<summary> 자세히 보기</summary>
@@ -674,14 +695,14 @@ GA를 적용하여 유입된 방문자들의 사이트 이용을 분석
 
   </details>
 
-### 10. Modal
+### 10. Modal<a name="main4-2-10"></a>
 
 <details>
 	<summary> 자세히 보기</summary>
 createPortal 활용 (React 공식 문서 참고)
 </details>
 
-### 11. Toast Message
+### 11. Toast Message<a name="main4-2-11"></a>
 
 <details>
 	<summary> 자세히 보기</summary>
