@@ -39,9 +39,13 @@
 # 📌 About<a name="main2"></a>
 
 > League of Legends user를 검색하여 최근 게임 이용 시간의 기회 비용을 알아보는 앱
-> 
+
 
 - 기술 학습, 기획, 디자인, 개발, 배포
+- 목표: 써보지 않았거나 잘 모르는 중요한 기술들을 학습하고 적응하기 위함.
+    
+    (우측 기술들 제외하고 전부 : html, css, JS, google-map-react, storejs, react-slick, react-use)
+    
 - 세부 주제: 실제 Riot API를 이용해서 user의 최근 15회의 League of Legends 게임 이용 시간을 확인하고 얼만큼의 다른 기회 비용이 있었는지를 알려준다.
 
 <br/>
