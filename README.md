@@ -1,3 +1,7 @@
+<p align='center'>
+<img src="https://github.com/katej927/Algorithm/assets/69146527/a51d84a8-f14a-4410-a2c3-fead73faed75" width="300"></img>
+<p>
+
 # Table of Contents
 
 1. [Link](#main1)
