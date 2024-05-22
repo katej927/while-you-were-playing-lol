@@ -4,9 +4,9 @@ import axios from 'axios';
 import {
   findBasicInfoOfSummonerAPI,
   findMatchListsAPI,
-  setRoutingRegion,
-  setRoutingContinent,
   findAllMatchDataAPI,
+  SET_ROUTING_CONTINENT,
+  SET_ROUTING_REGION,
 } from './_shared';
 import { IParticipant } from 'types/riotApi.d';
 
@@ -14,8 +14,8 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method === 'GET') {
     const { summonerName, region } = req.query;
 
-    const selectedRegionAPI = setRoutingRegion[`${region}`];
-    const selectedContinentAPI = setRoutingContinent[`${region}`];
+    const selectedRegionAPI = SET_ROUTING_REGION[`${region}`];
+    const selectedContinentAPI = SET_ROUTING_CONTINENT[`${region}`];
 
     if (!summonerName) {
       res.statusCode = 400;
@@ -25,7 +25,9 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     try {
       const {
         data: { puuid, profileIconId },
-      } = await axios.get(encodeURI(findBasicInfoOfSummonerAPI(`${summonerName}`, `${selectedRegionAPI}`)));
+      } = await axios.get(
+        encodeURI(findBasicInfoOfSummonerAPI(`${summonerName}`, selectedRegionAPI, selectedContinentAPI))
+      );
 
       const { data: matchIdLists } = await axios.get(findMatchListsAPI(`${puuid}`, `${selectedContinentAPI}`));
 
