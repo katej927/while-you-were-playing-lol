@@ -2,6 +2,7 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import axios from 'axios';
 
 import {
+  findPuuidOfSummonerAPI,
   findBasicInfoOfSummonerAPI,
   findMatchListsAPI,
   findAllMatchDataAPI,
@@ -26,7 +27,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       const {
         data: { puuid, profileIconId },
       } = await axios.get(
-        encodeURI(findBasicInfoOfSummonerAPI(`${summonerName}`, selectedRegionAPI, selectedContinentAPI))
+        encodeURI(findPuuidOfSummonerAPI(`${summonerName}`, selectedRegionAPI, selectedContinentAPI))
       );
 
       const { data: matchIdLists } = await axios.get(findMatchListsAPI(`${puuid}`, `${selectedContinentAPI}`));
