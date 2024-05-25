@@ -2,7 +2,7 @@ interface TSetRouting {
   [key: string]: string;
 }
 
-export const SET_ROUTING_REGION: TSetRouting = {
+export const SET_ROUTING_TAGLINES: TSetRouting = {
   KR: 'KR1',
   BR: 'BR1',
   EUN: 'EUNE',
