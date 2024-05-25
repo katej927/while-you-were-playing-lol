@@ -16,6 +16,20 @@ export const SET_ROUTING_TAGLINES: TSetRouting = {
   TR: 'TR1',
 };
 
+export const SET_ROUTING_REGION: TSetRouting = {
+  KR: 'https://kr.api.riotgames.com',
+  BR: 'https://br1.api.riotgames.com',
+  EUN: 'https://eun1.api.riotgames.com',
+  EUW: 'https://euw1.api.riotgames.com',
+  JP: 'https://jp1.api.riotgames.com',
+  LAN: 'https://la1.api.riotgames.com',
+  LAS: 'https://la2.api.riotgames.com',
+  NA: 'https://na1.api.riotgames.com',
+  OC: 'https://oc1.api.riotgames.com',
+  RU: 'https://ru.api.riotgames.com',
+  TR: 'https://tr1.api.riotgames.com',
+};
+
 const RIOT_ROUTING_ASIA = 'https://asia.api.riotgames.com';
 const RIOT_ROUTING_AMERICAS = 'https://americas.api.riotgames.com';
 const RIOT_ROUTING_EUROPE = 'https://europe.api.riotgames.com';
